@@ -11,7 +11,7 @@ class Player():
         pass
        # Här sker "eldväxlingen"
 
-    def inc_scores(self):
+    def inc_scores(self): 
         pass
        # Här ska poängen öka
 
@@ -23,7 +23,7 @@ class Player():
 a_player = Player(3)       # Initiera en spelare med tre liv
 
 while True:
-    x = int(input("""Vad vill du göra?
+    x = int(input("""Vad vill du göra bitch?
   (1)skjuta
   (2)bandagera --> +1 hp
 
