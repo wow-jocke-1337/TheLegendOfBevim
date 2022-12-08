@@ -40,4 +40,4 @@ while True:
 print("Haha du dog :)")
 
 if Player == 1:
-    print(f"Haha sämst")
+    print(f"Haha sämst bitch")
