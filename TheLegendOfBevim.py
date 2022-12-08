@@ -38,3 +38,6 @@ while True:
         break
 
 print("Haha du dog :)")
+
+if Player == 1:
+    print(f"Haha sämst")
