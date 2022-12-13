@@ -1,5 +1,7 @@
 import random as rand
 from Classes import*
+from Ascii_Art import*
+from Text import*
 
 a_player = Player(3)       # Initiera en spelare med tre liv
 
