@@ -18,4 +18,5 @@ class Player():
         # Här ska antalet liv minska
 
 class Knight():
-    def stats(HP, STR, )
+    def stats(HP, STR, ):
+        pass
