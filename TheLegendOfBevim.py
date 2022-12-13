@@ -1,4 +1,5 @@
 import random as rand
+from Classes import*
 
 class Player():
     def __init__(self, lifes):
