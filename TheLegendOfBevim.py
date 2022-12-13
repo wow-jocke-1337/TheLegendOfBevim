@@ -1,33 +1,11 @@
 import random as rand
 from Classes import*
 
-class Player():
-    def __init__(self, lifes):
-        self.lifes = lifes
-        self.scores = 0
-        self.did_hit = False
-        self.is_hitted = False
-
-    def fire(self):
-        pass
-       # Här sker "eldväxlingen"
-
-    def inc_scores(self): 
-        pass
-       # Här ska poängen öka
-
-    def get_shot(self):
-        pass
-        # Här ska antalet liv minska
-
-
 a_player = Player(3)       # Initiera en spelare med tre liv
 
 while True:
-    x = int(input("""Vad vill du göra bitch?
-  (1)skjuta
-  (2)bandagera --> +1 hp
-
+    x = int(input("""
+Välkommen till THE LEGEND OF BEVIM
     """))
     if x == 1:
         pass
