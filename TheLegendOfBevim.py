@@ -3,7 +3,7 @@ from Classes import*
 from Ascii_Art import*
 from Text import*
 
-a_player = Player(3)       # Initiera en spelare med tre liv
+
 
 while True:
     x = int(input("""
@@ -14,11 +14,14 @@ Välkommen till THE LEGEND OF BEVIM
     elif x == 2:
         pass
 
-    a_player.get_shot()
-    if a_player.lifes < 0:
-        break
+    namn = input("Vad är ditt namn? ")
 
-print("Haha du dog :)")
+    player.get_attacked()
+    if player.HP < 0:
+        break
+    
+    player = Player(namn)       # Initiera en spelare med namnet namn
+
 
 if Player == 1:
     print(f"Haha sämst bitch")

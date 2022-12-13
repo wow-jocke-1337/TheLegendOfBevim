@@ -1,7 +1,8 @@
 class Player():
-    def info(self, lifes):
-        self.lifes = lifes
+    def info(self, name, HP):
+        self.name = name
         self.scores = 0
+        self.HP = HP
         self.did_hit = False
         self.is_hitted = False
 
