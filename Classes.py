@@ -1,10 +1,19 @@
 class Player():
     def info(self, name, HP):
         self.name = name
-        self.scores = 0
-        self.HP = HP
+        self.lvl = 0
         self.did_hit = False
         self.is_hitted = False
+
+    def print_info(self, Class):
+
+        print(f""" 
+        {self.name}
+        LVL: {self.lvl} 
+        HP: {Class.HP}
+
+        
+        """)
 
     def attack(self):
         pass
@@ -28,6 +37,8 @@ class Player():
     def Eat_food(self):
         pass
 
-class Knight():
-    def stats(HP, STR, ):
-        pass
+
+    def Knight():
+        Class.STR = 20
+        Class.HP = 100
+        

@@ -15,13 +15,12 @@ Välkommen till THE LEGEND OF BEVIM
         pass
 
     namn = input("Vad är ditt namn? ")
-
-    player.get_attacked()
-    if player.HP < 0:
-        break
     
     player = Player(namn)       # Initiera en spelare med namnet namn
 
 
-if Player == 1:
-    print(f"Haha sämst bitch")
+
+    player.get_attacked()
+    if player.HP < 0:
+         break
+        
