@@ -9,9 +9,6 @@ def animate_typing(text):
         sys.stdout.flush()
         time.sleep(0.03)
 
-monsters=["Golem","Wolf","Bats","Undead","Lava eel"]
-locations=["Heart of The Mountain","Random Crack in The Wall","Nesting Site","Lava Falls","Storage Room"]
-
 class Player():
     
     def __init__(self, klass, lifes, capacity, armor):
