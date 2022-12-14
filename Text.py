@@ -3,13 +3,11 @@ import random as rand
 import time
 import sys,time,random
 
-typing_speed = 50 #wpm
-def slow_type(t):
-    for l in t:
-        sys.stdout.write(l)
+def animate_typing(text):
+    for char in text:
+        sys.stdout.write(char)
         sys.stdout.flush()
-        time.sleep(random.random()*10.0/typing_speed)
-    print('')
+        time.sleep(0.03)
 
 monsters=["Golem","Wolf","Bats","Undead","Lava eel"]
 locations=["Heart of The Mountain","Random Crack in The Wall","Nesting Site","Lava Falls","Storage Room"]
@@ -26,10 +24,10 @@ class Player():
         self.klass = klass
 
     def print_info(self):
-        slow_type(f"""
+        animate_typing(f"""
                 Character: {self.klass}
                 Health: {self.lifes}/{self.lifes} Armour: {self.armor}/{self.armor} 
-                Capacity: {self.capacity}/{self.capacity}""") 
+                Capacity: {self.capacity}/{self.capacity+5}""") 
 
     def fire(self):
         pass
@@ -64,9 +62,9 @@ def begin():
                                                             \|_________|                                          \|_________|                   
                                                                                                                                              """) 
     
-    slow_type("""\nVälkommen till vårt spel! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+    animate_typing("""\nVälkommen till vårt spel! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.""")
 begin()
-player_one = Player("Bevim", 100, 25, 0)
+player_one = Player("Bevim", 100, 0, 0)
 player_one.print_info()
