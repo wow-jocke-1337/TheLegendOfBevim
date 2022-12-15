@@ -1,3 +1,5 @@
+
+
 class Player():
     name = ""
     lvl = 0
@@ -38,6 +40,7 @@ class Player():
     def Eat_food():
         pass
 
-    
-
-        
+class Monster():
+    lvl = 0
+    HP = 0
+    STR = 0
