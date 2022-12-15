@@ -1,44 +1,43 @@
 class Player():
-    def info(self, name, HP):
-        self.name = name
-        self.lvl = 0
-        self.did_hit = False
-        self.is_hitted = False
+    name = ""
+    lvl = 0
+    STR = 0
+    HP = 0
+    did_hit = False
+    is_hitted = False
 
-    def print_info(self, Class):
+    def print_info():
 
         print(f""" 
-        {self.name}
-        LVL: {self.lvl} 
-        HP: {Class.HP}
+        {Player.name}
+        LVL: {Player.lvl} 
+        HP: {Player.HP}
 
         
         """)
 
-    def attack(self):
+    def attack():
         pass
        # Här sker "eldväxlingen"
 
-    def Block(self):
+    def Block():
         pass
        # Spelaren väljer att blocka nästa tur och försöka få monstret att bli stunned
 
-    def lvl_up(self): 
+    def lvl_up(): 
         pass
        # Här ska lvl öka
 
-    def get_attacked(self):
+    def get_attacked():
         pass
         # Här ska antalet liv minska
 
-    def Drink_potion(self):
+    def Drink_potion():
         pass
 
-    def Eat_food(self):
+    def Eat_food():
         pass
 
+    
 
-    def Knight():
-        Class.STR = 20
-        Class.HP = 100
         
