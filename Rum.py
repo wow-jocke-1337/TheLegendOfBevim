@@ -14,4 +14,20 @@ def animate_typing(text):
         time.sleep(0.03)
 
 def gen_room():
-    
+    pass
+
+import random
+
+rooms = int(input('How many rooms? : '))
+chosen_room = random.randint(1, rooms + 1)
+last_room = 'B'
+
+if chosen_room/2 == 0:
+    print('M')
+elif chosen_room/3 == 0:
+    print('F')
+elif chosen_room == 3:
+    print('K')
+    pass
+else:
+    print('')
