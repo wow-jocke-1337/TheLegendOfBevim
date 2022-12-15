@@ -4,7 +4,8 @@ from Ascii_Art import*
 from Text import*
 from Funktioner import*
 
-
+animate_typing(startText)
+animate_typing_fast(gameTitle)
 
 while True:
     x = int(input("""
