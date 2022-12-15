@@ -2,11 +2,6 @@ from random import randint
 import time as sleep
 import sys, time
 
-
-locations = ["Garderoben", "The lair", "Bing bing bang"]
-rummet = []
-rum = randint(0, 3)
-
 def animate_typing(text):
     for char in text:
         sys.stdout.write(char)
@@ -16,18 +11,25 @@ def animate_typing(text):
 def gen_room():
     pass
 
-import random
+import random as rand
 
-rooms = int(input('How many rooms? : '))
-chosen_room = random.randint(1, rooms + 1)
-last_room = 'B'
+rooms = ["Windstrucken Barn ", "A Nesting site ", "Valley ", "Volcanic Caverns ", "Skyisland ", "Duskwoods ", "Graveyard ", "Niagara Falls ", "Ivory Tower ", "Bing bing bang "]
+starting_room = []
+chosen_rooms = []
+#Start rummet är alltid lika med 0. Start rummet ska poppas ur listan i början.
+#Resten av rummen ska få slumpade värden varje gång. 
 
-if chosen_room/2 == 0:
-    print('M')
-elif chosen_room/3 == 0:
-    print('F')
-elif chosen_room == 3:
-    print('K')
-    pass
-else:
-    print('')
+if "Windstrucken Barn " in rooms:
+    starting_room.extend(rooms[0])
+    rooms.pop(0)
+    animate_typing("""\n
+    You arrive at a Windstrucken Barn, looking around you find that the barn is abandoned and the cause of your arrival seems at first a mystery.
+    Collecting yourself, you search the barn discovering nothing but that the light is out of reach, wherever you are this place does not come of as
+    merciful, but cursed and ancient in some way. 
+        Survive and successfully escape, but first you must choose one of the three doors currently infront of you.""")
+    time.sleep(1)
+    animate_typing("""\n
+    1: Right?
+    2: Middle?
+    3: Left? 
+        """)
