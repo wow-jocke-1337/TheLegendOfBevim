@@ -2,6 +2,7 @@ import random as rand
 from Classes import*
 from Ascii_Art import*
 from Text import*
+from Funktioner import*
 
 
 

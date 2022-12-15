@@ -1,27 +1,17 @@
-import time as sleep
-import sys, time
 
 class Player():
-    def info(self, name, HP):
-        self.name = name
-        self.lvl = 0
-        self.did_hit = False
-        self.is_hitted = False
+    name = ""
+    lvl = 0
+    HP = 0
+    STR = 0
 
-    def animate_typing(text):
-        for char in text:
-            sys.stdout.write(char)
-            sys.stdout.flush()
-            time.sleep(0.03)
-
-    def print_info(self, Class):
+    def print_info():
 
         print(f""" 
         {Player.name}
         LVL: {Player.lvl} 
         HP: {Player.HP}
 
-        
         """)
 
     def attack():
