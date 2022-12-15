@@ -5,7 +5,21 @@ def animate_typing(text):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
-        time.sleep(0.03)
+        time.sleep(0.01)
+
+def animate_typing_asciispeed(text):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.0000001)
+
+def animate_typing_fast(text):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.002)
+
+        
  
 gameTitle = ("""
     ███        ▄█    █▄       ▄████████          ███        ▄████████  ▄█          ▄████████    ▄████████       ▄██████▄     ▄████████         ▄████████ ███▄▄▄▄   
@@ -33,5 +47,3 @@ Welcome to _! You found yourself lost inside a dungeon in the mountains, a stran
 a knot forms inside of you, telling you to run. However you simply continue staying in your place, planted in place. 
 To escape from this hellhole """)
 
-animate_typing(startText)
-animate_typing(gameTitle)
