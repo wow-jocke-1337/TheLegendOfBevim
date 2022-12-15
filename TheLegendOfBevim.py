@@ -4,25 +4,24 @@ from Ascii_Art import*
 from Text import*
 from Funktioner import*
 
-animate_typing(startText)
-animate_typing_fast(gameTitle)
+animate_typing_fast(startText)
+print(gameTitle)
 
-while True:
-    x = int(input("""
-Välkommen till THE LEGEND OF BEVIM
-    """))
-    if x == 1:
-        pass
-    elif x == 2:
-        pass
+Player()
 
-    namn = input("Vad är ditt namn? ")
+Player.name = input("Vad är ditt namn? ")    # Initiera en spelare med namnet namn  
+
+x = int(input("""
+MENU
+1. check stats
+"""))
+if x == 1:
+    Player.print_info()
+elif x == 2:
+    pass
+
+
+Player.gets_attacked()
+if Player.HP < 0:
+    Player.die
     
-    player = Player(namn)       # Initiera en spelare med namnet namn
-
-
-
-    player.get_attacked()
-    if player.HP < 0:
-         break
-        

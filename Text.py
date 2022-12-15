@@ -11,7 +11,7 @@ def animate_typing_asciispeed(text):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
-        time.sleep(0.0000001)
+        time.sleep(0.00000001)
 
 def animate_typing_fast(text):
     for char in text:
@@ -19,7 +19,7 @@ def animate_typing_fast(text):
         sys.stdout.flush()
         time.sleep(0.002)
 
-        
+
  
 gameTitle = ("""
     ███        ▄█    █▄       ▄████████          ███        ▄████████  ▄█          ▄████████    ▄████████       ▄██████▄     ▄████████         ▄████████ ███▄▄▄▄   

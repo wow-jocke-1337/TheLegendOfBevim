@@ -26,7 +26,7 @@ class Player():
         pass
        # Här ska lvl öka
 
-    def get_attacked():
+    def gets_attacked():
         pass
         # Här ska antalet liv minska
 
@@ -34,6 +34,9 @@ class Player():
         pass
 
     def Eat_food():
+        pass
+
+    def die():
         pass
 
 class Monster():
