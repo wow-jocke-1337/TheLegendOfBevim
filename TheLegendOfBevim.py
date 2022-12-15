@@ -11,10 +11,7 @@ Player()
 
 Player.name = input("Vad är ditt namn? ")    # Initiera en spelare med namnet namn  
 
-x = int(input("""
-MENU
-1. check stats
-"""))
+x = int(input(Menu))
 if x == 1:
     Player.print_info()
 elif x == 2:
