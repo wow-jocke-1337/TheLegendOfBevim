@@ -13,15 +13,18 @@ def gen_room():
 
 import random as rand
 
-rooms = ["Windstrucken Barn ", "A Nesting site ", "Valley ", "Volcanic Caverns ", "Skyisland ", "Duskwoods ", "Graveyard ", "Niagara Falls ", "Ivory Tower ", "Bing bing bang "]
+boss_room = ["Morsans Lair"]
+chest_rooms = ["Windstrucken Barn ", "A Nesting site ", "Valley ", "Volcanic Caverns ", "Skyisland ", "Duskwoods ", "Graveyard ", "Niagara Falls ", "Ivory Tower ", "Bing bing bang "]
 starting_room = []
-chosen_rooms = []
+monster_room = []
+trap_room = []
+chosen_room = []
 #Start rummet är alltid lika med 0. Start rummet ska poppas ur listan i början.
 #Resten av rummen ska få slumpade värden varje gång. 
 
-if "Windstrucken Barn " in rooms:
-    starting_room.extend(rooms[0])
-    rooms.pop(0)
+if "Windstrucken Barn " in chest_rooms:
+    starting_room.extend(chest_rooms[0])
+    chest_rooms.pop(0)
     animate_typing("""\n
     You arrive at a Windstrucken Barn, looking around you find that the barn is abandoned and the cause of your arrival seems at first a mystery.
     Collecting yourself, you search the barn discovering nothing but that the light is out of reach, wherever you are this place does not come of as
