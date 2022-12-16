@@ -5,11 +5,13 @@ from Text import*
 from Funktioner import*
 
 animate_typing_fast(startText)
+time.sleep(2)
 print(gameTitle)
 
 Player()
 
-Player.name = input("Vad är ditt namn? ")    # Initiera en spelare med namnet namn  
+time.sleep(2)
+Player.name = input(animate_typing("Vad är ditt namn? "))    # Initiera en spelare med namnet namn  
 
 x = int(input(Menu))
 if x == 1:
