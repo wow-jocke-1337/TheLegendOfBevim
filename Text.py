@@ -28,6 +28,7 @@ Menu = """
 
     Menu
     1. see stats
+    2. 
 
 
  """

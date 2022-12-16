@@ -22,3 +22,4 @@ Player.gets_attacked()
 if Player.HP < 0:
     Player.die
     
+exit()
