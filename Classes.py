@@ -1,3 +1,5 @@
+from Ascii_Art import*
+from Text import*
 
 class Player():
     name = ""
@@ -7,7 +9,7 @@ class Player():
 
     def print_info():
 
-        print(f""" 
+        animate_typing(f""" 
         {Player.name}
         LVL: {Player.lvl} 
         HP: {Player.HP}
