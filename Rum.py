@@ -1,12 +1,5 @@
 from random import randint
-import time as sleep
-import sys, time
-
-def animate_typing(text):
-    for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(0.03)
+from Text import*
 
 def gen_room():
     pass
