@@ -11,10 +11,12 @@ animate_typing_asciispeed(gameTitle)
 Player()
 
 time.sleep(2)
-Player.name = input(animate_typing("Vad är ditt namn? "))    # Initiera en spelare med namnet namn  
+animate_typing("Vad är ditt namn")
+Player.name = input("? ")   # Initiera en spelare med namnet namn  
 
 while True:
-    x = int(input(animate_typing(Menu)))
+    animate_typing(Menu)
+    x = int(input(""))
     if x == 1:
         Player.print_info()
         time.sleep(2)
