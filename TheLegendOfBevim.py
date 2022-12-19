@@ -19,17 +19,16 @@ while True:
         Player.print_info()
         time.sleep(2)
     elif x == 2:
-        pass
+        break
     elif x == 3:
         animate_typing("""
     Thank you for playing :) 
     
     """)
-        break
         exit()
+
 
 Player.gets_attacked()
 if Player.HP < 0:
     Player.die
     
-exit()
