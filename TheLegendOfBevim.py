@@ -3,6 +3,8 @@ from Classes import*
 from Ascii_Art import*
 from Text import*
 from Funktioner import*
+from combat import*
+from exploring import*
 
 animate_typing_fast(startText)
 time.sleep(2)
@@ -21,7 +23,7 @@ while True:
         Player.print_info()
         time.sleep(2)
     elif x == 2:
-        break
+        intiate_exploring()
     elif x == 3:
         animate_typing("""
     Thank you for playing :) 
