@@ -45,9 +45,3 @@ class Monster():
     lvl = 0
     HP = 0
     STR = 0
-
-#    def print_info(self):
-#        animate_typing(f"""
-#                Character: {self.klass}
-#                Health: {self.lifes}/{self.lifes} Armour: {self.armor}/{self.armor} 
-#               Capacity: {self.capacity}/{self.capacity+5}""")
