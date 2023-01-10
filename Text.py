@@ -33,7 +33,7 @@ Menu = """
     MENU
 1 - Start game
 2 - See stats
-3 - Info about the game
+3 - Credits
 4 - Exit game
 
 
