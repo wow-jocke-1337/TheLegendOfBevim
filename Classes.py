@@ -9,10 +9,11 @@ class Player():
     STR = 0
     inventory = ["knife ", "shield "]
     inventory_slots = 3
+    klass = ""
 
     def print_info():
         animate_typing_fast(f""" 
-        {Player.name}
+        {Player.name} the {Player.klass}
         LVL:  {Player.lvl}
         XP:   {Player.XP}
         HP:   {Player.HP}

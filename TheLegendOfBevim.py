@@ -16,13 +16,32 @@ time.sleep(2)
 animate_typing("Vad är ditt namn")
 Player.name = input("? ")   # Initiera en spelare med namnet namn  
 
+
+time.sleep(1.5)
+animate_typing("""
+
+Vad är du för class? 
+    
+    Barbarian(1) chemist(2) mage(3) 
+
+your choice --> """)
+
+x = int(input(""))
+if x == 1:
+    Player.klass = "barbarian"
+elif x == 2:
+    Player.klass = "chemist"
+elif x == 3:
+    Player.klass = "mage"
+
 time.sleep(1.5)
 animate_typing(f"""
 
-Weclome {Player.name}
+Weclome {Player.name} the {Player.klass}
 
 """)
-time.sleep(1.5)
+
+time.sleep(2)
 
 while True:
     animate_typing(Menu)
