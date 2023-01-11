@@ -4,8 +4,9 @@ from Funktioner import*
 from combat import*
 
 def intiate_exploring():
-    print("vart vill du gå?")
+    time.sleep(2)
+    animate_typing("vart vill du gå?")
 
-    initiate_combat()
+    initiate_combat
 
 

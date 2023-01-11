@@ -28,8 +28,19 @@ Menu = """
 
     MENU
 1 - see stats
-2 -
+2 - explore
+3 - 
+4 - see credits
 3 - Exit game
 
 
 Your choice --> """
+
+credits = """
+
+Developers - Balfred, Billiam, Brille bum
+Coders - Balfred, Billiam, Brille bum
+Story writers - Balfred, Billiam, Brille bum
+Art - Balfred, Billiam, Brille bum
+
+"""

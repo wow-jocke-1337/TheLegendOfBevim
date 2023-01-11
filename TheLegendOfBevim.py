@@ -16,6 +16,14 @@ time.sleep(2)
 animate_typing("Vad är ditt namn")
 Player.name = input("? ")   # Initiera en spelare med namnet namn  
 
+time.sleep(1.5)
+print(f"""
+
+Weclome {Player.name}
+
+""")
+time.sleep(1.5)
+
 while True:
     animate_typing(Menu)
     x = int(input(""))
@@ -25,6 +33,11 @@ while True:
     elif x == 2:
         intiate_exploring()
     elif x == 3:
+        pass
+    elif x == 4:
+        animate_typing(credits)
+        time.sleep(2)
+    elif x == 5:
         animate_typing("""
     Thank you for playing :) 
     
