@@ -47,7 +47,7 @@ def gen_room():
             animate_typing('\nYou got spiked!')
         else:
             animate_typing('\nSevered you are!')
-gen_room()
+    gen_room()
 
 def room_count():
     pass
