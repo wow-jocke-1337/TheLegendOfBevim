@@ -20,13 +20,18 @@ def animate_typing_fast(text):
         time.sleep(0.001)
 
 startText = ("""
-Welcome to _! You found yourself lost inside a dungeon in the mountains, a strange aura radiates from the walls turning your legs to jelly, 
-a knot forms inside of you, telling you to run. However you simply continue staying in your place, planted in place. 
-To escape from this hellhole """)
+    Welcome to The Tales of an Adventurer. You found yourself lost inside a dungeon in the mountains 
+    and must fight to survive, if you seek to escape and regain your freedom.""")
+
+background_info = """
+    Developed by three creators, as a school project, the game circles around an action and dungeon-crawler
+    type of theme. You start with a goal in mind, meaning mostly linear progression, with side activites also in mind
+    and thereby they do not affect the final result."""
 
 Menu = """ 
 
     MENU
+<<<<<<< HEAD
 1 - see stats
 2 - explore
 3 - 
@@ -44,3 +49,4 @@ Story writers - Balfred, Billiam, Brille bum
 Art - Balfred, Billiam, Brille bum
 
 """
+
