@@ -17,20 +17,23 @@ animate_typing("Vad är ditt namn")
 Player.name = input("? ")   # Initiera en spelare med namnet namn  
 
 
+
 time.sleep(1.5)
 animate_typing("""
 
 Vad är du för class? 
     
-    Barbarian(1) chemist(2) mage(3) 
+    Barbarian(1) prostituerad(2) mage(3) 
 
 your choice --> """)
 
 x = int(input(""))
-if x == 1:
+if Player.name == "krille" or "algot" or "agge" or "gabriel" or "gabbe":
+    Player.klass = "bög terrorist"
+elif x == 1:
     Player.klass = "barbarian"
 elif x == 2:
-    Player.klass = "chemist"
+    Player.klass = "prostituerad"
 elif x == 3:
     Player.klass = "mage"
 
@@ -53,6 +56,7 @@ while True:
         intiate_explore()  
     elif x == 3:
         Player.print_inventory()
+        time.sleep(2)
     elif x == 4:
         animate_typing(credits)
         time.sleep(2)

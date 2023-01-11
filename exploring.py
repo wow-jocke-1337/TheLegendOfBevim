@@ -10,6 +10,6 @@ def intiate_explore():
 
     gen_room()
 
-    initiate_combat()
+    initiate_combat
 
 
