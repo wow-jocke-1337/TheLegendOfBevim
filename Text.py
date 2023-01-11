@@ -31,10 +31,10 @@ background_info = """
 Menu = """ 
 
     MENU
-1 - see stats
-2 - explore
-3 - 
-4 - see credits
+1 - See stats
+2 - Explore
+3 - Inventory
+4 - See credits
 3 - Exit game
 
 

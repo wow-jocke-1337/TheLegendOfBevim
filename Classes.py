@@ -7,14 +7,23 @@ class Player():
     HP = 0
     XP = 0 
     STR = 0
+    inventory = ["knife ", "shield "]
+    inventory_slots = 3
 
     def print_info():
-        animate_typing(f""" 
-        Name: {Player.name}
+        animate_typing_fast(f""" 
+        {Player.name}
         LVL:  {Player.lvl}
-        HP:   {Player.HP}
         XP:   {Player.XP}
+        HP:   {Player.HP}
+        Strength: {Player.STR}
+        Inventory slots: {Player.inventory_slots}
+
         """)
+
+    def print_inventory():
+        time.sleep(1)
+        animate_typing(Player.inventory)
 
     def attack():
         pass
@@ -24,6 +33,9 @@ class Player():
         pass
        # Spelaren väljer att blocka nästa tur och försöka få monstret att bli stunned
 
+    def add_item():
+        pass
+        # här läggs nånting in i spelarens inventory
     def lvl_up(): 
         pass
        # Här ska lvl öka

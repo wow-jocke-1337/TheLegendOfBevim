@@ -6,8 +6,8 @@ from Funktioner import*
 from combat import*
 from exploring import*
 
-animate_typing_fast(startText)
-time.sleep(2)
+animate_typing_asciispeed(startText)
+time.sleep(1)
 animate_typing_asciispeed(gameTitle)
 
 Player()
@@ -17,7 +17,7 @@ animate_typing("Vad är ditt namn")
 Player.name = input("? ")   # Initiera en spelare med namnet namn  
 
 time.sleep(1.5)
-print(f"""
+animate_typing(f"""
 
 Weclome {Player.name}
 
@@ -31,9 +31,9 @@ while True:
         Player.print_info()
         time.sleep(2)
     elif x == 2:
-        intiate_exploring()  
+        intiate_explore()  
     elif x == 3:
-        pass
+        Player.print_inventory()
     elif x == 4:
         animate_typing(credits)
         time.sleep(2)
