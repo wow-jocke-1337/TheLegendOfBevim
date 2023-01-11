@@ -5,4 +5,4 @@ from exploring import*
 
 
 def initiate_combat():
-    animate_typing("you encounter a gilf")
+    animate_typing("you encounter a gilf :))))")
