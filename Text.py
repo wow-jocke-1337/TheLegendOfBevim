@@ -28,18 +28,6 @@ background_info = """
     type of theme. You start with a goal in mind, meaning mostly linear progression, with side activites also in mind
     and thereby they do not affect the final result."""
 
-Menu = """ 
-
-    MENU
-1 - See stats
-2 - Explore
-3 - Inventory
-4 - See credits
-3 - Exit game
-
-
-Your choice --> """
-
 credits = """
 
 Developers - Balfred, Billiam, Brille bum
