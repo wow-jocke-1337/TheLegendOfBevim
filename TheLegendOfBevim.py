@@ -28,12 +28,10 @@ while True:
     animate_typing(Menu)
     x = int(input(""))
     if x == 1:
-        animate_typing()
-    elif x == 2:
         Player.print_info()
         time.sleep(2)
     elif x == 2:
-        intiate_exploring()
+        intiate_exploring()  
     elif x == 3:
         pass
     elif x == 4:

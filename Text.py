@@ -31,7 +31,6 @@ background_info = """
 Menu = """ 
 
     MENU
-<<<<<<< HEAD
 1 - see stats
 2 - explore
 3 - 
