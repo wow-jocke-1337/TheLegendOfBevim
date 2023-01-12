@@ -5,10 +5,11 @@ from Text import*
 from Funktioner import*
 from combat import*
 from exploring import*
+from Rum import*
 
 animate_typing_asciispeed(startText)
 time.sleep(1)
-animate_typing_asciispeed(gameTitle)
+print(gameTitle)
 
 Player()
 
@@ -27,24 +28,26 @@ Vad är du för class?
 
 your choice --> """)
 
-x = int(input(""))
+klass_choice = int(input(""))
 #if Player.name == "krille" or "krille cum" or "algot" or "agge" or "gabriel" or "gabbe":
    # Player.klass = "Prostituerad"
-if x == 1:
-    Player.klass = "barbarian"
+
+if klass_choice == 1:
+    Player.klass = "Barbarian"
     Player.HP = 10
     Player.STR = 30
     Player.inventory = ["Club, ", ]
-elif x == 2:
-    Player.klass = "archer"
+elif klass_choice == 2:
+    Player.klass = "Archer"
     Player.HP = 8
     Player.STR = 20
-    Player.inventory = ["bow, ","10 arrows, "]
-elif x == 3:
-    Player.klass = "mage"
+    Player.inventory = ["Bow, ","10 arrows, "]
+elif klass_choice == 3:
+    Player.klass = "Mage"
+
     Player.HP = 7
     Player.STR = 5
-    Player.inventory = ["magic dildo, ", ""]
+    Player.inventory = ["Magic Dildo, ", ""]
 
 time.sleep(1.5)
 animate_typing(f"""
@@ -52,6 +55,7 @@ animate_typing(f"""
 Weclome {Player.name} the {Player.klass}
 
 """)
+
 
 time.sleep(2)
 Menu = """ 
@@ -61,7 +65,7 @@ Menu = """
 2 - Explore
 3 - Inventory
 4 - See credits
-3 - Exit game
+5 - Exit game
 
 
 Your choice --> """

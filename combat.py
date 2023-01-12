@@ -7,6 +7,7 @@ list = [1,2,3,4,5]
 
 
 def initiate_combat():
+
     animate_typing("You encountered a (baserat på vart man är i spelet) ") 
 
 def attack():
@@ -40,6 +41,7 @@ def choices():
 choices()
 
         
+
 
 
 
