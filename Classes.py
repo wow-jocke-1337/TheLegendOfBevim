@@ -59,3 +59,39 @@ class Monster():
     lvl = 0
     HP = 0
     STR = 0
+
+
+class Wolf():
+    lvl = 0
+    HP = 10
+    STR = 2
+
+class Golem():
+    lvl = 0
+    HP = 30
+    STR = 0.5
+
+class slime():
+    lvl = 0
+    HP = 7
+    STR = 3
+
+class mountain_Lion():
+    lvl=0
+    HP=45
+    STR=5
+
+class Bats():
+    lvl=0
+    HP=2
+    STR=1
+
+class archdemon():
+    lvl=0
+    HP=70
+    STR=10.5
+
+class Bevins_bror():
+    lvl=0
+    HP=100
+    STR=8
