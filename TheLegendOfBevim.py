@@ -8,7 +8,7 @@ from exploring import*
 
 animate_typing_asciispeed(startText)
 time.sleep(1)
-animate_typing_asciispeed(gameTitle)
+print(gameTitle)
 
 Player()
 
