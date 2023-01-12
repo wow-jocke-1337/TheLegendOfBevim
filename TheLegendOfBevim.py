@@ -36,18 +36,18 @@ if klass_choice == 1:
     Player.klass = "Barbarian"
     Player.HP = 10
     Player.STR = 30
-    Player.inventory = ["Club, ", ]
+    Player.inventory = ["Club ", ]
 elif klass_choice == 2:
     Player.klass = "Archer"
     Player.HP = 8
     Player.STR = 20
-    Player.inventory = ["Bow, ","10 arrows, "]
+    Player.inventory = ["Bow ","10 arrows ", ]
 elif klass_choice == 3:
     Player.klass = "Mage"
 
     Player.HP = 7
     Player.STR = 5
-    Player.inventory = ["Magic Dildo, ", ""]
+    Player.inventory = ["Magic Dildo ", ]
 
 time.sleep(1.5)
 animate_typing(f"""
