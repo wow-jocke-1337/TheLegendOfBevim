@@ -25,7 +25,7 @@ class Player():
     def print_inventory():
         time.sleep(1)
         print()
-        animate_typing(f"\n{Player.inventory}")
+        animate_typing(f"\n{Player.inventory}\n")
 
     def attack():
         pass
