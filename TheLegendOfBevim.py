@@ -52,7 +52,7 @@ elif klass_choice == 3:
 time.sleep(1.5)
 animate_typing(f"""
 
-Weclome {Player.name} the {Player.klass}
+Welcome {Player.name} the {Player.klass}
 
 """)
 
