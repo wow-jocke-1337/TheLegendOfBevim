@@ -32,17 +32,17 @@ klass_choice = int(input(""))
 #if Player.name == "krille" or "krille cum" or "algot" or "agge" or "gabriel" or "gabbe":
    # Player.klass = "Prostituerad"
 
-if x == 1:
+if klass_choice == 1:
     Player.klass = "Barbarian"
     Player.HP = 10
     Player.STR = 30
     Player.inventory = ["Club, ", ]
-elif x == 2:
+elif klass_choice == 2:
     Player.klass = "Archer"
     Player.HP = 8
     Player.STR = 20
     Player.inventory = ["Bow, ","10 arrows, "]
-elif x == 3:
+elif klass_choice == 3:
     Player.klass = "Mage"
 
     Player.HP = 7
