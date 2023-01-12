@@ -7,7 +7,7 @@ class Player():
     HP = 0
     XP = 0 
     STR = 0
-    inventory = ["knife ", "shield "]
+    inventory = []
     inventory_slots = 3
     klass = ""
 
@@ -24,7 +24,8 @@ class Player():
 
     def print_inventory():
         time.sleep(1)
-        animate_typing(Player.inventory)
+        print()
+        animate_typing(f"\n{Player.inventory}")
 
     def attack():
         pass
