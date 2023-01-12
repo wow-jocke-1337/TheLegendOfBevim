@@ -28,9 +28,10 @@ Vad är du för class?
 
 your choice --> """)
 
-x = int(input(""))
+klass_choice = int(input(""))
 #if Player.name == "krille" or "krille cum" or "algot" or "agge" or "gabriel" or "gabbe":
    # Player.klass = "Prostituerad"
+
 if x == 1:
     Player.klass = "Barbarian"
     Player.HP = 10
@@ -43,6 +44,7 @@ elif x == 2:
     Player.inventory = ["Bow, ","10 arrows, "]
 elif x == 3:
     Player.klass = "Mage"
+
     Player.HP = 7
     Player.STR = 5
     Player.inventory = ["Magic Dildo, ", ""]
@@ -53,6 +55,7 @@ animate_typing(f"""
 Weclome {Player.name} the {Player.klass}
 
 """)
+
 
 time.sleep(2)
 Menu = """ 
