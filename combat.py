@@ -21,7 +21,7 @@ def attack():
 def block():
     while True:
         outcome=random.choice(list)
-        if outcome==1 or 2 or 3
+        if outcome==1 or 2 or 3:
             animate_typing("\nSuccessfully blocked!")
         else:
             animate_typing("\nyou took ... damage")
