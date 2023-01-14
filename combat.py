@@ -38,7 +38,6 @@ def choices():
         attack
     if x==2:
         block
-choices()
 
         
 
