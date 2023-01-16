@@ -20,43 +20,50 @@ Player.name = input("? ")
 
 
 time.sleep(1.5)
-animate_typing("""
 
-Vad är du för class? 
-    
-    Barbarian(1) Archer(2) mage(3) 
+while True:
+    animate_typing("""
 
-your choice --> """)
+    Vad är du för class? 
+        
+        Barbarian(1) Archer(2) mage(3) 
 
-klass_choice = int(input(""))
-#if Player.name == "krille" or "krille cum" or "algot" or "agge" or "gabriel" or "gabbe":
-   # Player.klass = "Prostituerad"
+    your choice --> """)
 
-if klass_choice == 1:
-    Player.klass = "Barbarian"
-    Player.HP = 11
-    Player.STR = 50
-    Player.DEX = 20
-    Player.INT = 5
-    Player.inventory = ["Club ", "Healing potion", "fists"]
-elif klass_choice == 2:
-    Player.klass = "Archer"
-    Player.HP = 8
-    Player.STR = 20
-    Player.DEX = 40
-    Player.INT = 35
-    arrows = 10
-    Player.inventory = ["Bow ","Arrows:",arrows, ]
-elif klass_choice == 3:
-    Player.klass = "Mage"
-    Player.HP = 6
-    Player.STR = 5
-    Player.DEX = 30
-    Player.INT = 10000
-    Player.inventory = ["Magical staff ", "magic powder(not cocaine) ", "magic talking Hat"]
+    klass_choice = int(input(""))
+    #if Player.name == "krille" or "krille cum" or "algot" or "agge" or "gabriel" or "gabbe":
+    # Player.klass = "Prostituerad"
+
+    if klass_choice == 1:
+        Player.klass = "Barbarian"
+        Player.HP = 11
+        Player.STR = 50
+        Player.DEX = 20
+        Player.INT = 5
+        Player.inventory = ["Club ", "Healing potion", "fists"]
+        break
+    elif klass_choice == 2:
+        Player.klass = "Archer"
+        Player.HP = 8
+        Player.STR = 20
+        Player.DEX = 40
+        Player.INT = 35
+        arrows = 10
+        Player.inventory = ["Bow ","Arrows:",arrows, ]
+        break
+    elif klass_choice == 3:
+        Player.klass = "Mage"
+        Player.HP = 6
+        Player.STR = 5
+        Player.DEX = 30
+        Player.INT = 10000
+        Player.inventory = ["Magical staff ", "magic powder(not cocaine) ", "magic talking Hat"]
+        break
+    else:
+        animate_typing("\n du kan bara välja 1-3\n")
 
 time.sleep(1.5)
-animate_typing(f"""
+animate_typing_slow(f"""
 
 Welcome {Player.name} the {Player.klass}
 

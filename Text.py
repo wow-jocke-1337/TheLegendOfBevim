@@ -18,6 +18,11 @@ def animate_typing_fast(text):
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(0.001)
+def animate_typing_slow(text):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.03)
 
 startText = ("""
     Welcome to The Tales of an Adventurer. You found yourself lost inside a dungeon in the mountains 
