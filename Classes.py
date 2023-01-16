@@ -20,14 +20,51 @@ class Player():
         XP:   {Player.XP}
         HP:   {Player.HP}
         Strength: {Player.STR}
+        Intelligence: {Player.INT}
+        Dexterity: {Player.DEX}
         Inventory slots: {Player.inventory_slots}
 
         """)
 
+    
+
     def print_inventory():
         time.sleep(1)
-        print()
         animate_typing(f"\n{Player.inventory}\n")
+        print("\n")
+        while True:
+            animate_typing("What do you want to do? ")
+            animate_typing(inventory_menu)
+            x = int(input(""))
+            if x == 1:
+                while True:
+                    animate_typing(f"\n\n Which item do you want to use?  Options: 1 to {len(Player.inventory)} \n \n Your choice --> ")
+                    y = int(input(""))-1
+                    if y > len(Player.inventory) or y < 0:
+                            animate_typing(f"\n\n You can only choose between item 1-{len(Player.inventory)} Dumbass \n\n")
+                            break
+                    Player.use_item(y)
+                    break
+            elif x == 2:
+                animate_typing(f"\n\n Which item do you want to drop?  Options: 1 to {len(Player.inventory)} \n \n Your choice --> ")
+                y = int(input(""))-1
+                if y > len(Player.inventory) or y < 0:
+                        animate_typing(f"\n\n You can only choose between item 1-{len(Player.inventory)} Dumbass \n\n")
+                        break
+                animate_typing(f"\n\n\n are you sure you want to drop the {Player.inventory[y]} \n\n yes or no? ")
+                z = (input(""))
+                if z == "yes":
+                    animate_typing(f"\n\n you dropped the {Player.inventory[y]} \n\n")
+                    Player.inventory.pop(y)
+                elif z == "no":
+                    animate_typing("\n\n\n ok \n\n")
+                break
+            elif x == 3:
+                break
+    
+    def use_item(y):
+        animate_typing(f"\n\n you used the {Player.inventory[y]} \n\n")
+
 
     def attack():
         pass

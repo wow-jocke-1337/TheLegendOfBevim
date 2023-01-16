@@ -28,6 +28,19 @@ background_info = """
     type of theme. You start with a goal in mind, meaning mostly linear progression, with side activites also in mind
     and thereby they do not affect the final result."""
 
+inventory_menu = """ 
+1 - Use item
+2 - Drop item
+3 - go back 
+
+Your choice --> """
+
+
+
+
+
+
+
 credits = """
 
 Developers - Balfred, Billiam, Brille bum

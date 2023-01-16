@@ -15,7 +15,7 @@ Player()
 
 time.sleep(2)
 animate_typing("Vad är ditt namn")
-Player.name = input("? ")   # Initiera en spelare med namnet namn  
+Player.name = input("? ")    
 
 
 
