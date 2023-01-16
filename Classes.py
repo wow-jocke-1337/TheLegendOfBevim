@@ -3,10 +3,12 @@ from Text import*
 
 class Player():
     name = ""
-    lvl = 0
+    lvl = 1
     HP = 0
     XP = 0 
     STR = 0
+    INT = 0
+    DEX = 0
     inventory = []
     inventory_slots = 3
     klass = ""
