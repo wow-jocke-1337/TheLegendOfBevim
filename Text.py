@@ -35,12 +35,6 @@ inventory_menu = """
 
 Your choice --> """
 
-
-
-
-
-
-
 credits = """
 
 Developers - Balfred, Billiam, Brille bum
@@ -50,3 +44,5 @@ Art - Balfred, Billiam, Brille bum
 
 """
 
+prologue = """
+    You begin your journey through the darkx"""

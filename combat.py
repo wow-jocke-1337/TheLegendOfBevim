@@ -5,7 +5,6 @@ from exploring import*
 
 list = [1,2,3,4,5,6]
 
-
 def attack():
         outcome = random.choice(list)
         if outcome == 1 or 2 or 3:
@@ -33,9 +32,11 @@ Your choice --> """)
         x=int(input("")) 
         if x==1: 
             attack()
-        if x==2:
+        elif x==2:
             block()
 
         
 def initiate_combat():
     choices()
+
+initiate_combat()
