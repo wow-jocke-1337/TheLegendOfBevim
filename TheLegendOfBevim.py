@@ -38,7 +38,7 @@ if klass_choice == 1:
     Player.STR = 50
     Player.DEX = 20
     Player.INT = 5
-    Player.inventory = ["Club ", ]
+    Player.inventory = ["Club ", "Healing potion", "fists"]
 elif klass_choice == 2:
     Player.klass = "Archer"
     Player.HP = 8
@@ -53,7 +53,7 @@ elif klass_choice == 3:
     Player.STR = 5
     Player.DEX = 30
     Player.INT = 10000
-    Player.inventory = ["Magical staff ", ]
+    Player.inventory = ["Magical staff ", "magic powder(not cocaine) ", "magic talking Hat"]
 
 time.sleep(1.5)
 animate_typing(f"""

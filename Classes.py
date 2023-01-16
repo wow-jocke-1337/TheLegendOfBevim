@@ -33,11 +33,12 @@ class Player():
         animate_typing(f"\n{Player.inventory}\n")
         print("\n")
         while True:
-            animate_typing("What do you want to do? ")
+            animate_typing("\n\nWhat do you want to do? ")
             animate_typing(inventory_menu)
             x = int(input(""))
             if x == 1:
                 while True:
+                    animate_typing(f"\n{Player.inventory}\n")
                     animate_typing(f"\n\n Which item do you want to use?  Options: 1 to {len(Player.inventory)} \n \n Your choice --> ")
                     y = int(input(""))-1
                     if y > len(Player.inventory) or y < 0:
@@ -46,6 +47,7 @@ class Player():
                     Player.use_item(y)
                     break
             elif x == 2:
+                animate_typing(f"\n{Player.inventory}\n")
                 animate_typing(f"\n\n Which item do you want to drop?  Options: 1 to {len(Player.inventory)} \n \n Your choice --> ")
                 y = int(input(""))-1
                 if y > len(Player.inventory) or y < 0:
