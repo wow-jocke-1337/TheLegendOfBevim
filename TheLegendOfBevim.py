@@ -15,7 +15,7 @@ Player()
 
 time.sleep(2)
 animate_typing("Vad är ditt namn")
-Player.name = input("? ")   # Initiera en spelare med namnet namn  
+Player.name = input("? ")    
 
 
 
@@ -34,20 +34,26 @@ klass_choice = int(input(""))
 
 if klass_choice == 1:
     Player.klass = "Barbarian"
-    Player.HP = 10
-    Player.STR = 30
+    Player.HP = 11
+    Player.STR = 50
+    Player.DEX = 20
+    Player.INT = 5
     Player.inventory = ["Club ", ]
 elif klass_choice == 2:
     Player.klass = "Archer"
     Player.HP = 8
     Player.STR = 20
-    Player.inventory = ["Bow ","10 arrows ", ]
+    Player.DEX = 40
+    Player.INT = 35
+    arrows = 10
+    Player.inventory = ["Bow ","Arrows:",arrows, ]
 elif klass_choice == 3:
     Player.klass = "Mage"
-
-    Player.HP = 7
+    Player.HP = 6
     Player.STR = 5
-    Player.inventory = ["Magic Dildo ", ]
+    Player.DEX = 30
+    Player.INT = 10000
+    Player.inventory = ["Magical staff ", ]
 
 time.sleep(1.5)
 animate_typing(f"""
