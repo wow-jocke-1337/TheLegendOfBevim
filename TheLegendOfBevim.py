@@ -19,7 +19,7 @@ Player.name = input("? ")
 
 
 
-time.sleep(1.5)
+time.sleep(1)
 
 while True:
     animate_typing("""
@@ -40,7 +40,8 @@ while True:
         Player.STR = 50
         Player.DEX = 20
         Player.INT = 5
-        Player.inventory = ["Club ", "Healing potion", "fists"]
+        healing_potions = "Healing potions", 2
+        Player.inventory = ["Club ", healing_potions,]
         break
     elif klass_choice == 2:
         Player.klass = "Archer"
@@ -48,8 +49,8 @@ while True:
         Player.STR = 20
         Player.DEX = 40
         Player.INT = 35
-        arrows = 10
-        Player.inventory = ["Bow ","Arrows:",arrows, ]
+        arrows = "arrows", 10
+        Player.inventory = ["Bow ", arrows, "Bait"]
         break
     elif klass_choice == 3:
         Player.klass = "Mage"
@@ -62,7 +63,7 @@ while True:
     else:
         animate_typing("\n du kan bara välja 1-3\n")
 
-time.sleep(1.5)
+time.sleep(1)
 animate_typing_slow(f"""
 
 Welcome {Player.name} the {Player.klass}
@@ -70,7 +71,7 @@ Welcome {Player.name} the {Player.klass}
 """)
 
 
-time.sleep(2)
+time.sleep(1)
 Menu = """ 
 
     MENU
