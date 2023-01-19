@@ -1,23 +1,22 @@
 from Classes import*
 from Text import*
 from Funktioner import*
-from exploring import*
 
 list = [1,2,3,4,5,6]
 
 def attack():
         outcome = random.choice(list)
-        if outcome == 1 or 2 or 3:
+        if outcome == 1 or outcome==2 or outcome==3:
             animate_typing("\nYou hit the target!")
         else:
             animate_typing("\nYou missed.")
 
 def block():
         outcome=random.choice(list)
-        if outcome==1 or 2 or 3:
+        if outcome==1 or outcome==2 or outcome==3:
             animate_typing("\nSuccessfully blocked!")
         else:
-            animate_typing("\nyou failed to block and took" + {Player.STR} *0.25)
+            animate_typing("\nyou failed to block and took")
 
 def choices():
     combat_options = ("""
@@ -40,18 +39,6 @@ def damage():
         outcome=random.choice(list)
         if outcome== 1 or 2 or 3:
             animate_typing("\nYou dealt "+ {Player.STR} * 0.25)
-            
-
-             
-
-
-
-
-
-    
-
-        
+              
 def initiate_combat():
     choices()
-
-initiate_combat()
