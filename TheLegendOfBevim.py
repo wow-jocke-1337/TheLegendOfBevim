@@ -57,7 +57,7 @@ while True:
         Player.HP = 6
         Player.STR = 5
         Player.DEX = 30
-        Player.INT = 10000
+        Player.INT = 60
         Player.inventory = ["Magical staff ", "magic powder(not cocaine) ", "magic talking Hat"]
         break
     else:
