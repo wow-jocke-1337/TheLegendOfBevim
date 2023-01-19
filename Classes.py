@@ -1,5 +1,6 @@
 from Ascii_Art import*
 from Text import*
+from items import*
 
 class Player():
     name = ""
@@ -12,6 +13,7 @@ class Player():
     inventory = []
     inventory_slots = 4
     klass = ""
+    equipped_weapon = 0
 
     def print_info():
         animate_typing_fast(f""" 
@@ -110,6 +112,8 @@ class Player():
     
     def use_item(y):
         animate_typing(f"\n\n ...you used the {Player.inventory[y-1]} ...\n\n\n")
+        if y == Weapon:
+            Player.equipped_weapon = y
 
 
     def attack():
