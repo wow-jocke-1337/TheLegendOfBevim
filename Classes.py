@@ -110,10 +110,10 @@ class Player():
         print("\n")        
         time.sleep(1)
     
-    def use_item(y):
-        animate_typing(f"\n\n ...you used the {Player.inventory[y-1]} ...\n\n\n")
-        if y == Weapon:
-            Player.equipped_weapon = y
+    def use_item(x):
+        animate_typing(f"\n\n ...you used the {Player.inventory[x]} ...\n\n\n")
+        if x == Weapon:
+            Player.equipped_weapon = x
 
 
     def attack():
