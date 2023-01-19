@@ -30,14 +30,19 @@ def gen_room():
                 monster = random.choice(M_rooms)
                 if monster == "Bats":
                     animate_typing('\nYou encountered a pack of bats!')
+                    initiate_combat()
                 elif monster == "Wolf":
                     animate_typing('\nYou encountered a Wolf!')
+                    initiate_combat()
                 elif monster == "Golem":
-                    animate_typing('\nYou encountered a Golem!')                    
+                    animate_typing('\nYou encountered a Golem!')    
+                    initiate_combat()                
                 elif monster == "Mountain lion":
-                    animate_typing('\nYou encountered a Mountain lion!')                   
+                    animate_typing('\nYou encountered a Mountain lion!')    
+                    initiate_combat()               
                 elif monster == "Slime":
                     animate_typing('\nYou encountered a slime!')
+                    initiate_combat()
             elif room == "E":
                 animate_typing('\nThis room is empty.')
             elif room == "C":
@@ -47,10 +52,13 @@ def gen_room():
                 boss = random.choice(B_rooms)
                 if boss == "Archdemon":
                     animate_typing('\nYou encountered a Archdemon!')
+                    initiate_combat()
                 elif boss == "Bevins bror":
                     animate_typing('\nYou encountered your brother, Bing CHilling!')
+                    initiate_combat()
                 else:
                     animate_typing('\nWhat da hell!') 
+                    initiate_combat()
             elif room == "T":
                 animate_typing('\nTrap room.')
                 trap = random.choice(T_rooms)

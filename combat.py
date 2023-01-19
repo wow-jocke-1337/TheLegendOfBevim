@@ -8,7 +8,7 @@ list = [1,2,3,4,5,6]
 def attack():
         outcome = random.choice(list)
         if outcome == 1 or 2 or 3:
-            animate_typing("\nYou hit the target.")
+            animate_typing("\nYou hit the target!")
         else:
             animate_typing("\nYou missed.")
 
@@ -40,6 +40,12 @@ def damage():
         outcome=random.choice(list)
         if outcome== 1 or 2 or 3:
             animate_typing("\nYou dealt "+ {Player.STR} * 0.25)
+            
+
+             
+
+
+
 
 
     

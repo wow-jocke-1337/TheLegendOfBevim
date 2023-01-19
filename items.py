@@ -6,3 +6,9 @@ class Weapon():
 
     class Club():
         Dmg = 3 + Player.STR * 0.75 + Player.DEX * 0.1
+
+    class Bow():
+        Dmg = 3 + Player.STR * 0.15 + Player.DEX * 0.70 
+
+    class Magical_Staff():
+        Dmg = 3 + Player.STR * 0.10 + Player.DEX * 0.30 + Player.INT *0.6
