@@ -18,6 +18,11 @@ def animate_typing_fast(text):
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(0.001)
+def animate_typing_slow(text):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.03)
 
 startText = ("""
     Welcome to The Tales of an Adventurer. You found yourself lost inside a dungeon in the mountains 
@@ -28,6 +33,13 @@ background_info = """
     type of theme. You start with a goal in mind, meaning mostly linear progression, with side activites also in mind
     and thereby they do not affect the final result."""
 
+inventory_menu = """ 
+1 - Use item
+2 - Drop item
+3 - go back 
+
+Your choice --> """
+
 credits = """
 
 Developers - Balfred, Billiam, Brille bum
@@ -37,3 +49,5 @@ Art - Balfred, Billiam, Brille bum
 
 """
 
+prologue = """
+    You begin your journey through the darkx"""
