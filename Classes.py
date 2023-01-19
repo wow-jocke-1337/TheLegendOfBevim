@@ -29,40 +29,40 @@ class Player():
     
 
     def print_inventory():
-        time.sleep(1)
-        animate_typing(f"\n\n{Player.inventory}\n")
         while True:
+            time.sleep(1)
+            animate_typing(f"\n\n{Player.inventory}\n")
             animate_typing("\n What do you want to do? ")
             animate_typing(inventory_menu)
             x = int(input(""))
+
             if x == 1:    #Use
                 while True:
                     animate_typing(f"\n{Player.inventory}\n")
                     if len(Player.inventory) > 1:
                         while True:
-                            animate_typing(f"\n Which item do you want to use?  Options: 1-{len(Player.inventory)} \n \n Your choice --> ")  
+                            animate_typing(f"\n Which item do you want to use?  Options: 1-{len(Player.inventory)} \n -I dont want to use anything (0) \n \n Your choice --> ")  
                             y = int(input(""))
-                            if y > len(Player.inventory) or y < 1:
+                            if y == 0:
+                                break
+                            elif y > len(Player.inventory) or y < 1:
                                 animate_typing(f"\n\n You can only choose between item 1-{len(Player.inventory)} Dumbass \n\n")
                                 break
-                            elif y > len(Player.inventory) or y < 1 and len(Player.inventory) < 2:
-                                animate_typing("\nYou only have one item dumbass\n\n")
-                                break  
-                            Player.use_item(y)
+                            Player.use_item(y-1)
                             break
+                        
                     elif len(Player.inventory) < 2:
                         while True:
-                            animate_typing(f"\n Which item do you want to use?  Options: {Player.inventory[0]} (1) \n \n Your choice --> ") 
+                            animate_typing(f"\n Which item do you want to use?  Options: {Player.inventory[0]} (1)  \n -I dont want to use anything (0) \n \n Your choice --> ") 
                             y = int(input(""))
-                            if y > len(Player.inventory) or y < 1:
-                                animate_typing(f"\n\n You can only choose between item 1-{len(Player.inventory)} Dumbass \n\n")
+                            if y == 0:
                                 break
-                            elif y > len(Player.inventory) or y < 1 and len(Player.inventory) < 2:
+                            elif y > len(Player.inventory) or y < 1:
                                 animate_typing("\nYou only have one item dumbass\n\n")
                                 break
                             Player.use_item(y-1)
                             break
-                    break
+                        
             elif x == 2:   #Drop
                 if len(Player.inventory) > 1:
                     while True:
@@ -73,8 +73,6 @@ class Player():
                             break
                         elif y > len(Player.inventory) or y < 1:
                             animate_typing(f"\n\n You can only choose between item 1-{len(Player.inventory)} Dumbass \n\n")
-                        elif y > len(Player.inventory) or y < 1 and len(Player.inventory) < 2:
-                            animate_typing("\nYou only have one item dumbass\n\n")
                         else:
                             animate_typing(f"\n\n are you sure you want to drop the {Player.inventory[y-1]} \n\n yes or no? ")
                             z = (input(""))
@@ -92,10 +90,7 @@ class Player():
                         if y == 0:
                             break
                         elif y > len(Player.inventory) or y < 1:
-                            animate_typing(f"\n\n You can only choose between item 1-{len(Player.inventory)} Dumbass \n\n")
-                        elif y > len(Player.inventory) or y < 1 and len(Player.inventory) < 2:
                             animate_typing("\nYou only have one item dumbass\n\n")
-                        
                         else:
                             animate_typing(f"\n\n are you sure you want to drop the {Player.inventory[y-1]} \n\n yes or no? ")
                             z = (input(""))
@@ -107,7 +102,6 @@ class Player():
                             break
                     print("\n")
             elif x == 3:  #go back
-                
                 break
             else:
                 animate_typing("\n\nyou only have three options dumbass\n\n")
