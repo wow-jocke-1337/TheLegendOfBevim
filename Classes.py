@@ -95,3 +95,8 @@ class Bevins_bror():
     lvl=0
     HP=100
     STR=8
+
+class Alfreds_otroligt_Fina_Mamma():
+    lvl=0
+    HP=100000000
+    STR=10000000

@@ -24,7 +24,7 @@ def block():
         if outcome==1 or 2 or 3:
             animate_typing("\nSuccessfully blocked!")
         else:
-            animate_typing("\nyou took ... damage")
+            animate_typing("\nyou failed to block and took" + {Player.STR} *0.25)
 
     
 
@@ -39,6 +39,15 @@ def choices():
     if x==2:
         block
 choices()
+
+def damage():
+    while True:
+        outcome=random.choice(list)
+        if outcome== 1 or 2 or 3:
+            animate_typing("\nYou dealt "+ {Player.STR} * 0.25)
+
+
+    
 
         
 
