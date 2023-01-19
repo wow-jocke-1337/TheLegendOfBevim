@@ -41,8 +41,8 @@ while True:
         Player.STR = 50
         Player.DEX = 20
         Player.INT = 5
-        healing_potions = "Healing potions", 2
-        Player.inventory = [Weapon.Club, healing_potions,]
+        Usable.healing_potion == 2
+        Player.inventory = [Weapon.Club, Usable.healing_potion,]
         break
     elif klass_choice == 2:
         Player.klass = "Archer"
@@ -50,8 +50,8 @@ while True:
         Player.STR = 20
         Player.DEX = 60
         Player.INT = 35
-        arrows = "arrows", 10
-        Player.inventory = ["Bow ", arrows, "Bait"]
+        Ammo.arrows == 15
+        Player.inventory = [Weapon.Arrowweapon.Bow, Ammo.arrows, "Bait"]
         break
     elif klass_choice == 3:
         Player.klass = "Mage"
@@ -59,7 +59,7 @@ while True:
         Player.STR = 5
         Player.DEX = 30
         Player.INT = 60
-        Player.inventory = ["Magical staff ", "magic powder(not cocaine) ", "magic talking Hat"]
+        Player.inventory = [Weapon.Magical_Staff, "magic powder(not cocaine) ", "magic talking Hat"]
         break
     else:
         animate_typing("\n du kan bara välja 1-3\n")

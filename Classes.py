@@ -114,6 +114,8 @@ class Player():
         animate_typing(f"\n\n ...you used the {Player.inventory[x]} ...\n\n\n")
         if x == Weapon:
             Player.equipped_weapon = x
+            animate_typing(f"\n\n ...the {Player.inventory[x]} is now equiped... \n\n\n")
+        
 
 
     def attack():
