@@ -48,4 +48,3 @@ def damage():
 def initiate_combat():
     choices()
 
-initiate_combat()

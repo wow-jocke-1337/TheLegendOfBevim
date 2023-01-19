@@ -6,6 +6,7 @@ from Funktioner import*
 from combat import*
 from exploring import*
 from Rum import*
+from items import*
 
 animate_typing_asciispeed(startText)
 time.sleep(1)
@@ -41,13 +42,13 @@ while True:
         Player.DEX = 20
         Player.INT = 5
         healing_potions = "Healing potions", 2
-        Player.inventory = ["Club ", healing_potions,]
+        Player.inventory = [Weapon.Club, healing_potions,]
         break
     elif klass_choice == 2:
         Player.klass = "Archer"
         Player.HP = 8
         Player.STR = 20
-        Player.DEX = 40
+        Player.DEX = 60
         Player.INT = 35
         arrows = "arrows", 10
         Player.inventory = ["Bow ", arrows, "Bait"]
