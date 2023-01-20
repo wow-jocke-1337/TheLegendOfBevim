@@ -8,6 +8,7 @@ from Rum import*
 archer = Archer()
 barbarian = Barbarian()
 mage = Mage()
+warrior = Warrior()
 
 animate_typing_asciispeed(startText)
 time.sleep(1)
@@ -29,6 +30,7 @@ while True:
         1. Barbarian
         2. Archer
         3. Mage
+        4. Warrior
 
     your choice --> """)
 
@@ -36,16 +38,20 @@ while True:
     BARBARIAN = "1"
     ARCHER = "2"
     MAGE = "3"
+    WARRIOR = "4"
     # if klass_choice.isdigit() and 1 <= int(klass_choice) <= 3:
     #    Player.klass = class_dict[int(klass_choice)](Player.name)
     if klass_choice == BARBARIAN:
         player = Player(user_name, "Barbarian", barbarian.HP, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.equipped_weapon)
         break
     elif klass_choice == ARCHER:
-        player = Player(user_name, "Archer", archer.HP, archer.STR, archer.DEX, archer.INT)
+        player = Player(user_name, "Archer", archer.HP, archer.STR, archer.DEX, archer.INT, archer.equipped_weapon)
         break
     elif klass_choice == MAGE:
-        player = Player(user_name, "Mage", mage.HP, mage.STR, mage.DEX, mage.INT)
+        player = Player(user_name, "Mage", mage.HP, mage.STR, mage.DEX, mage.INT, mage.equipped_weapon)
+        break
+    elif klass_choice == WARRIOR:
+        player = Player(user_name, "Warrior", warrior.HP, warrior.STR, warrior.DEX, warrior.INT, warrior.equipped_weapon)
         break
     else:
         animate_typing("\n du kan bara välja 1-3\n")

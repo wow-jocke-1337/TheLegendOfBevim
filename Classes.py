@@ -44,8 +44,8 @@ class Player():
         self.inventory.remove(item)
 
     def print_info(self):
-        animate_typing_fast(f"""
-            {self.name} the {self.klass}
+        animate_typing(f"""
+        {self.name} the {self.klass}
         HP: {self.HP}
         LVL:{self.lvl}
         XP: {self.XP}
@@ -53,7 +53,7 @@ class Player():
         DEX:{self.DEX}
         INT:{self.INT}
         Equipped Weapon:{self.equipped_weapon}
-        Inventory:      {self.inventory}
+        Inventory:{self.inventory}
         """)
                
 
@@ -219,12 +219,12 @@ class Mage():
 class Warrior():
     def __init__(self) -> None:
         self.klass = "Mage"
-        self.HP = 60
-        self.STR = 10
-        self.DEX = 20
-        self.INT = 50
-        self.equipped_weapon = Magical_Staff(3+self.DEX*0.2 + self.INT * 0.5)
-        self.inventory = ["Magic powder(not cocaine) ", "Magic talking Hat"] 
+        self.HP = 120
+        self.STR = 45
+        self.DEX = 30
+        self.INT = 20
+        self.equipped_weapon = Greatsword(3+self.DEX*0.35 + self.INT * 0.2 + self.STR * 0.5)
+        self.inventory = ["Wooden Shield","Figner thingmajig","Yis"]
 
 class Monster():
     def __init__(self, name, klass):

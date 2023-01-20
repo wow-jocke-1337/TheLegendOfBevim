@@ -1,32 +1,34 @@
 from Classes import*
 
 class Weapon():
-    def __init__(self, name, klass, Dmg):
+    def __init__(self, name, klass, dmg):
         self.name = name
         self.klass = klass
-        self.Dmg = Dmg
+        self.dmg = dmg
 
 
-class IronSword(Weapon):
-    def __init__(self, Dmg):
-        super().__init__("Greatsword", "Melee Weapon",Dmg) 
+class Greatsword():
+    def __init__(self):
+        self.name = "Greatsword" 
+        self.klass = "Melee Weapon"
+        self.dmg = (3+self.DEX*0.35 + self.INT * 0.2 + self.STR * 0.5) 
         pass
 
 class Club(Weapon):
-    def __init__(self, Dmg):
-        super().__init__("Club","Melee Weapon", Dmg)
+    def __init__(self, dmg):
+        super().__init__("Club","Melee Weapon", dmg)
         pass
 
 
 class Bow(Weapon):
-    def __init__(self, Dmg):
-        super().__init__("Bow","Ranged Weapon",Dmg)
+    def __init__(self, dmg):
+        super().__init__("Bow","Ranged Weapon",dmg)
         pass
 
 
 class Magical_Staff(Weapon):
-    def __init__(self,Dmg):
-        super().__init__("Magical Staff","Ranged Weapon",Dmg)
+    def __init__(self,dmg):
+        super().__init__("Magical Staff","Ranged Weapon",dmg)
         pass
 
 class Consumable():
