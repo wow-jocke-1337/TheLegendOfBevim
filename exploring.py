@@ -1,5 +1,3 @@
-from Classes import*
-from Text import*
 from Funktioner import*
 from Rum import*
 

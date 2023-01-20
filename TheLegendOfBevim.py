@@ -1,68 +1,40 @@
 import random as rand
-from Classes import*
 from Ascii_Art import*
 from Text import*
-from Funktioner import*
-from combat import*
+from Classes import*
 from exploring import*
 from Rum import*
-from items import*
 
 animate_typing_asciispeed(startText)
 time.sleep(1)
 print(gameTitle)
 
-Player()
-
 time.sleep(2)
 animate_typing("Vad är ditt namn")
 Player.name = input("? ")    
 
-
-
 time.sleep(1)
+
+class_dict = {1: Barbarian, 2: Archer, 3: Mage}
 
 while True:
     animate_typing("""
 
     Vad är du för class? 
         
-        Barbarian(1) Archer(2) mage(3) 
+        1. Barbarian
+        2. Archer
+        3. Mage
 
     your choice --> """)
 
-    klass_choice = int(input(""))
-    #if Player.name == "krille" or "krille cum" or "algot" or "agge" or "gabriel" or "gabbe":
-    # Player.klass = "Prostituerad"
-
-    if klass_choice == 1:
-        Player.klass = "Barbarian"
-        Player.HP = 11
-        Player.STR = 50
-        Player.DEX = 20
-        Player.INT = 5
-        Usable.healing_potion == 2
-        Player.inventory = [Weapon.Club, Usable.healing_potion,]
-        break
-    elif klass_choice == 2:
-        Player.klass = "Archer"
-        Player.HP = 8
-        Player.STR = 20
-        Player.DEX = 60
-        Player.INT = 35
-        Ammo.arrows == 15
-        Player.inventory = [Weapon.Arrowweapon.Bow, Ammo.arrows, "Bait"]
-        break
-    elif klass_choice == 3:
-        Player.klass = "Mage"
-        Player.HP = 6
-        Player.STR = 5
-        Player.DEX = 30
-        Player.INT = 60
-        Player.inventory = [Weapon.Magical_Staff, "magic powder(not cocaine) ", "magic talking Hat"]
+    klass_choice = input("")
+    if klass_choice.isdigit() and 1 <= int(klass_choice) <= 3:
+        Player.klass = class_dict[int(klass_choice)](Player.name)
         break
     else:
         animate_typing("\n du kan bara välja 1-3\n")
+
 
 time.sleep(1)
 animate_typing_slow(f"""

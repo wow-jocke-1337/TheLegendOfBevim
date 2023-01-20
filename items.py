@@ -1,23 +1,41 @@
 from Classes import*
 
 class Weapon():
-    class IronSword():
-        Dmg = 3 + Player.STR * 0.25 + Player.DEX * 0.5
+    def __init__(self, name, klass, Dmg):
+        self.name = name
+        self.klass = klass
+        self.Dmg = Dmg
 
-    class Club():
-        Dmg = 3 + Player.STR * 0.75 + Player.DEX * 0.1
 
-    class Arrowweapon():
-        class Bow():
-            Dmg = 3 + Player.STR * 0.15 + Player.DEX * 0.70 
+class IronSword(Weapon):
+    def __init__(self):
+        super().__init__("Greatsword", "Melee Weapon",(f"Dmg:{3 + Player.STR * 0.5 + Player.DEX * 0.25}")) 
+    pass
 
-    class Magical_Staff():
-        Dmg = 3 + Player.STR * 0.10 + Player.DEX * 0.30 + Player.INT *0.6
 
+class Club(Weapon):
+    def __init__(self):
+        super().__init__("Club","Melee Weapon",(f"Dmg:{3 + Player.STR * 0.5 + Player.DEX * 0.25}"))
+    pass
+
+
+class Bow(Weapon):
+    def __init__(self):
+        super().__init__("Bow","Ranged Weapon",(f"Dmg:{3 + Player.STR * 0.25 + Player.DEX * 0.5}"))
+    pass
+
+
+class Magical_Staff(Weapon):
+    def __init__(self):
+        super().__init__("Magical Staff","Ranged Weapon",(f"Dmg:{3 + Player.STR * 0.25 + Player.DEX * 0.5}") )
+    pass
 
 class Usable():
-    healing_potion = "Healing potions", 0
-
+    def __init__(self, name):
+        self.name = name
+    pass
 
 class Ammo():
-    arrows = "arrows", 0
+    def __init__(self,arrows=10):
+        self.arrows = arrows
+    pass

@@ -1,4 +1,3 @@
-from Classes import*
 from Text import*
 from Funktioner import*
 
