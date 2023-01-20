@@ -136,11 +136,11 @@ class Player():
         print("\n")        
         time.sleep(1)
     
-    def use_item(self,x):
-        animate_typing(f"\n\n ...you used the {self.inventory[x]} ...\n\n\n")
+    def use_item(x):
+        animate_typing(f"\n\n ...you used the {Player.inventory[x]} ...\n\n\n")
         if x == Weapon:
-            self.equipped_weapon = x
-            animate_typing(f"\n\n ...the {self.inventory[x]} is now equiped... \n\n\n")
+            Player.equipped_weapon = x
+            animate_typing(f"\n\n ...the {Player.inventory[x]} is now equiped... \n\n\n")
         
     def attack():
         pass
@@ -174,22 +174,22 @@ class Archer(Player):
     def __init__(self,name):
         super().__init__(name, "Archer", 80, 30,20,40)
         self.ammo = 15
-        self.equipped_weapon = Bow
-        self.inventory = [Weapon("Bow",25),"Arrows","Bait"]
+        self.equipped_weapon = Bow(3+self.DEX*0.5 + self.STR * 0.15)
+        self.inventory = [Ammo(10),"Bait"]
     pass
 
 class Barbarian(Player):
     def __init__(self, name):
         super().__init__(name, "Barbarian",100,50,25,10)
-        self.equipped_weapon = Club
-        self.inventory = [Usable("Healing Potion", 2)]
+        self.equipped_weapon = Club(3+self.DEX*0.15 + self.STR * 0.5)
+        self.inventory = [Healing_potion(2)]
     pass
 
 class Mage(Player):
     def __init__(self, name):
         super().__init__(name, "Mage",60,10,20,50)
-        self.equipped_weapon = Magical_Staff
-        self.inventory = [Weapon("Magical_Staff"), 15 , "Magic powder(not cocaine) ", "Magic talking Hat"]
+        self.equipped_weapon = Magical_Staff(3+self.DEX*0.2 + self.INT * 0.5)
+        self.inventory = ["Magic powder(not cocaine) ", "Magic talking Hat"]
     pass
 
 

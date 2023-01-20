@@ -8,34 +8,39 @@ class Weapon():
 
 
 class IronSword(Weapon):
-    def __init__(self):
-        super().__init__("Greatsword", "Melee Weapon",(f"Dmg:{3 + Player.STR * 0.5 + Player.DEX * 0.25}")) 
-    pass
-
+    def __init__(self, Dmg):
+        super().__init__("Greatsword", "Melee Weapon",Dmg) 
+        pass
 
 class Club(Weapon):
-    def __init__(self):
-        super().__init__("Club","Melee Weapon",(f"Dmg:{3 + Player.STR * 0.5 + Player.DEX * 0.25}"))
-    pass
+    def __init__(self, Dmg):
+        super().__init__("Club","Melee Weapon", Dmg)
+        pass
 
 
 class Bow(Weapon):
-    def __init__(self):
-        super().__init__("Bow","Ranged Weapon",(f"Dmg:{3 + Player.STR * 0.25 + Player.DEX * 0.5}"))
-    pass
+    def __init__(self, Dmg):
+        super().__init__("Bow","Ranged Weapon",Dmg)
+        pass
 
 
 class Magical_Staff(Weapon):
-    def __init__(self):
-        super().__init__("Magical Staff","Ranged Weapon",(f"Dmg:{3 + Player.STR * 0.25 + Player.DEX * 0.5}") )
-    pass
+    def __init__(self,Dmg):
+        super().__init__("Magical Staff","Ranged Weapon",Dmg)
+        pass
 
-class Usable():
-    def __init__(self, name):
+class Consumable():
+    def __init__(self, name, amount):
         self.name = name
-    pass
+        self.amount = amount
+        pass
+
+class Healing_potion(Consumable):
+    def __init__(self,amount):
+        super().__init__("Healing Potion", amount)
+        pass
 
 class Ammo():
     def __init__(self,arrows=10):
         self.arrows = arrows
-    pass
+        pass
