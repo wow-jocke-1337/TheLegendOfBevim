@@ -7,6 +7,7 @@ def attack():
         outcome = random.choice(list)
         if outcome == 1 or outcome==2 or outcome==3:
             animate_typing("\nYou hit the target!")
+            damage()
         else:
             animate_typing("\nYou missed.")
 
@@ -15,7 +16,7 @@ def block():
         if outcome==1 or outcome==2 or outcome==3:
             animate_typing("\nSuccessfully blocked!")
         else:
-            animate_typing("\nyou failed to block and took")
+            animate_typing("\nYou failed to block and took....")
 
 def choices():
     combat_options = ("""
@@ -30,14 +31,19 @@ Your choice --> """)
         x=int(input("")) 
         if x==1: 
             attack()
+            break
         elif x==2:
             block()
+            break
 
 def damage():
     while True:
         outcome=random.choice(list)
         if outcome== 1 or 2 or 3:
-            animate_typing("\nYou dealt "+ {Player.STR} * 0.25)
+            animate_typing("\nYou dealt hitpoints.")
+        else:
+            animate_typing("\n\nYou dealt no damage.")
+
               
 def initiate_combat():
     choices()

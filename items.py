@@ -1,32 +1,36 @@
 from Classes import*
 
 class Weapon():
-    def __init__(self, name, klass, dmg):
+    def __init__(self, name, str_mod, dex_mod, int_mod, klass):
         self.name = name
         self.klass = klass
-        self.dmg = dmg
-
+        self.str_mod = str_mod
+        self.dex_mod = dex_mod
+        self.int_mod = int_mod
 
 class Greatsword():
     def __init__(self):
         self.name = "Greatsword" 
         self.klass = "Melee Weapon"
-        self.dmg = (3+self.DEX*0.35 + self.INT * 0.2 + self.STR * 0.5) 
-        pass
+        self.str_mod = 0.5
+        self.dex_mod = 0.2
+        self.int_mod = 0.1
 
-class Club(Weapon):
-    def __init__(self, dmg):
-        super().__init__("Club","Melee Weapon", dmg)
-        pass
+class Club():
+    def __init__(self):
+        self.name = "Club" 
+        self.klass = "Melee Weapon"
+        self.str_mod = 0.4
+        self.dex_mod = 0.3
+        self.int_mod = 0.1
 
-
-class Bow(Weapon):
+class Bow():
     def __init__(self, dmg):
         super().__init__("Bow","Ranged Weapon",dmg)
         pass
 
 
-class Magical_Staff(Weapon):
+class Magical_Staff():
     def __init__(self,dmg):
         super().__init__("Magical Staff","Ranged Weapon",dmg)
         pass

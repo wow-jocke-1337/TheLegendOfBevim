@@ -20,7 +20,7 @@ user_name = input("? ")
 
 time.sleep(1)
 
-class_dict = {1: Barbarian, 2: Archer, 3: Mage}
+#class_dict = {1: Barbarian, 2: Archer, 3: Mage}
 
 while True:
     animate_typing("""
@@ -42,16 +42,16 @@ while True:
     # if klass_choice.isdigit() and 1 <= int(klass_choice) <= 3:
     #    Player.klass = class_dict[int(klass_choice)](Player.name)
     if klass_choice == BARBARIAN:
-        player = Player(user_name, "Barbarian", barbarian.HP, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.equipped_weapon)
+        player = Player(user_name, "Barbarian", barbarian.HP, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
         break
     elif klass_choice == ARCHER:
-        player = Player(user_name, "Archer", archer.HP, archer.STR, archer.DEX, archer.INT, archer.equipped_weapon)
+        player = Player(user_name, "Archer", archer.HP, archer.STR, archer.DEX, archer.INT, archer.inventory)
         break
     elif klass_choice == MAGE:
-        player = Player(user_name, "Mage", mage.HP, mage.STR, mage.DEX, mage.INT, mage.equipped_weapon)
+        player = Player(user_name, "Mage", mage.HP, mage.STR, mage.DEX, mage.INT, mage.inventory)
         break
     elif klass_choice == WARRIOR:
-        player = Player(user_name, "Warrior", warrior.HP, warrior.STR, warrior.DEX, warrior.INT, warrior.equipped_weapon)
+        player = Player(user_name, "Warrior", warrior.HP, warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
         break
     else:
         animate_typing("\n du kan bara välja 1-3\n")
