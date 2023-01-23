@@ -5,11 +5,7 @@ list = [1,2,3,4,5,6]
 
 def attack():
         outcome = random.choice(list)
-<<<<<<< HEAD
         if outcome == 1 or 2 or 3 or 4:
-=======
-        if outcome == 1 or outcome==2 or outcome==3:
->>>>>>> 178c3625bfcad6f511247603434584e073cc9ccf
             animate_typing("\nYou hit the target!")
             damage()
         else:
@@ -20,7 +16,6 @@ def block():
         if outcome==1 or outcome==2 or outcome==3:
             animate_typing("\nSuccessfully blocked!")
         else:
-<<<<<<< HEAD
             animate_typing("\nyou failed to block and took damage!"  + {Player.STR} *0.25)
 
 
@@ -33,9 +28,6 @@ def Exit_Combat():
 
 
 
-=======
-            animate_typing("\nYou failed to block and took....")
->>>>>>> 178c3625bfcad6f511247603434584e073cc9ccf
 
 def choices():
     combat_options = ("""
