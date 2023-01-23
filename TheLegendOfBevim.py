@@ -1,5 +1,5 @@
 import random as rand
-from Ascii_Art import *
+from Ascii_Art import*
 from Text import *
 from Classes import *
 from exploring import *
@@ -9,13 +9,14 @@ archer = Archer()
 barbarian = Barbarian()
 mage = Mage()
 warrior = Warrior()
-greatsword_weapon = Greatsword()
-magical_staff_weapon = Magical_Staff()
-club_weapon = Club()
-bow_weapon = Bow()
+greatsword = Greatsword("Greatsword","Melee Weapon", 0.6, 0.2, 0.1)
+magical_staff = Magical_Staff()
+club = Club()
+bow = Bow()
 healing_potion = Healing_potion()
 mana_potion = Mana_potion()
 flying_arrows = Arrows()
+
 
 animate_typing_asciispeed(startText)
 time.sleep(1)
@@ -39,7 +40,7 @@ while True:
         3. Mage
         4. Warrior
 
-    your choice --> """)
+    Your choice --> """)
 
     klass_choice = input("")
     BARBARIAN = "1"
@@ -49,27 +50,28 @@ while True:
     
     if klass_choice == BARBARIAN:
         player = Player(user_name, "Barbarian", barbarian.HP,barbarian.Defense, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
-        player.inventory.append(club_weapon)
+        player.inventory.append(club)
         break
     elif klass_choice == ARCHER:
         player = Player(user_name, "Archer", archer.HP,archer.Defense, archer.STR, archer.DEX, archer.INT, archer.inventory)
         player.inventory.append(flying_arrows)
-        player.inventory.append(bow_weapon)
+        player.inventory.append(bow)
         break
     elif klass_choice == MAGE:
         player = Player(user_name, "Mage", mage.HP,mage.Defense, mage.STR, mage.DEX, mage.INT, mage.inventory)
         player.inventory.append(mana_potion)
-        player.inventory.append(magical_staff_weapon)
+        player.inventory.append(magical_staff)
         break
     elif klass_choice == WARRIOR:
         player = Player(user_name, "Warrior", warrior.HP,warrior.Defense, warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
-        player.inventory.append(greatsword_weapon)
+        player.inventory.append(greatsword)
         break
     else:
         animate_typing("\n du kan bara välja 1-3\n")
         break
 
 player.inventory.append(healing_potion)
+
 
 
 time.sleep(1)
