@@ -1,5 +1,6 @@
 from Text import*
 from Funktioner import*
+from Classes import*
 
 list = [1,2,3,4,5,6]
 
@@ -54,11 +55,17 @@ def damage():
         outcome=random.choice(list)
         if outcome== 1 or 2 or 3:
             animate_typing("\nYou dealt hitpoints.")
+            Player.calculate_damage()
         else:
             animate_typing("\n\nYou dealt no damage.")
+        if Barbarian:damage [0.45*Player.STR,0.10*Player.DEX]
+        if Archer:damage[0.25*Player.STR,0.5*Player.DEX]
+        if Mage:damage[0.6*Player.INT,0.2*Player.DEX]
+        if Warrior:damage[0.35*Player.STR,0.35*Player.DEX]
 
           
-
+def Game_over():
+    animate_typing("Du förlorade")
 
 
 
