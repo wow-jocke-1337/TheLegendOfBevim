@@ -1,14 +1,21 @@
 import random as rand
-from Ascii_Art import*
-from Text import*
-from Classes import*
-from exploring import*
-from Rum import*
+from Ascii_Art import *
+from Text import *
+from Classes import *
+from exploring import *
+from Rum import *
 
 archer = Archer()
 barbarian = Barbarian()
 mage = Mage()
 warrior = Warrior()
+greatsword_weapon = Greatsword()
+magical_staff_weapon = Magical_Staff()
+club_weapon = Club()
+bow_weapon = Bow()
+healing_potion = Healing_potion()
+mana_potion = Mana_potion()
+flying_arrows = Arrows()
 
 animate_typing_asciispeed(startText)
 time.sleep(1)
@@ -42,19 +49,27 @@ while True:
     
     if klass_choice == BARBARIAN:
         player = Player(user_name, "Barbarian", barbarian.HP,barbarian.Defense, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
+        player.inventory.append(club_weapon)
         break
     elif klass_choice == ARCHER:
         player = Player(user_name, "Archer", archer.HP,archer.Defense, archer.STR, archer.DEX, archer.INT, archer.inventory)
+        player.inventory.append(flying_arrows)
+        player.inventory.append(bow_weapon)
         break
     elif klass_choice == MAGE:
         player = Player(user_name, "Mage", mage.HP,mage.Defense, mage.STR, mage.DEX, mage.INT, mage.inventory)
+        player.inventory.append(mana_potion)
+        player.inventory.append(magical_staff_weapon)
         break
     elif klass_choice == WARRIOR:
         player = Player(user_name, "Warrior", warrior.HP,warrior.Defense, warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
+        player.inventory.append(greatsword_weapon)
         break
     else:
         animate_typing("\n du kan bara välja 1-3\n")
         break
+
+player.inventory.append(healing_potion)
 
 
 time.sleep(1)

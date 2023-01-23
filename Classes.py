@@ -68,7 +68,9 @@ class Player():
     def print_inventory(self):
         while True:
             time.sleep(1)
-            animate_typing(f"\n\n{self.inventory}\n")
+            # animate_typing(f"\n\n{self.inventory}\n")
+            for Item in self.inventory:
+                animate_typing(f"Item name: {Item.name} ")
             animate_typing("\n What do you want to do? ")
             animate_typing(inventory_menu)
             x = int(input(""))
@@ -145,8 +147,7 @@ class Player():
         time.sleep(1)
     
     def use_item(self, used_item):
-
-        if used_item == Weapon:
+        if used_item.klass == "Ranged Weapon" or "Melee Weapon":
             animate_typing(f"\n\nDo you want to equip {used_item} \n\n Yes or No? ")
             equip_choice = int(input(""))
             if equip_choice == "yes".lower():
@@ -200,7 +201,7 @@ class Archer():
         self.DEX = 40
         self.INT = 10
         self.ammo = 15
-        self.inventory = [Arrows(10),"Bait", Bow]
+        self.inventory = []
 
 
 class Barbarian():
@@ -211,7 +212,7 @@ class Barbarian():
         self.STR = 50
         self.DEX = 25
         self.INT = 10
-        self.inventory = [Healing_potion,"Rusted Chains", Club]
+        self.inventory = []
 
 class Mage():
     def __init__(self) -> None:
@@ -221,7 +222,7 @@ class Mage():
         self.STR = 10
         self.DEX = 20
         self.INT = 50
-        self.inventory = ["Magic powder(not cocaine) ", "Magic talking Hat", Magical_Staff]
+        self.inventory = []
 
 class Warrior():
     def __init__(self) -> None:
@@ -231,7 +232,7 @@ class Warrior():
         self.STR = 35
         self.DEX = 35
         self.INT = 20
-        self.inventory = ["Wooden Shield","Figner thingmajig","Yis", Greatsword]
+        self.inventory = []
 
 class Monster():
     def __init__(self, name, klass):

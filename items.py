@@ -1,12 +1,10 @@
 from Classes import*
 
-class Weapon():
-    def __init__(self, name, str_mod, dex_mod, int_mod, klass):
+class Item():
+    def __init__(self, name, klass) -> None:
         self.name = name
         self.klass = klass
-        self.str_mod = str_mod
-        self.dex_mod = dex_mod
-        self.int_mod = int_mod
+        
 
 class Greatsword():
     def __init__(self):
@@ -41,27 +39,20 @@ class Magical_Staff():
         self.dex_mod = 0.2
         self.int_mod = 0.4
 
-
-class Consumable():
-    def __init__(self, name,arrows, amount):
-        self.name = name
-        self.amount = amount
-        self.arrows = arrows
-
 class Healing_potion():
     def __init__(self):
-        self.name = f"Healing potion {self.amount}"
-        self.amount = 1
+        self.name = "Healing potion"
+        self.klass = "Consumable"
         
 class Mana_potion():
     def __init__(self) -> None:
-        self.name = f"Mana Potion {self.amount}"
-        self.amount = 1
+        self.name = "Mana Potion"
+        self.klass = "Consumable"
 
 class Arrows():
-    def __init__(self,arrows):
-        self.name = f"Arrows {self.amount}"
-        self.arrows = arrows
-        self.amount = 0
+    def __init__(self):
+        self.name = "Arrows"
+        self.klass = "Consumable"
+        self.arrows = 10
 
         
