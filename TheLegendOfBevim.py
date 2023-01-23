@@ -39,8 +39,7 @@ while True:
     ARCHER = "2"
     MAGE = "3"
     WARRIOR = "4"
-    # if klass_choice.isdigit() and 1 <= int(klass_choice) <= 3:
-    #    Player.klass = class_dict[int(klass_choice)](Player.name)
+    
     if klass_choice == BARBARIAN:
         player = Player(user_name, "Barbarian", barbarian.HP,barbarian.Defense, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
         break
