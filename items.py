@@ -25,15 +25,22 @@ class Club():
         self.int_mod = 0.1
 
 class Bow():
-    def __init__(self, dmg):
-        super().__init__("Bow","Ranged Weapon",dmg)
-        pass
+    def __init__(self):
+        self.name = "Bow"
+        self.klass = "Ranged Weapon"
+        self.str_mod = 0.2
+        self.dex_mod = 0.5
+        self.int_mod = 0.1
 
 
 class Magical_Staff():
     def __init__(self,dmg):
-        super().__init__("Magical Staff","Ranged Weapon",dmg)
-        pass
+        self.name = "Magical Staff"
+        self.klass = "Ranged Weapon"
+        self.str_mod = 0.1
+        self.dex_mod = 0.2
+        self.int_mod = 0.4
+
 
 class Consumable():
     def __init__(self, name, amount):
@@ -41,12 +48,18 @@ class Consumable():
         self.amount = amount
         pass
 
-class Healing_potion(Consumable):
-    def __init__(self,amount):
-        super().__init__("Healing Potion", amount)
-        pass
+class Healing_potion():
+    def __init__(self):
+        self.name = "Healing potion"
+        self.amount = 1
+        
+class Mana_potion():
+    def __init__(self) -> None:
+        self.name = "Mana Potion"
+        self.amount = 1
 
-class Ammo():
+class Arrows():
     def __init__(self,arrows=10):
+        self.name = "Arrows"
         self.arrows = arrows
-        pass
+        

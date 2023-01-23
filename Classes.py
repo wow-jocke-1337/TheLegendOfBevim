@@ -3,10 +3,11 @@ from Text import*
 from items import*
 
 class Player():
-    def __init__(self, name, klass, HP, STR, DEX, INT, inventory):
+    def __init__(self, name, klass, HP,Defense, STR, DEX, INT, inventory):
         self.name = name
         self.lvl = 1
         self.HP = HP
+        self.Defense = Defense
         self.XP = 0
         self.STR = STR
         self.INT = INT
@@ -54,6 +55,7 @@ class Player():
         animate_typing(f"""
         {self.name} the {self.klass}
         HP: {self.HP}
+        Defense:{self.Defense}
         LVL:{self.lvl}
         XP: {self.XP}
         STR:{self.STR}
@@ -200,38 +202,28 @@ class Archer():
     def __init__(self) -> None:
         self.klass = "Archer"
         self.HP = 80
-        self.STR = 30
-        self.DEX = 20
-        self.INT = 40
+        self.Defense = 20
+        self.STR = 20
+        self.DEX = 40
+        self.INT = 10
         self.ammo = 15
         self.inventory = [Ammo(10),"Bait", Bow]
 
-class Barbarian(Player):
-    def __init__(self, name):
-        super().__init__(name, "Barbarian",100,50,25,10)
-        self.equipped_weapon = Club(3+self.DEX*0.15 + self.STR * 0.5)
-        self.inventory = [Healing_potion(2)]
-    pass
 
 class Barbarian():
     def __init__(self) -> None:
         self.klass = "Barbarian"
+        self.Defense = 40
         self.HP = 100
         self.STR = 50
         self.DEX = 25
         self.INT = 10
         self.inventory = [Healing_potion(2),"Rusted Chains", Club]
 
-class Mage(Player):
-    def __init__(self, name):
-        super().__init__(name, "Mage",60,10,20,50)
-        self.equipped_weapon = Magical_Staff(3+self.DEX*0.2 + self.INT * 0.5)
-        self.inventory = ["Magic powder(not cocaine) ", "Magic talking Hat"]
-    pass
-
 class Mage():
     def __init__(self) -> None:
         self.klass = "Mage"
+        self.Defense = 15
         self.HP = 60
         self.STR = 10
         self.DEX = 20
@@ -240,7 +232,8 @@ class Mage():
 
 class Warrior():
     def __init__(self) -> None:
-        self.klass = "Mage"
+        self.klass = "Warrior"
+        self.Defense = 35
         self.HP = 120
         self.STR = 45
         self.DEX = 30
