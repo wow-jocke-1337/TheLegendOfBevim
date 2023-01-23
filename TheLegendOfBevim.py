@@ -39,19 +39,18 @@ while True:
     ARCHER = "2"
     MAGE = "3"
     WARRIOR = "4"
-    # if klass_choice.isdigit() and 1 <= int(klass_choice) <= 3:
-    #    Player.klass = class_dict[int(klass_choice)](Player.name)
+    
     if klass_choice == BARBARIAN:
-        player = Player(user_name, "Barbarian", barbarian.HP, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
+        player = Player(user_name, "Barbarian", barbarian.HP,barbarian.Defense, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
         break
     elif klass_choice == ARCHER:
-        player = Player(user_name, "Archer", archer.HP, archer.STR, archer.DEX, archer.INT, archer.inventory)
+        player = Player(user_name, "Archer", archer.HP,archer.Defense, archer.STR, archer.DEX, archer.INT, archer.inventory)
         break
     elif klass_choice == MAGE:
-        player = Player(user_name, "Mage", mage.HP, mage.STR, mage.DEX, mage.INT, mage.inventory)
+        player = Player(user_name, "Mage", mage.HP,mage.Defense, mage.STR, mage.DEX, mage.INT, mage.inventory)
         break
     elif klass_choice == WARRIOR:
-        player = Player(user_name, "Warrior", warrior.HP, warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
+        player = Player(user_name, "Warrior", warrior.HP,warrior.Defense, warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
         break
     else:
         animate_typing("\n du kan bara välja 1-3\n")
