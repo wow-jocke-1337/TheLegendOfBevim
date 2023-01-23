@@ -72,7 +72,7 @@ def Game_over():
         if Player.HP >20:
             animate_typing("You need to heal HP is at a low level!")
     if Player.HP <=0:
-        animate_typing("Du förlorade")
+        animate_typing("You got killed by the monster!")
         exit()
 
 
