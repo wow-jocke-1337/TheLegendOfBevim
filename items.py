@@ -43,23 +43,25 @@ class Magical_Staff():
 
 
 class Consumable():
-    def __init__(self, name, amount):
+    def __init__(self, name,arrows, amount):
         self.name = name
         self.amount = amount
-        pass
+        self.arrows = arrows
 
 class Healing_potion():
     def __init__(self):
-        self.name = "Healing potion"
+        self.name = f"Healing potion {self.amount}"
         self.amount = 1
         
 class Mana_potion():
     def __init__(self) -> None:
-        self.name = "Mana Potion"
+        self.name = f"Mana Potion {self.amount}"
         self.amount = 1
 
 class Arrows():
-    def __init__(self,arrows=10):
-        self.name = "Arrows"
+    def __init__(self,arrows):
+        self.name = f"Arrows {self.amount}"
         self.arrows = arrows
+        self.amount = 0
+
         
