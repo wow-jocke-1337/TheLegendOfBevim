@@ -51,7 +51,7 @@ def gen_room():
                 animate_typing('\nBoss room.')
                 boss = random.choice(B_rooms)
                 if boss == "Archdemon":
-                    animate_typing('\nYou encountered a Archdemon!')
+                    animate_typing('\nYou encountered an Archdemon!')
                     initiate_combat()
                 elif boss == "Bevins bror":
                     animate_typing('\nYou encountered your brother, Bing CHilling!')

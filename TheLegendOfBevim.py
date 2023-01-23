@@ -36,7 +36,7 @@ while True:
 
     if klass_choice == 1:
         Player.klass = "Barbarian"
-        Player.HP = 11
+        Player.HP = 13
         Player.STR = 50
         Player.DEX = 20
         Player.INT = 5
