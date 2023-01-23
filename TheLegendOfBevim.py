@@ -1,72 +1,67 @@
 import random as rand
-from Classes import*
 from Ascii_Art import*
 from Text import*
-from Funktioner import*
-from combat import*
+from Classes import*
 from exploring import*
 from Rum import*
+
+archer = Archer()
+barbarian = Barbarian()
+mage = Mage()
+warrior = Warrior()
 
 animate_typing_asciispeed(startText)
 time.sleep(1)
 print(gameTitle)
 
-Player()
-
 time.sleep(2)
 animate_typing("Vad är ditt namn")
-Player.name = input("? ")    
-
-
+user_name = input("? ")    
 
 time.sleep(1)
+
+#class_dict = {1: Barbarian, 2: Archer, 3: Mage}
 
 while True:
     animate_typing("""
 
     Vad är du för class? 
         
-        Barbarian(1) Archer(2) mage(3) 
+        1. Barbarian
+        2. Archer
+        3. Mage
+        4. Warrior
 
     your choice --> """)
 
-    klass_choice = int(input(""))
-    #if Player.name == "krille" or "krille cum" or "algot" or "agge" or "gabriel" or "gabbe":
-    # Player.klass = "Prostituerad"
-
-    if klass_choice == 1:
-        Player.klass = "Barbarian"
-        Player.HP = 13
-        Player.STR = 50
-        Player.DEX = 20
-        Player.INT = 5
-        healing_potions = "Healing potions", 2
-        Player.inventory = ["Club ", healing_potions,]
+    klass_choice = input("")
+    BARBARIAN = "1"
+    ARCHER = "2"
+    MAGE = "3"
+    WARRIOR = "4"
+    # if klass_choice.isdigit() and 1 <= int(klass_choice) <= 3:
+    #    Player.klass = class_dict[int(klass_choice)](Player.name)
+    if klass_choice == BARBARIAN:
+        player = Player(user_name, "Barbarian", barbarian.HP, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
         break
-    elif klass_choice == 2:
-        Player.klass = "Archer"
-        Player.HP = 8
-        Player.STR = 20
-        Player.DEX = 40
-        Player.INT = 35
-        arrows = "arrows", 10
-        Player.inventory = ["Bow ", arrows, "Bait"]
+    elif klass_choice == ARCHER:
+        player = Player(user_name, "Archer", archer.HP, archer.STR, archer.DEX, archer.INT, archer.inventory)
         break
-    elif klass_choice == 3:
-        Player.klass = "Mage"
-        Player.HP = 6
-        Player.STR = 5
-        Player.DEX = 30
-        Player.INT = 60
-        Player.inventory = ["Magical staff ", "magic powder(not cocaine) ", "magic talking Hat"]
+    elif klass_choice == MAGE:
+        player = Player(user_name, "Mage", mage.HP, mage.STR, mage.DEX, mage.INT, mage.inventory)
+        break
+    elif klass_choice == WARRIOR:
+        player = Player(user_name, "Warrior", warrior.HP, warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
         break
     else:
         animate_typing("\n du kan bara välja 1-3\n")
+        break
+
 
 time.sleep(1)
 animate_typing_slow(f"""
 
-Welcome {Player.name} the {Player.klass}
+Welcome {player.name} the {player.klass}
 
 """)
 
@@ -88,12 +83,12 @@ while True:
     animate_typing(Menu)
     x = int(input(""))
     if x == 1:
-        Player.print_info()
+        player.print_info()
         time.sleep(2)
     elif x == 2:
         intiate_explore()  
     elif x == 3:
-        Player.print_inventory()
+        player.print_inventory()
         time.sleep(2)
     elif x == 4:
         animate_typing(credits)

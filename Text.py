@@ -36,9 +36,11 @@ background_info = """
 inventory_menu = """ 
 1 - Use item
 2 - Drop item
-3 - go back 
+3 - Go back 
 
 Your choice --> """
+
+
 
 credits = """
 
