@@ -235,8 +235,8 @@ class Warrior():
         self.klass = "Warrior"
         self.Defense = 35
         self.HP = 120
-        self.STR = 45
-        self.DEX = 30
+        self.STR = 35
+        self.DEX = 35
         self.INT = 20
         self.inventory = ["Wooden Shield","Figner thingmajig","Yis", Greatsword]
 
@@ -310,7 +310,7 @@ class Bevins_bror(Monster):
         self.STR = 1400
         self.inventory = []
 
-class Alfreds_otroligt_Fina_Mamma():
+class Bevins_otroligt_Fina_Mamma():
     def __init__(self):
         super().__init__("Alfreds otroligt Fina mamma","The final railing")
         self.lvl = 10
