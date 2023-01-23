@@ -34,7 +34,7 @@ class Bow():
 
 
 class Magical_Staff():
-    def __init__(self,dmg):
+    def __init__(self):
         self.name = "Magical Staff"
         self.klass = "Ranged Weapon"
         self.str_mod = 0.1

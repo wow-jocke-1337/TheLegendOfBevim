@@ -207,7 +207,7 @@ class Archer():
         self.DEX = 40
         self.INT = 10
         self.ammo = 15
-        self.inventory = [Ammo(10),"Bait", Bow]
+        self.inventory = [Arrows(10),"Bait", Bow]
 
 
 class Barbarian():
@@ -218,7 +218,7 @@ class Barbarian():
         self.STR = 50
         self.DEX = 25
         self.INT = 10
-        self.inventory = [Healing_potion(2),"Rusted Chains", Club]
+        self.inventory = [Healing_potion,"Rusted Chains", Club]
 
 class Mage():
     def __init__(self) -> None:
