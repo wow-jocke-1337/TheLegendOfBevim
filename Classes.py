@@ -3,11 +3,12 @@ from Text import*
 from items import*
 
 class Player():
-    def __init__(self, name, klass, HP,Defense, STR, DEX, INT, inventory:list):
+    def __init__(self, name, klass, HP,Def,spd, STR, DEX, INT, inventory:list):
         self.name = name
         self.lvl = 1
         self.HP = HP
-        self.Defense = Defense
+        self.Def = Def
+        self.spd = spd
         self.XP = 0
         self.STR = STR
         self.INT = INT
@@ -42,7 +43,7 @@ class Player():
     def equip_weapon(self, weapon):
         self.equipped_weapon = weapon
         
-    def calculate_damage(self):
+    def player_calculate_damage(self):
         if self.equipped_weapon is None:
             return 0
         else:
@@ -58,10 +59,11 @@ class Player():
     def print_info(self):
         animate_typing(f"""
         {self.name} the {self.klass}
-        Defense: {self.Defense}
+        Def: {self.Def}
         HP:  {self.HP}
         LVL: {self.lvl}
-        XP:  {self.XP}
+        XP:  {self.XP}/{self.XP}
+        Speed:{self.spd}
         STR: {self.STR}
         DEX: {self.DEX}
         INT: {self.INT}
@@ -149,22 +151,25 @@ class Player():
         time.sleep(1)
     
     def use_item(self, used_item):
-        if used_item.klass == "Ranged Weapon" or "Melee Weapon":
+        if isinstance(used_item,Weapon) or isinstance(used_item,Potion):
             animate_typing(f"\n\nDo you want to equip {used_item} \n\n Yes or No? ")
-            equip_choice = (input(""))
+            equip_choice = input("")
             if equip_choice == "yes".lower():
                 animate_typing(f"\n\n ...The {used_item} is now equipped... \n\n")
                 self.equip_weapon(used_item)
                 self.inventory.remove(used_item)
             elif equip_choice == "no".lower():
-                animate_typing("\n\n Ok \n\n")          
+                animate_typing("\n\n Ok")
+        elif used_item == Potion:
+            animate_typing(f"\n\nDo you want to drink {used_item} \n\n Yes or No? ")
+            drink_choice = input("")
+            if drink_choice =="yes".lower():
+                animate_typing(f"\n\n....You drank the {used_item} ....\n\n")
+                self.inventory.remove(used_item)
+            elif drink_choice =="no".lower():
+                animate_typing(f"\n\n Ok")
         else:
-            animate_typing(f"\n\n{used_item} has been used...\n\n")
-            self.inventory.remove(used_item)
-            
-    
-    
-                
+            animate_typing(f"\n\nYou cannot use this \n\n")
 
     def attack():
         pass
@@ -177,15 +182,16 @@ class Player():
     def add_item():
         pass
         # här läggs nånting in i spelarens inventory
-    def lvl_up(): 
-        pass
+    def lvl_up(self):
+        if self.XP == 100:
+           return f"You leveled up! {self.lvl + 1}"
        # Här ska lvl öka
 
-    def gets_attacked():
+    def gets_attacked(self):
         pass
         # Här ska antalet liv minska
 
-    def Drink_potion():
+    def Drink_potion(self):
         pass
 
     def Eat_food():
@@ -198,118 +204,118 @@ class Archer():
     def __init__(self) -> None:
         self.klass = "Archer"
         self.HP = 80
-        self.Defense = 20
+        self.Def = 20
         self.STR = 20
         self.DEX = 40
         self.INT = 10
-        self.ammo = 15
+        self.spd = 17
         self.inventory = []
 
+class Gunslinger():
+    def __init__(self) -> None:
+        self.klass = "Gunslinger"
+        self.HP = 90
+        self.Def = 20
+        self.STR = 15
+        self.DEX = 45
+        self.INT = 10
+        self.spd = 20
+        self.inventory = []
 
 class Barbarian():
     def __init__(self) -> None:
         self.klass = "Barbarian"
-        self.Defense = 40
+        self.Def = 40
         self.HP = 100
         self.STR = 50
         self.DEX = 25
         self.INT = 10
+        self.spd = 15
         self.inventory = []
 
 class Mage():
     def __init__(self) -> None:
         self.klass = "Mage"
-        self.Defense = 15
+        self.Def = 15
         self.HP = 60
         self.STR = 10
         self.DEX = 20
         self.INT = 50
+        self.spd = 12
         self.inventory = []
 
 class Warrior():
     def __init__(self) -> None:
         self.klass = "Warrior"
-        self.Defense = 35
+        self.Def = 35
         self.HP = 120
         self.STR = 35
         self.DEX = 35
         self.INT = 20
-        self.inventory = []
+        self.spd = 12
+        self.inventory = ["Bing chiulling"]
 
 class Monster():
-    def __init__(self, name, klass):
+    def __init__(self, name,lvl, klass,hp,STR,spd,equipped_weapon):
         self.name = name
-        self.lvl = 1
-        self.HP = 100
-        self.XP = 0 
-        self.STR = 10
-        self.INT = 10
-        self.DEX = 10
+        self.lvl = lvl
+        self.hp = hp
+        self.STR = STR
+        self.spd = spd
         self.inventory = []
         self.klass = klass
-        self.equipped_weapon = None
-        self.inventory_slots = 4
+        self.equipped_weapon = equipped_weapon
+        self.inventory_slots = 1
+    
+    def __repr__(self) -> None:
+        return f"""
+        {self.name}
+        Health:{self.hp}
+        Level: {self.lvl}
+        Strength: {self.STR}
+        Speed: {self.spd}
+        """
 
-class Wolf():
+class wolf(Monster):
     def __init__(self):
-        super().__init__("Wolf","Animal")
-        self.lvl = 1
-        self.HP = 24
-        self.STR = 3
-        self.inventory = []
+        super().__init__("Wolf",2,"low_Mob",90,30,15,None)
 
-class Golem(Monster):
+class golem(Monster):
     def __init__(self):
-        super().__init__("Golem", "Strong boi")
-        self.lvl = 4
-        self.HP = 6000
-        self.STR = 150
-        self.inventory = []
+        super().__init__("Golem",2,"low_Mob",140,20,5,"Boulder")
 
 class slime(Monster):
     def __init__(self):
-        super().__init__("Slime", "Mob")
-        self.lvl = 1
-        self.HP = 7
-        self.STR = 8
-        self.inventory = []
+        super().__init__("Slime",1,"low_Mob",75,20,10,None)
+
+class goblin(Monster):
+    def __init__(self):
+        super().__init__("Goblin",1,"low_Mob",75,20,10,"Crooked Knife")
 
 class mountain_Lion(Monster):
     def __init__(self):
-        super().__init__("Mountain Lion", "Animal")
-        self.lvl = 3
-        self.HP = 45
-        self.STR = 5
-        self.inventory = []
+        super().__init__("Mountain Lion",2,"low_Mob",95,30,15,None)
 
-class Bats(Monster):
+class bats(Monster):
     def __init__(self):
-        super().__init__("Bats", "Mob")
-        self.lvl = 2
-        self.HP = 2
-        self.STR = 1
-        self.inventory = []
+        super().__init__("Bats",1,"low_Mob",60,20,10,None)
+
+class lower_class_demon(Monster):
+    def __init__(self) -> None:
+        super().__init__("Lower Class Demon",5,"Mid tier mob",130,50,13,"Longsword of Night and Flame")
+
+class upper_class_demon(Monster):
+    def __init__(self) -> None:
+        super().__init__("Upper Class Demon",6,"Mid tier mob",140,55,15,"Moonsword")
 
 class archdemon(Monster):
     def __init__(self):
-        super().__init__("Archdemon", "Boss")
-        self.lvl = 7
-        self.HP = 50000
-        self.STR = 400
-        self.inventory = []
+        super().__init__("Archdemon",8,"Boss",170,70,15,"Taeshalach the Souleater")
 
-class Bevins_bror(Monster):
+class bevins_bror(Monster):
     def __init__(self):
-        super().__init__("Bevins Bror","Boss")
-        self.lvl = 9
-        self.HP = 85000
-        self.STR = 1400
-        self.inventory = []
+        super().__init__("Bevins bror",69,"Boss",200,65,20,"Gaming chair")
 
-class Bevins_otroligt_Fina_Mamma():
+class bevins_mamma(Monster):
     def __init__(self):
-        super().__init__("Alfreds otroligt Fina mamma","The final railing")
-        self.lvl = 10
-        self.HP = 100000
-        self.STR = 10000
-        self.inventory = []
+        super().__init__("Bevins Mamma",666,"The End",420,33,6.9,"Child Beater 9000")

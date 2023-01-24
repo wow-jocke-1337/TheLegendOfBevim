@@ -1,6 +1,10 @@
 from Text import*
-from Funktioner import*
 from Classes import*
+
+low_mob_list = [wolf(),golem(),slime(),bats(),mountain_Lion()]
+mid_mob_list = []
+high_mob_list = [archdemon(),]
+
 
 list = [1,2,3,4,5,6]
 
@@ -54,7 +58,7 @@ def damage():
     while True:
         outcome=random.choice(list)
         if outcome== 1 or 2 or 3:
-            dmg =  Player.calculate_damage()
+            dmg =  Player.player_calculate_damage()
             animate_typing(f"\nYou dealt {dmg} hitpoints.")
             break
         else:

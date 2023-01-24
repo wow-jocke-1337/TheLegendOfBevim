@@ -54,11 +54,11 @@ Art - Balfred, Billiam, Brille bum
 prologue_start = """
     You begin your journey through the dark and mysterious corridors of what seems to be a massive structure. The sound of clanking 
     weights banging together, gears circling, heavy chains rattling against each other and several small hisses all together echoing 
-    throughout the halls instilling fear into the very moment, and the moments to come......   
+    throughout the halls instilling fear into the very moment. However you continue and the noise    
     """
 
 prologue_end_start = """
-    .....A couple of moments later....."""
+    .....A couple of seconds later....."""
 
 prologue_end = """
-    """
+    You are present with """

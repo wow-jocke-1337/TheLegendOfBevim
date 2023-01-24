@@ -9,13 +9,8 @@ archer = Archer()
 barbarian = Barbarian()
 mage = Mage()
 warrior = Warrior()
-greatsword = Greatsword("Greatsword", "Melee Weapon", 0.6, 0.4, 0.1)
-magical_staff = Magical_Staff("Magical Staff","Ranged Weapon", 0.1, 0.2, 0.5)
-axe = Axe("Axe", "Melee Weapon", 0.5, 0.3, 0.1)
-bow = Bow("Bow", "Ranged Weapon", 0.2, 0.5, 0.1)
-healing_potion = Healing_potion("Healing Potion","Consumable")
-mana_potion = Mana_potion("Mana Potion","Consumable")
-flying_arrows = Arrows("Arrows","Consumable",10)
+gunslinger = Gunslinger()
+
 
 
 animate_typing_asciispeed(startText)
@@ -23,22 +18,21 @@ time.sleep(1)
 print(gameTitle)
 
 time.sleep(2)
-animate_typing("Vad är ditt namn")
+animate_typing("What is your to be chosen name")
 user_name = input("? ")    
 
 time.sleep(1)
 
-#class_dict = {1: Barbarian, 2: Archer, 3: Mage}
-
 while True:
     animate_typing("""
 
-    Vad är du för class? 
+    Kindly choose one of the presented classes. 
         
         1. Barbarian
         2. Archer
         3. Mage
         4. Warrior
+        5. Gunslinger
 
     Your choice --> """)
 
@@ -47,31 +41,32 @@ while True:
     ARCHER = "2"
     MAGE = "3"
     WARRIOR = "4"
+    GUNSLINGER = "5"
     
     if klass_choice == BARBARIAN:
-        player = Player(user_name, "Barbarian", barbarian.HP,barbarian.Defense, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
-        player.inventory.append(axe)
+        player = Player(user_name, "Barbarian", barbarian.HP,barbarian.Def, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
+        player.inventory.append(Axe())
         break
     elif klass_choice == ARCHER:
-        player = Player(user_name, "Archer", archer.HP,archer.Defense, archer.STR, archer.DEX, archer.INT, archer.inventory)
-        player.inventory.append(flying_arrows)
-        player.inventory.append(bow)
+        player = Player(user_name, "Archer", archer.HP,archer.Def, archer.STR, archer.DEX, archer.INT, archer.inventory)
+        player.inventory.append(Bow())
         break
     elif klass_choice == MAGE:
-        player = Player(user_name, "Mage", mage.HP,mage.Defense, mage.STR, mage.DEX, mage.INT, mage.inventory)
-        player.inventory.append(mana_potion)
-        player.inventory.append(magical_staff)
+        player = Player(user_name, "Mage", mage.HP,mage.Def, mage.STR, mage.DEX, mage.INT, mage.inventory)
+        player.inventory.append(Mana_potion())
+        player.inventory.append(Magical_staff())
         break
     elif klass_choice == WARRIOR:
-        player = Player(user_name, "Warrior", warrior.HP,warrior.Defense, warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
-        player.inventory.append(greatsword)
+        player = Player(user_name, "Warrior", warrior.HP,warrior.Def, warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
+        player.inventory.append(Greatsword())
         break
+    elif klass_choice == GUNSLINGER:
+        player = Player(user_name, "Gunslinger",gunslinger.HP,gunslinger.Def,gunslinger.DEX,gunslinger.INT,gunslinger.STR,gunslinger.inventory)
     else:
-        animate_typing("\n du kan bara välja 1-3\n")
+        animate_typing("\n You can only choose between 1-4\n")
         break
 
-player.inventory.append(healing_potion)
-
+player.inventory.append(Healing_potion())
 
 
 time.sleep(1)

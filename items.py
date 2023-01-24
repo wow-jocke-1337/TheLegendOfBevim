@@ -1,75 +1,54 @@
 from Classes import*
 
-
-class Greatsword():
-   def __init__(self,name,klass,str_mod,dex_mod,int_mod):
+class Weapon():
+    def __init__(self,name,klass,str_mod,dex_mod,int_mod):
        self.name = name 
        self.klass = klass
        self.str_mod = str_mod
        self.dex_mod = dex_mod
        self.int_mod = int_mod
-   
-   def __repr__(self):
+
+    def __repr__(self):
        return f"{self.name} ({self.klass})"
+        
+class Greatsword(Weapon):
+   def __init__(self):
+        super().__init__("Greatsword","Melee Weapon",0.6,0.2,0.1)
 
-
-class Axe():
-   def __init__(self,name,klass,str_mod,dex_mod,int_mod):
-       self.name = name 
-       self.klass = klass
-       self.str_mod = str_mod
-       self.dex_mod = dex_mod
-       self.int_mod = int_mod
+class Axe(Weapon):
+   def __init__(self):
+       super().__init__("Axe","Melee Weapon",0.5,0.1,0.1)
    
-   def __repr__(self):
-       return f"{self.name} ({self.klass})"
+class Bow(Weapon):
+   def __init__(self):
+        super().__init__("Bow","Ranged Weapon",0.2,0.5,0.1)
 
-class Bow():
-   def __init__(self,name,klass,str_mod,dex_mod,int_mod):
-       self.name = name 
-       self.klass = klass
-       self.str_mod = str_mod
-       self.dex_mod = dex_mod
-       self.int_mod = int_mod
-   
-   def __repr__(self):
-       return f"{self.name} ({self.klass})"
+class Magical_staff(Weapon):
+   def __init__(self):
+        super().__init__("Magical Staff","Ranged Weapon",0.1,0.2,0.5)
 
-class Magical_Staff():
-   def __init__(self,name,klass,str_mod,dex_mod,int_mod):
-       self.name = name 
-       self.klass = klass
-       self.str_mod = str_mod
-       self.dex_mod = dex_mod
-       self.int_mod = int_mod
-   
-   def __repr__(self):
-       return f"{self.name} ({self.klass})"
+class Tommy_gun(Weapon):
+   def __init__(self):
+        super().__init__("Tommy Gun","Ranged Weapon",0.1,0.5,0.3)
+
+weapon_list = [Greatsword(),Tommy_gun(),Magical_staff(),Bow(),Axe()]
 
 
-class Healing_potion():
-    def __init__(self,name,klass):
+class Potion():
+    def __init__(self,klass,name,effect) -> None:
         self.name = name
         self.klass = klass
+        self.effect = effect
     
     def __repr__(self):
-        return f"{self.name} ({self.klass})"
+       return f"{self.name} ({self.klass})"
 
+class Healing_potion(Potion):
+    def __init__(self):
+        super().__init__("Healing Potion","Potion",0.2)
 
-class Mana_potion():
-    def __init__(self,name,klass) -> None:
-        self.name = name
-        self.klass = klass
-    
-    def __repr__(self):
-        return f"{self.name} ({self.klass})"
+class Mana_potion(Potion):
+    def __init__(self) -> None:
+        super().__init__("Mana Potion","Potion",0.2)
 
-
-class Arrows():
-    def __init__(self,name,klass,amount):
-        self.name = name
-        self.klass = klass
-        self.amount = amount
-
-    def __repr__(self):
-        return f"{self.name} ({self.klass}({self.amount}))"
+potion_list = [Healing_potion(),Mana_potion()]
