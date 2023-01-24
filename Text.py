@@ -51,5 +51,14 @@ Art - Balfred, Billiam, Brille bum
 
 """
 
-prologue = """
-    You begin your journey through the darkx"""
+prologue_start = """
+    You begin your journey through the dark and mysterious corridors of what seems to be a massive structure. The sound of clanking 
+    weights banging together, gears circling, heavy chains rattling against each other and several small hisses all together echoing 
+    throughout the halls instilling fear into the very moment, and the moments to come......   
+    """
+
+prologue_end_start = """
+    .....A couple of moments later....."""
+
+prologue_end = """
+    """

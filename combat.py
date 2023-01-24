@@ -30,7 +30,7 @@ def Exit_Combat():
 
 
 
-def choices():
+def combat_choices():
     combat_options = ("""
 What will you do now?
 
@@ -85,4 +85,4 @@ def Game_over():
 
         
 def initiate_combat():
-    choices()
+    combat_choices()

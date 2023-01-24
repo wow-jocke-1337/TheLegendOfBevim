@@ -9,13 +9,13 @@ archer = Archer()
 barbarian = Barbarian()
 mage = Mage()
 warrior = Warrior()
-greatsword = Greatsword("Greatsword","Melee Weapon", 0.6, 0.2, 0.1)
-magical_staff = Magical_Staff()
-club = Club()
-bow = Bow()
-healing_potion = Healing_potion()
-mana_potion = Mana_potion()
-flying_arrows = Arrows()
+greatsword = Greatsword("Greatsword", "Melee Weapon", 0.6, 0.4, 0.1)
+magical_staff = Magical_Staff("Magical Staff","Ranged Weapon", 0.1, 0.2, 0.5)
+axe = Axe("Axe", "Melee Weapon", 0.5, 0.3, 0.1)
+bow = Bow("Bow", "Ranged Weapon", 0.2, 0.5, 0.1)
+healing_potion = Healing_potion("Healing Potion","Consumable")
+mana_potion = Mana_potion("Mana Potion","Consumable")
+flying_arrows = Arrows("Arrows","Consumable",10)
 
 
 animate_typing_asciispeed(startText)
@@ -50,7 +50,7 @@ while True:
     
     if klass_choice == BARBARIAN:
         player = Player(user_name, "Barbarian", barbarian.HP,barbarian.Defense, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
-        player.inventory.append(club)
+        player.inventory.append(axe)
         break
     elif klass_choice == ARCHER:
         player = Player(user_name, "Archer", archer.HP,archer.Defense, archer.STR, archer.DEX, archer.INT, archer.inventory)

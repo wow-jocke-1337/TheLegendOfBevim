@@ -88,7 +88,7 @@ class Player():
                             elif item_choice > len(self.inventory) or item_choice < 1:
                                 animate_typing(f"\n\n You can only choose between item 1-{len(self.inventory)} Dumbass \n\n")
                                 break
-                            self.use_item(item_choice-1)
+                            self.use_item(self.inventory[item_choice-1])
                             break
             
                     elif len(self.inventory) < 2:
@@ -100,7 +100,7 @@ class Player():
                             elif item_choice > len(self.inventory) or item_choice < 1:
                                 animate_typing("\nYou only have one item dumbass\n\n")
                                 break                           
-                            self.use_item(item_choice-1)
+                            self.use_item(self.inventory[item_choice-1])
                             break
                         
             elif x == 2:   #Drop
@@ -114,7 +114,7 @@ class Player():
                         elif item_choice > len(self.inventory) or item_choice < 1:
                             animate_typing(f"\n\n You can only choose between item 1-{len(self.inventory)} Dumbass \n\n")
                         else:
-                            animate_typing(f"\n\n WARNING: Are you sure you want to drop the {self.inventory[item_choice-1]} \n\n Yes or No? ")
+                            animate_typing(f"\n\n Are you sure you want to drop the {self.inventory[item_choice-1]} \n\n Yes or No? ")
                             z = (input(""))
                             if z == "yes".lower():
                                 animate_typing(f"\n\n ...You dropped the {self.inventory[item_choice-1]} ...\n\n\n")
@@ -153,14 +153,14 @@ class Player():
             animate_typing(f"\n\nDo you want to equip {used_item} \n\n Yes or No? ")
             equip_choice = (input(""))
             if equip_choice == "yes".lower():
-                animate_typing(f"\n\n ...The {self.inventory[used_item]} is now equipped... \n\n\n")
+                animate_typing(f"\n\n ...The {used_item} is now equipped... \n\n")
                 self.equip_weapon(used_item)
-                self.inventory.pop(used_item)
+                self.inventory.remove(used_item)
             elif equip_choice == "no".lower():
-                animate_typing("\n\n\n Ok \n\n")          
+                animate_typing("\n\n Ok \n\n")          
         else:
-            animate_typing(f"\n\n{self.inventory[used_item]} has been used...\n\n\n")
-            self.inventory.pop(used_item)
+            animate_typing(f"\n\n{used_item} has been used...\n\n")
+            self.inventory.remove(used_item)
             
     
     
