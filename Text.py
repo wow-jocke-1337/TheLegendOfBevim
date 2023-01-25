@@ -103,7 +103,7 @@ lone_village = """
 cemetery = """
     You break into an all out fearsome breakdance, with drip practially running off of you, further increasing the feeling of depression by the undead."""
 
-the_end_of_the_end_end_screen = """ 
+the_end_of_the_end_end_screen = (r""" 
                                   {} {}
                             !  !  II II  !  !
                          !  I__I__II II__I__I  !
@@ -131,4 +131,4 @@ the_end_of_the_end_end_screen = """
   _|__|__|   ||_|__|__|__|__|__|__|| ||__|__|__|__|__|__|_||-  |__|__|_
   -|--|--|=  ||-|--|--|--|--|--|--|| ||--|--|--|--|--|--|-||=  |--|--|-
   -|--|--|-  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||-  |  |  |
- ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~~~~~~~"""
+ ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~~~~~~~""")
