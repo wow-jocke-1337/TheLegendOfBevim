@@ -6,5 +6,3 @@ def intiate_explore():
     animate_typing(prologue_start)
     animate_typing(prologue_end_start)
     animate_typing(prologue_end)
-    time.sleep(1)
-    gen_room()

@@ -40,7 +40,35 @@ inventory_menu = """
 
 Your choice --> """
 
+combat_options = """
+What will you do now?
 
+1 - Attack
+2 - Block
+3 - Check inventory
+4 - Run Away
+
+Your choice --> """
+
+Menu = """ 
+
+    MENU
+1 - See stats
+2 - Explore
+3 - Inventory
+4 - See credits
+5 - Exit game
+
+
+Your choice --> """
+
+door_choice = """
+    You have to choose between three doors
+    1 - Right
+    2 - Forward
+    3 - Left
+    
+    Your choice -->> """
 
 credits = """
 
@@ -57,8 +85,8 @@ prologue_start = """
     throughout the halls instilling fear into the very moment. However you continue and gradually the noise starts to disappear.   
     """
 
-prologue_end_start = """
-    .....A couple of seconds later....."""
+prologue_end_start ="""\n
+    .....A couple of seconds later.....\n"""
 
-prologue_end = """
-    You are present with..... """
+prologue_end = """\n
+    You are present with.... three choices.\n"""

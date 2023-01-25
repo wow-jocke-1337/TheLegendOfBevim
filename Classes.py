@@ -272,13 +272,13 @@ class Monster():
         self.inventory_slots = 1
     
     def __repr__(self) -> None:
-        return f"""
+        animate_typing (f"""
         {self.name}
         Health:{self.hp}
         Level: {self.lvl}
         Strength: {self.STR}
         Speed: {self.spd}
-        """
+        """)
 
 class wolf(Monster):
     def __init__(self):
@@ -296,6 +296,10 @@ class goblin(Monster):
     def __init__(self):
         super().__init__("Goblin",1,"low_Mob",75,20,10,"Crooked Knife")
 
+class Orc(Monster):
+    def __init__(self):
+        super().__init__("Orc", 3, "low_mob", 100, 35, 13,"Two-Handed Axe")
+
 class mountain_Lion(Monster):
     def __init__(self):
         super().__init__("Mountain Lion",2,"low_Mob",95,30,15,None)
@@ -304,9 +308,17 @@ class bats(Monster):
     def __init__(self):
         super().__init__("Bats",1,"low_Mob",60,20,10,None)
 
+class dragon(Monster):
+    def __init__(self):
+        super().__init__("Dragon", 5, "Mid tier mob", 140, 55, 10, None)
+
 class lower_class_demon(Monster):
     def __init__(self) -> None:
-        super().__init__("Lower Class Demon",5,"Mid tier mob",130,50,13,"Longsword of Night and Flame")
+        super().__init__("Lower Class Demon",5,"Mid tier mob",130,47,13,"Longsword of Night and Flame")
+
+class kikimora(Monster):
+    def __init__(self):
+        super().__init__("Kikimora",5,"Mid tier mob",140,50,10,None)
 
 class upper_class_demon(Monster):
     def __init__(self) -> None:
