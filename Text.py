@@ -72,10 +72,10 @@ door_choice = """
 
 credits = """
 
-Developers - Balfred, Billiam, Brille bum
-Coders - Balfred, Billiam, Brille bum
-Story writers - Balfred, Billiam, Brille bum
-Art - Balfred, Billiam, Brille bum
+    Developers - Balfred, Billiam, Brille bum
+    Coders - Balfred, Billiam, Brille bum
+    Story writers - Balfred, Billiam, Brille bum
+    Art - Balfred, Billiam, Brille bum
 
 """
 
@@ -90,3 +90,45 @@ prologue_end_start ="""\n
 
 prologue_end = """\n
     You are present with.... three choices.\n"""
+
+forest = """
+    FFFForest."""
+
+swamp = """
+    SSS. Smoking Sexy Style!!!"""
+
+lone_village = """
+    Hello Darkness my old friend.""" 
+
+cemetery = """
+    You break into an all out fearsome breakdance, with drip practially running off of you, further increasing the feeling of depression by the undead."""
+
+the_end_of_the_end_end_screen = """ 
+                                  {} {}
+                            !  !  II II  !  !
+                         !  I__I__II II__I__I  !
+                         I_/|--|--|| ||--|--|\_I
+        .-'"'-.       ! /|_/|  |  || ||  |  |\_|\ !       .-'"'-.
+       /===    \      I//|  |  |  || ||  |  |  |\\I      /===    \
+       \==     /   ! /|/ |  |  |  || ||  |  |  | \|\ !   \==     /
+        \__  _/    I//|  |  |  |  || ||  |  |  |  |\\I    \__  _/
+         _} {_  ! /|/ |  |  |  |  || ||  |  |  |  | \|\ !  _} {_
+        {_____} I//|  |  |  |  |  || ||  |  |  |  |  |\\I {_____}
+   !  !  |=  |=/|/ |  |  |  |  |  || ||  |  |  |  |  | \|\=|-  |  !  ! 
+  _I__I__|=  ||/|  |  |  |  |  |  || ||  |  |  |  |  |  |\||   |__I__I_
+  -|--|--|-  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||=  |--|--|-
+  _|__|__|   ||_|__|__|__|__|__|__|| ||__|__|__|__|__|__|_||-  |__|__|_
+  -|--|--|   ||-|--|--|--|--|--|--|| ||--|--|--|--|--|--|-||   |--|--|- 
+   |  |  |=  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |  |  | 
+   |  |  |   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||=  |  |  | 
+   |  |  |-  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |  |  | 
+   |  |  |   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||=  |  |  |
+   |  |  |=  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |  |  |
+   |  |  |   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |  |  |
+   |  |  |   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||-  |  |  |
+  _|__|__|   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||=  |__|__|_
+  -|--|--|=  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |--|--|-
+  _|__|__|   ||_|__|__|__|__|__|__|| ||__|__|__|__|__|__|_||-  |__|__|_
+  -|--|--|=  ||-|--|--|--|--|--|--|| ||--|--|--|--|--|--|-||=  |--|--|-
+  -|--|--|-  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||-  |  |  |
+ ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~~~~~~~"""

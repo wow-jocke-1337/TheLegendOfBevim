@@ -35,7 +35,7 @@ weapon_list = [Greatsword(),Tommy_gun(),Magical_staff(),Bow(),Axe()]
 
 
 class Potion():
-    def __init__(self,klass,name,effect) -> None:
+    def __init__(self,name,klass,effect) -> None:
         self.name = name
         self.klass = klass
         self.effect = effect
@@ -43,12 +43,31 @@ class Potion():
     def __repr__(self):
        return f"{self.name} ({self.klass})"
 
-class Healing_potion(Potion):
+class Resource_Item():
+    def __init__(self,name,klass,effect) -> None:
+        self.name = name
+        self.klass = klass
+        self.effect = effect
+    
+    def __repr__(self):
+       return f"{self.name} ({self.klass})"
+
+class Healing_Item():
+    def __init__(self,name,klass,effect) -> None:
+        self.name = name
+        self.klass = klass
+        self.effect = effect
+    
+    def __repr__(self):
+       return f"{self.name} ({self.klass})"
+
+class Healing_potion(Potion,Healing_Item):
     def __init__(self):
         super().__init__("Healing Potion","Potion",0.2)
 
-class Mana_potion(Potion):
+class Mana_potion(Potion, Resource_Item):
     def __init__(self) -> None:
         super().__init__("Mana Potion","Potion",0.2)
 
 potion_list = [Healing_potion(),Mana_potion()]
+
