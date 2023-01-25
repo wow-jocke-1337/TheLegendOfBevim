@@ -44,24 +44,26 @@ while True:
     GUNSLINGER = "5"
     
     if klass_choice == BARBARIAN:
-        player = Player(user_name, "Barbarian", barbarian.HP,barbarian.Def, barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
+        player = Player(user_name, "Barbarian", barbarian.HP, barbarian.Def, barbarian.spd,barbarian.lvl,barbarian.STR, barbarian.DEX, barbarian.INT, barbarian.inventory)
         player.inventory.append(Axe())
         break
     elif klass_choice == ARCHER:
-        player = Player(user_name, "Archer", archer.HP,archer.Def, archer.STR, archer.DEX, archer.INT, archer.inventory)
+        player = Player(user_name, "Archer", archer.HP, archer.Def, archer.spd, archer.lvl,archer.STR, archer.DEX, archer.INT, archer.inventory)
         player.inventory.append(Bow())
         break
     elif klass_choice == MAGE:
-        player = Player(user_name, "Mage", mage.HP,mage.Def, mage.STR, mage.DEX, mage.INT, mage.inventory)
+        player = Player(user_name, "Mage", mage.HP, mage.Def, mage.spd, mage.lvl,mage.STR, mage.DEX, mage.INT, mage.inventory)
         player.inventory.append(Mana_potion())
         player.inventory.append(Magical_staff())
         break
     elif klass_choice == WARRIOR:
-        player = Player(user_name, "Warrior", warrior.HP,warrior.Def, warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
+        player = Player(user_name, "Warrior", warrior.HP,warrior.Def, warrior.spd, warrior.lvl,warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
         player.inventory.append(Greatsword())
         break
     elif klass_choice == GUNSLINGER:
-        player = Player(user_name, "Gunslinger",gunslinger.HP,gunslinger.Def,gunslinger.DEX,gunslinger.INT,gunslinger.STR,gunslinger.inventory)
+        player = Player(user_name, "Gunslinger", gunslinger.HP, gunslinger.Def, gunslinger.spd, gunslinger.lvl,gunslinger.DEX, gunslinger.INT, gunslinger.STR, gunslinger.inventory)
+        player.inventory.append(Tommy_gun())
+        break
     else:
         animate_typing("\n You can only choose between 1-4\n")
         break

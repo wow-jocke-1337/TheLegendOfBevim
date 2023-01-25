@@ -11,7 +11,7 @@ C_rooms = ["Treasure room"]
 B_rooms = ["Archdemon","Bevins bror","What da hell!"]
 T_rooms = ["Pitfall","Wall of spikes","Falling guillotine"]
 
-def gen_room():
+def gen_room(self):
     door_choice = """
     You have to choose between three doors
     1 - Right
@@ -20,7 +20,7 @@ def gen_room():
     
     Your choice -->> """
     room_count = 0
-    if Player.lvl < 9:
+    if self.lvl < 9:
         while True:
             animate_typing(f"\n{door_choice}")
             x = int(input(""))
@@ -31,22 +31,22 @@ def gen_room():
                     monster = random.choice(low_mob_list)
                     if isinstance(monster,wolf):
                         animate_typing('\nYou encountered a Wolf')
-                        initiate_combat()
+                        Player.start_combat()
                     elif isinstance(monster,bats):
                         animate_typing('\nYou encountered a pack of Bats!')
-                        initiate_combat()
+                        Player.start_combat()
                     elif isinstance(monster,golem):
                         animate_typing('\nYou encountered a Golem!')    
-                        initiate_combat()                
+                        Player.start_combat()                
                     elif isinstance(monster,mountain_Lion):
                         animate_typing('\nYou encountered a Mountain lion!')    
-                        initiate_combat()               
+                        Player.start_combat()               
                     elif isinstance(monster,slime):
                         animate_typing('\nYou encountered a slime!')
-                        initiate_combat()
+                        Player.start_combat()
                     elif isinstance(monster,goblin):
                         animate_typing('\nYou encountered a goblin!')
-                        initiate_combat()
+                        Player.start_combat()
                 elif room == "E":
                     animate_typing('\nThis room is empty.')
                 elif room == "C":
@@ -56,20 +56,20 @@ def gen_room():
                     boss = random.choice(high_mob_list)
                     if isinstance(monster,archdemon):
                         animate_typing('\nYou encountered a Archdemon')
-                        initiate_combat()                   
+                        Player.start_combat()                   
                     elif boss == "Bevins bror":
                         animate_typing('\nYou encountered your brother, Bing CHilling!\n')
-                        initiate_combat()
+                        Player.start_combat()
                     elif isinstance(monster,wolf):
                         animate_typing('\nYou encountered a Wolf')
-                        initiate_combat()
+                        Player.start_combat()
                 elif room == "T":
                     animate_typing('\nTrap room.\n')
                     trap = random.choice(T_rooms)
                     if trap == "Pitfall":
                         animate_typing('\nYou fell!')
                     elif trap == "Moving Wall of spikes":
-                        animate_typing(f'\nYou got spiked and lost {Player.HP * 0.1} hp!\n')
+                        animate_typing(f'\nYou got spiked and lost hp!\n')
                         animate_typing(f"""\nYou recover yourself... However after blowing past you the wall is revealed as able to switch between spikes and having a plain wall 
                         and its heading back towards you. You feel the largest burst of energy filling you with MOTIVATION and you slash through space and time, destroying the wall in the process.\n\n""")
                     else:
@@ -81,9 +81,9 @@ def gen_room():
             else:
                 animate_typing("\nStoooopid!")
     
-    elif Player.lvl == 9:
+    elif self.lvl == 9:
         animate_typing(f"\nIt is time... To fight your believed to be long lost brother.\n")
         animate_typing(f"\nYou face X, the last gamer to ever grace the earth.\n")
-        initiate_combat(bevins_bror())
+        self.start_combat(bevins_bror())
     else:
         exit()

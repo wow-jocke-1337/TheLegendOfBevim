@@ -3,9 +3,10 @@ from Text import*
 from items import*
 
 class Player():
-    def __init__(self, name, klass, HP,Def,spd, STR, DEX, INT, inventory:list):
+    def __init__(self, name, klass, HP, lvl,Def,spd , STR, DEX, INT, inventory:list):
         self.name = name
-        self.lvl = 1
+        self.lvl = lvl
+        self.klass = klass
         self.HP = HP
         self.Def = Def
         self.spd = spd
@@ -14,7 +15,6 @@ class Player():
         self.INT = INT
         self.DEX = DEX
         self.inventory = inventory
-        self.klass = klass
         self.equipped_weapon = None
         self.inventory_slots = 4
         
@@ -43,7 +43,7 @@ class Player():
     def equip_weapon(self, weapon):
         self.equipped_weapon = weapon
         
-    def player_calculate_damage(self):
+    def calculate_damage(self):
         if self.equipped_weapon is None:
             return 0
         else:
@@ -62,7 +62,7 @@ class Player():
         Def: {self.Def}
         HP:  {self.HP}
         LVL: {self.lvl}
-        XP:  {self.XP}/{self.XP}
+        XP:  {self.XP}
         Speed:{self.spd}
         STR: {self.STR}
         DEX: {self.DEX}
@@ -151,7 +151,7 @@ class Player():
         time.sleep(1)
     
     def use_item(self, used_item):
-        if isinstance(used_item,Weapon) or isinstance(used_item,Potion):
+        if isinstance(used_item,Weapon):
             animate_typing(f"\n\nDo you want to equip {used_item} \n\n Yes or No? ")
             equip_choice = input("")
             if equip_choice == "yes".lower():
@@ -160,7 +160,7 @@ class Player():
                 self.inventory.remove(used_item)
             elif equip_choice == "no".lower():
                 animate_typing("\n\n Ok")
-        elif used_item == Potion:
+        elif isinstance(used_item,Potion):
             animate_typing(f"\n\nDo you want to drink {used_item} \n\n Yes or No? ")
             drink_choice = input("")
             if drink_choice =="yes".lower():
@@ -183,8 +183,7 @@ class Player():
         pass
         # här läggs nånting in i spelarens inventory
     def lvl_up(self):
-        if self.XP == 100:
-           return f"You leveled up! {self.lvl + 1}"
+        pass
        # Här ska lvl öka
 
     def gets_attacked(self):
@@ -203,6 +202,7 @@ class Player():
 class Archer():
     def __init__(self) -> None:
         self.klass = "Archer"
+        self.lvl = 1
         self.HP = 80
         self.Def = 20
         self.STR = 20
@@ -215,6 +215,7 @@ class Gunslinger():
     def __init__(self) -> None:
         self.klass = "Gunslinger"
         self.HP = 90
+        self.lvl = 1
         self.Def = 20
         self.STR = 15
         self.DEX = 45
@@ -226,6 +227,7 @@ class Barbarian():
     def __init__(self) -> None:
         self.klass = "Barbarian"
         self.Def = 40
+        self.lvl = 1
         self.HP = 100
         self.STR = 50
         self.DEX = 25
@@ -237,6 +239,7 @@ class Mage():
     def __init__(self) -> None:
         self.klass = "Mage"
         self.Def = 15
+        self.lvl = 1
         self.HP = 60
         self.STR = 10
         self.DEX = 20
@@ -248,6 +251,7 @@ class Warrior():
     def __init__(self) -> None:
         self.klass = "Warrior"
         self.Def = 35
+        self.lvl = 1
         self.HP = 120
         self.STR = 35
         self.DEX = 35
