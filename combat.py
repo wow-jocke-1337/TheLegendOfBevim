@@ -58,21 +58,26 @@ def damage():
             Player.calculate_damage()
         else:
             animate_typing("\n\nYou dealt no damage.")
-        if Barbarian:damage [0.45*Player.STR,0.10*Player.DEX]
-        if Archer:damage[0.25*Player.STR,0.5*Player.DEX]
-        if Mage:damage[0.4*Player.INT,0.2*Player.DEX]
-        if Warrior:damage[0.3*Player.STR,0.3*Player.DEX]
+            
+        if Barbarian:
+            damage= [0.45*Player.STR,0.10*Player.DEX]
+        if Archer:
+            damage= [0.25*Player.STR,0.5*Player.DEX]
+        if Mage:
+            damage= [0.4*Player.INT,0.2*Player.DEX]
+        if Warrior:
+            damage=[0.3*Player.STR,0.3*Player.DEX]
 
 
 
           
 def Game_over():
     if Player.HP >50:
-        animate_typing("HP i at a stable level")
+        animate_typing("HP is at a stable level")
         if Player.HP >20:
-            animate_typing("You need to heal HP is at a low level!")
+            animate_typing("You need to heal, your HP is at a low level!")
     if Player.HP <=0:
-        animate_typing("You got killed by the monster!")
+        animate_typing("You are dead!")
         exit()
 
 
