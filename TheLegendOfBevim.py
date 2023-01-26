@@ -98,11 +98,11 @@ while True:
 player.inventory.append(Healing_potion())
 enemy = goblin()
 
-def Attack(enemy):
+def player_Attack(enemy):
     #calculate damage dealt to the enemy
     player_damage = player.calculate_damage()
     enemy.take_damage(player_damage)
-    animate_typing(f"\nYou dealt {player_damage} hitpoints to the enemy.")
+    animate_typing(f"\nYou dealt {player_damage} hitpoints to the {enemy.name}.")
 
 def block():
     #calculate chance to block and reduce incoming damage
@@ -138,39 +138,39 @@ def use_item():
         animate_typing("\nInvalid item choice.")
 
 def combat_turn(enemy):
+    while True:
     #present combat options to player
-    animate_typing(f"""\n
-        {enemy.name} HP: {enemy.HP} """)
-    animate_typing(f"""
-        {player.name} HP: {player.HP}\n""")
-    animate_typing("\n  What would you like to do?\n    1. Attack \n    2. Block \n     3. Use item \n      4. Run \n       Your Choice -->\n")
-    choice = int(input())
-    if choice == 1:
-        Attack(enemy)
-    elif choice == 2:
-        if block():
+        animate_typing(f"""\n{enemy.name} HP: {enemy.current_HP}/{enemy.max_HP}""")
+        animate_typing(f"""\n{player.name} HP: {player.current_HP}/{player.max_HP}\n""")
+        animate_typing("\nWhat would you like to do?\n1. Attack \n2. Block \n3. Use item \n4. Run \n\nYour Choice --> ")
+        choice = int(input())
+        if choice == 1:
+            player_Attack(enemy)
+        elif choice == 2:
             player.block_damage_reduction(enemy.attack())
-    elif choice == 3:
-        player.use_item()
-    elif choice == 4:
-        if run():
-            return False
-    else:
-        animate_typing("\nInvalid choice.")
-        return True
+        elif choice == 3: 
+            player.use_item()
+        elif choice == 4:
+            if run():
+                break
+            else:
+                continue
+        else:
+            animate_typing("\nInvalid choice.")
+            return True
 
-    if enemy.is_dead():
-        animate_typing(f"\n{enemy.name} has been defeated!")
-        player.add_xp(enemy.xp)
-        return False
-    else:
-        enemy_damage = enemy.Attack()
-        player.take_damage(enemy_damage)
-        animate_typing(f"\n{enemy.name} dealt {enemy_damage} damage to you.")
-        if player.is_dead():
-            animate_typing(f"\n{player.name} has been defeated!")
+        if enemy.is_dead():
+            animate_typing(f"\n{enemy.name} has been defeated!")
+            player.add_xp(enemy.xp)
             return False
-        return True
+        else:
+            enemy_damage = enemy.attack()
+            player.take_damage(enemy_damage)
+            animate_typing(f"\n{enemy.name} dealt {enemy_damage} damage to you.")
+            if player.is_dead():
+                animate_typing(f"\n{player.name} has been defeated!")
+                return False
+            return True
 
 def initiate_combat(enemy):
     while True:
@@ -179,11 +179,11 @@ def initiate_combat(enemy):
             player.print_inventory()
             continue
         else:
-            while True:
-                if combat_turn(enemy):
-                    continue
-                else:
-                    break
+            if combat_turn(enemy):
+                continue
+            else:
+                break
+    return
 
 initiate_combat(enemy)  
 

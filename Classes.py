@@ -12,6 +12,7 @@ class Player():
         self.Def = Def
         self.spd = spd
         self.XP = 0
+        self.XP_to_level_up = 100
         self.STR = STR
         self.INT = INT
         self.DEX = DEX
@@ -26,7 +27,10 @@ class Player():
         pass
     
     def is_dead(self):
-        return self.current_HP <= 0
+        if self.current_HP < 0:
+            return True
+        else:
+            return False
     
     def can_use_item(self, item): 
         pass
@@ -36,10 +40,13 @@ class Player():
             self.inventory.append(item)
         else:
             print("Inventory full!")
-        pass
 
     def equip_weapon(self, weapon):
-        self.equipped_weapon = weapon
+        if self.equipped_weapon == None:
+            self.equipped_weapon = weapon
+        else:
+            self.inventory.append(self.equipped_weapon)
+            self.equipped_weapon = weapon
         
     def calculate_damage(self):
         if self.equipped_weapon is None:
@@ -127,7 +134,7 @@ class Player():
                         elif item_choice > len(self.inventory) or item_choice < 1:
                             animate_typing("\nYou only have one item dumbass\n\n")
                         else:
-                            animate_typing(f"\n\n Are you sure you want to drop the {self.inventory[item_choice-1]} \n\n Yes or no? ")
+                            animate_typing(f"\n\n Are you sure you want to drop the {self.inventory[item_choice-1]} \n\n Yes or no? \n Your choice--> ")
                             z = (input(""))
                             if z == "yes".lower():
                                 animate_typing(f"\n\n ...you dropped the {self.inventory[item_choice-1]} ...\n\n\n")
@@ -146,7 +153,7 @@ class Player():
     def use_item(self, used_item):
         if isinstance(used_item,Weapon):
             if self.equipped_weapon == None:
-                animate_typing(f"\n\nDo you want to equip {used_item}? \n\n yes or no ")
+                animate_typing(f"\n\nDo you want to equip {used_item}? \n\n Yes or no? \n Your choice--> ")
                 equip_choice = input("")
                 if equip_choice == "yes".lower():
                     animate_typing(f"\n\n ...The {used_item} is now equipped... \n\n")
@@ -155,7 +162,7 @@ class Player():
                 elif equip_choice == "no".lower():
                     animate_typing("\n\n Ok")
             else:
-                animate_typing(f"\n\nDo you want to equip {used_item} and replace {self.equipped_weapon}? \n\n yes or no ")
+                animate_typing(f"\n\nDo you want to equip {used_item} and replace {self.equipped_weapon}? \n\n Yes or no? \n Your choice--> ")
                 equip_choice = input("")
                 if equip_choice == "yes".lower():
                     animate_typing(f"\n\n ...The {used_item} is now equipped... \n\n")
@@ -165,7 +172,7 @@ class Player():
                 elif equip_choice == "no".lower():
                     animate_typing("\n\n Ok")
         elif isinstance(used_item,Healing_Item):
-            animate_typing(f"\n\nDo you want to drink {used_item} \n\n Yes or No? ")
+            animate_typing(f"\n\nDo you want to drink {used_item} \n\n Yes or no? \n Your choice--> ")
             drink_choice = input("")
             if drink_choice =="yes".lower():
                 animate_typing(f"\n\n....You drank the {used_item} ....\n\n")
@@ -184,8 +191,10 @@ class Player():
         pass
        # Spelaren väljer att blocka nästa tur och försöka få monstret att bli stunned
 
-    def add_xp(self,enemy):
-        self.XP += enemy
+    def add_xp(self, enemy_xp):
+        self.XP += enemy_xp
+        if self.XP >= self.XP_to_level_up:
+            self.lvl_up()
 
     def add_item(self,enemy_item):
         self.inventory.append(enemy_item)
@@ -193,41 +202,76 @@ class Player():
         # här läggs nånting in i spelarens inventory
 
     def lvl_up(self):
-        if self.lvl >= 100:
-            self.lvl += 1
+        self.lvl += 1
+        self.XP_to_level_up = self.lvl * 50
+        if isinstance(self,Archer()):
+            self.DEX += 3
+            self.STR += 1
+            self.INT += 1
+            self.max_HP += 12
+            self.current_HP = self.max_HP
+        elif isinstance(self,Warrior()):
+            self.DEX += 1.5
+            self.STR += 2.5
+            self.INT += 1
+            self.max_HP += 12
+            self.current_HP = self.max_HP
+            self.DEX = int
+            self.STR = int
+        elif isinstance(self,Mage()):
+            self.DEX += 1
+            self.STR += 1
+            self.INT += 3
+            self.max_HP += 12
+            self.current_HP = self.max_HP
+        elif isinstance(self,Barbarian()):
+            self.DEX += 1
+            self.STR += 3
+            self.INT += 1
+            self.max_HP += 12
+            self.current_HP = self.max_HP
+        elif isinstance(self,Gunslinger()):
+            self.DEX += 3
+            self.STR += 1
+            self.INT += 1.5
+            self.max_HP += 12
+            self.current_HP = self.max_HP
+            self.INT = int
        # Här ska lvl öka
 
     def take_damage(self, damage):
         self.current_HP = int(self.current_HP - damage)
         if self.current_HP < 0:
-            animate_typing("\nYou died....... Git Gud.")
+            animate_typing("\nYou died....... Git Gud.\n")
             exit()
         else:
-            animate_typing(f"\nCurrent HP: {self.current_HP}")
+            return self.current_HP
         # Här ska antalet liv minska
     
 
     def block_damage_reduction(self,enemy_damage):
-        block_damage_list = [0.1, 0.2, 0.3]
-        block_damage = random.choice(block_damage_list) * self.STR
-        damage_blocked = block_damage - enemy_damage
+        block_damage_multiplier = random.randint(1,3)
+        block_damage = (block_damage_multiplier/10) * self.STR
+        damage_blocked = int(block_damage - enemy_damage)
         if damage_blocked > 0:
-            animate_typing(f"\nYou successfully blocked.")
+            animate_typing(f"\nYou successfully blocked.\n")
+            return True
         else:
-            animate_typing(f"\nYou took {enemy_damage} damage.")
+            animate_typing(f"\nYour block did not go through\n")
             self.current_HP = self.current_HP - enemy_damage
-            animate_typing(f"\n{self.current_HP}")
+            return False
 
 
     def use_healing_item(self,Item):
         if isinstance (Item, Healing_Item):
-            health_increase = (float(self.HP) * Item.effect)
+            health_increase = int(self.current_HP * Item.effect)
             self.current_HP += health_increase
             if self.current_HP > self.max_HP:
                 self.current_HP = self.max_HP
-            animate_typing(f"\nYour health has increased by {health_increase} points.")
+                animate_typing(f"\nYou drank {Item.name}.\n")
+                animate_typing(f"\nYour health has increased by {health_increase} points.\n")
         elif isinstance (Item, Resource_Item):
-            animate_typing(f"\nYou drank {self.name}")
+            animate_typing(f"\nYou drank a {Item.name}\n")
 
 class Barbarian():
     def __init__(self) -> None:
@@ -303,11 +347,12 @@ class Gunslinger():
 
 
 class Monster():
-    def __init__(self, name,lvl, xp,klass,HP,STR,spd,equipped_weapon):
+    def __init__(self, name,lvl, xp,klass,max_HP,current_HP,STR,spd,equipped_weapon):
         self.name = name
         self.lvl = lvl
         self.xp = xp
-        self.HP = HP
+        self.max_HP = max_HP
+        self.current_HP = current_HP
         self.STR = STR
         self.spd = spd
         self.inventory = []
@@ -318,82 +363,85 @@ class Monster():
     def __repr__(self) -> None:
         animate_typing (f"""
         {self.name}
-        Health:{self.HP}
+        Health:{self.current_HP}/{self.max_HP}
         Level: {self.lvl}
         Strength: {self.STR}
         Speed: {self.spd}
         """)
     
     def take_damage(self, damage):
-        self.HP = int(self.HP - damage)
-        return self.HP
+        self.current_HP = int(self.current_HP - damage)
+        return self.current_HP
 
     def is_dead(self):
-        if self.HP < 0:
-            return self.HP <= 0
+        if self.current_HP < 0:
+            self.current_HP = 0
+            return True
+        else:
+            return False
     
     def attack(self):
-        attack_player_list = [0.1,0.2,0.3]
-        damage = int(random.choice(attack_player_list) * self.STR)
+        low_mob_attack_multiplier = random.randint(2,3)
+        damage = int((low_mob_attack_multiplier/10) * self.STR)
         return damage
 
 
 class wolf(Monster):
     def __init__(self):
-        super().__init__("Wolf",2,25,"low_Mob",90,30,15,None)
+        super().__init__("Wolf",2,25,"low_Mob",90,90,38,15,None)
 
 class golem(Monster):
     def __init__(self):
-        super().__init__("Golem",2,33,"low_Mob",140,20,5,"Boulder")
+        super().__init__("Golem",2,33,"low_Mob",140,140,40,5,"Boulder")
 
 class slime(Monster):
     def __init__(self):
-        super().__init__("Slime",1,20,"low_Mob",75,20,10,None)
+        super().__init__("Slime",1,20,"low_Mob",75,75,35,10,None)
 
 class goblin(Monster):
     def __init__(self):
-        super().__init__("Goblin",1,20,"low_Mob",75,20,10,"Crooked Knife")
+        super().__init__("Goblin",1,20,"low_Mob",75,75,37,10,"Crooked Knife")
 
 class Orc(Monster):
     def __init__(self):
-        super().__init__("Orc", 3, 35,"low_mob", 100, 35, 13,"Two-Handed Axe")
+        super().__init__("Orc", 3, 35,"low_mob", 100,100, 45, 13,"Two-Handed Axe")
 
 class mountain_Lion(Monster):
     def __init__(self):
-        super().__init__("Mountain Lion",2,30,"low_Mob",95,30,15,None)
+        super().__init__("Mountain Lion",2,30,"low_Mob",95,95,40,15,None)
 
 class bats(Monster):
     def __init__(self):
-        super().__init__("Bats",1,20,"low_Mob",60,20,10,None)
+        super().__init__("Bats",1,20,"low_Mob",60,60,35,10,None)
 
 class dragon(Monster):
     def __init__(self):
-        super().__init__("Dragon", 5, 37,"Mid tier mob", 140, 55, 10, None)
+        super().__init__("Dragon", 5, 40,"Mid tier mob", 140,140, 55, 10, None)
 
 class lower_class_demon(Monster):
     def __init__(self) -> None:
-        super().__init__("Lower Class Demon",5,37,"Mid tier mob",130,47,13,"Longsword of Night and Flame")
+        super().__init__("Lower Class Demon",5,37,"Mid tier mob",130,130,53,13,"Longsword of Night and Flame")
 
 class kikimora(Monster):
     def __init__(self):
-        super().__init__("Kikimora",5,35,"Mid tier mob",140,50,10,None)
+        super().__init__("Kikimora",5,35,"Mid tier mob",140,140,52,10,None)
 
 class bruxa(Monster):
     def __init__(self):
-        super().__init__("Bruxa",6,40,"Mid tier mob",145,50,13,None)
+        super().__init__("Bruxa",6,40,"Mid tier mob",145,145,57,13,None)
 
 class upper_class_demon(Monster):
     def __init__(self) -> None:
-        super().__init__("Upper Class Demon",6,42,"Mid tier mob",140,55,15,"Moonsword")
+        super().__init__("Upper Class Demon",6,42,"Mid tier mob",140,140,60,15,"Moonsword")
 
 class archdemon(Monster):
     def __init__(self):
-        super().__init__("Archdemon",8,47,"Boss",170,70,15,"Taeshalach the Souleater")
+        super().__init__("Archdemon",8,47,"Boss",170,170,70,15,"Taeshalach the Souleater")
 
 class bevins_bror(Monster):
     def __init__(self):
-        super().__init__("Bevins bror",69,666,"Boss",200,65,20,"Gaming chair")
+        super().__init__("Bevins bror",69,666,"Boss",200,200,65,20,"Gaming chair")
 
 class bevins_mamma(Monster):
     def __init__(self):
-        super().__init__("Bevins Mamma",666,69420,"The End",420,33,6.9,"Child Beater 9000")
+        super().__init__("Bevins Mamma",666,69420,"The End",420,420,33,6.9,"Child Beater 9000")
