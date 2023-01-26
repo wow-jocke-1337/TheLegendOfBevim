@@ -77,19 +77,19 @@ while True:
     GUNSLINGER = "5"
     
     if klass_choice == BARBARIAN:
-        player = Player(user_name, "Barbarian", barbarian.HP,barbarian.lvl,barbarian.Def,barbarian.spd,barbarian.STR,barbarian.DEX,barbarian.equipped_weapon,barbarian.INT,barbarian.inventory)
+        player = Player(user_name, "Barbarian", barbarian.current_HP, barbarian.max_HP, barbarian.lvl,barbarian.Def,barbarian.spd,barbarian.STR,barbarian.DEX,barbarian.equipped_weapon,barbarian.INT,barbarian.inventory)
         break
     elif klass_choice == ARCHER:
-        player = Player(user_name, "Archer", archer.HP, archer.lvl, archer.Def, archer.spd,archer.STR, archer.DEX, archer.equipped_weapon,archer.INT, archer.inventory)
+        player = Player(user_name, "Archer", archer.current_HP, archer.max_HP, archer.lvl, archer.Def, archer.spd,archer.STR, archer.DEX, archer.equipped_weapon,archer.INT, archer.inventory)
         break
     elif klass_choice == MAGE:
-        player = Player(user_name, "Mage", mage.HP, mage.lvl, mage.Def, mage.spd,mage.STR, mage.DEX, mage.equipped_weapon,mage.INT, mage.inventory)
+        player = Player(user_name, "Mage", mage.current_HP, mage.max_HP, mage.lvl, mage.Def, mage.spd,mage.STR, mage.DEX, mage.equipped_weapon,mage.INT, mage.inventory)
         break
     elif klass_choice == WARRIOR:
-        player = Player(user_name, "Warrior", warrior.HP, warrior.lvl, warrior.Def, warrior.spd,warrior.STR, warrior.DEX, warrior.equipped_weapon,warrior.INT, warrior.inventory)
+        player = Player(user_name, "Warrior", warrior.current_HP, warrior.max_HP, warrior.lvl, warrior.Def, warrior.spd,warrior.STR, warrior.DEX, warrior.equipped_weapon,warrior.INT, warrior.inventory)
         break
     elif klass_choice == GUNSLINGER:
-        player = Player(user_name, "Gunslinger", gunslinger.HP, gunslinger.lvl, gunslinger.Def, gunslinger.spd, gunslinger.STR, gunslinger.DEX, gunslinger.equipped_weapon,gunslinger.INT, gunslinger.inventory)
+        player = Player(user_name, "Gunslinger", gunslinger.current_HP, gunslinger.max_HP, gunslinger.lvl, gunslinger.Def, gunslinger.spd, gunslinger.STR, gunslinger.DEX, gunslinger.equipped_weapon,gunslinger.INT, gunslinger.inventory)
         break
     else:
         animate_typing("\n You can only choose between 1-5\n")

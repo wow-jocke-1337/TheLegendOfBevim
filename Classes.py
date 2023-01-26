@@ -3,11 +3,12 @@ from Text import*
 from items import*
 
 class Player():
-    def __init__(self, name, klass, HP, lvl, Def, spd, STR, DEX, equipped_weapon,INT, inventory:list):
+    def __init__(self, name, klass, current_HP, max_HP, lvl, Def, spd, STR, DEX, equipped_weapon,INT, inventory:list):
         self.name = name
         self.lvl = lvl
         self.klass = klass
-        self.HP = HP
+        self.current_HP = current_HP
+        self.max_HP = max_HP
         self.Def = Def
         self.spd = spd
         self.XP = 0
@@ -25,7 +26,7 @@ class Player():
         pass
     
     def is_dead(self):
-        return self.HP <= 0
+        return self.current_HP <= 0
     
     def can_use_item(self, item): 
         pass
@@ -53,10 +54,10 @@ class Player():
         animate_typing_fast(f"""
         -----------------------------------------
         {self.name} the {self.klass}
-        Def: {self.Def}
-        HP:  {self.HP}
         LVL: {self.lvl}
         XP:  {self.XP}
+        HP:  current: {self.current_HP}  Maximum: {self.max_HP}
+        Def: {self.Def}
         Speed:{self.spd}
         STR: {self.STR}
         DEX: {self.DEX}
@@ -197,15 +198,17 @@ class Player():
        # Här ska lvl öka
 
     def take_damage(self, damage):
-        self.HP -= damage
-        if self.HP < 0:
+        self.current_HP -= damage
+        if self.current_HP < 0:
             return exit()
         # Här ska antalet liv minska
 
     def use_healing_item(self,Item):
         if isinstance (Item, Healing_Item):
             health_increase = (float(self.HP) * Item.effect)
-            self.HP += health_increase
+            self.current_HP += health_increase
+            if self.current_HP > self.max_HP:
+                self.current_HP = self.max_HP
             animate_typing(f"\nYour health has increased by {health_increase} points.")
         elif isinstance (Item, Resource_Item):
             animate_typing(f"\nYou drank {self.name}")
@@ -215,7 +218,8 @@ class Barbarian():
         self.lvl = 1
         self.klass = "Barbarian"
         self.Def = 40       
-        self.HP = 100
+        self.current_HP = 100
+        self.max_HP = 100
         self.STR = 50
         self.DEX = 25
         self.INT = 10
@@ -227,7 +231,8 @@ class Archer():
         self.lvl = 1
         self.klass = "Archer"
         self.Def = 20
-        self.HP = 80
+        self.current_HP = 80
+        self.max_HP = 80
         self.STR = 20
         self.DEX = 40
         self.equipped_weapon = Bow()
@@ -241,7 +246,8 @@ class Mage():
         self.lvl = 1
         self.klass = "Mage"
         self.Def = 15
-        self.HP = 60
+        self.current_HP = 60
+        self.max_HP = 60
         self.STR = 10
         self.DEX = 20
         self.equipped_weapon = Magical_staff()
@@ -255,7 +261,8 @@ class Warrior():
         self.lvl = 1
         self.klass = "Warrior"
         self.Def = 35
-        self.HP = 120
+        self.current_HP = 120
+        self.max_HP = 120
         self.STR = 35
         self.DEX = 35
         self.equipped_weapon = Greatsword()
@@ -269,7 +276,8 @@ class Gunslinger():
         self.lvl = 1
         self.klass = "Gunslinger"
         self.Def = 20
-        self.HP = 90        
+        self.current_HP = 90
+        self.max_HP = 90        
         self.STR = 15
         self.DEX = 45
         self.equipped_weapon = Tommy_gun()
