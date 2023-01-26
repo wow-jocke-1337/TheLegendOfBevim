@@ -53,17 +53,19 @@ class Player():
     def print_info(self):
         animate_typing_fast(f"""
         -----------------------------------------
-        {self.name} the {self.klass}
-        LVL: {self.lvl}
-        XP:  {self.XP}
-        HP:  current: {self.current_HP}  Maximum: {self.max_HP}
-        Def: {self.Def}
-        Speed:{self.spd}
-        STR: {self.STR}
-        DEX: {self.DEX}
-        INT: {self.INT}
-        Equipped Weapon: {self.equipped_weapon}
-        Inventory: {self.inventory}
+        {self.name} the {self.klass} 
+        LVL: {self.lvl}  XP: {self.XP}
+        HP  Current: {self.current_HP}  
+            maximum: {self.max_HP}
+
+        Def    {self.Def}
+        STR    {self.STR}
+        DEX    {self.DEX}
+        INT    {self.INT}
+        Speed  {self.spd}
+
+        equipped Weapon: {self.equipped_weapon}
+        INVENTORY {self.inventory}
         ------------------------------------------""")            
 
     def print_inventory(self):
@@ -165,14 +167,17 @@ class Player():
                 elif equip_choice == "no".lower():
                     animate_typing("\n\n Ok")
         elif isinstance(used_item,Healing_Item):
-            animate_typing(f"\n\nDo you want to drink {used_item} \n\n Yes or No? ")
-            drink_choice = input("")
-            if drink_choice =="yes".lower():
-                animate_typing(f"\n\n....You drank the {used_item} ....\n\n")
-                self.use_healing_item(used_item)
-                self.inventory.remove(used_item)
-            elif drink_choice =="no".lower():
-                animate_typing(f"\n\n Ok")
+            if self.current_HP == self.max_HP:
+                animate_typing("\n\n...you already have max HP...\n\n")
+            else:
+                animate_typing(f"\n\n\n Current HP {self.current_HP} Max HP {self.max_HP} \n\n Do you want to drink {used_item} \n\n Yes or No? ")
+                drink_choice = input("")
+                if drink_choice =="yes".lower():
+                    animate_typing(f"\n\n....You drank the {used_item} ....\n\n")
+                    self.use_healing_item(used_item)
+                    self.inventory.remove(used_item)
+                elif drink_choice =="no".lower():
+                    animate_typing(f"\n\n Ok")
         else:
             animate_typing(f"\n\nYou cannot use this \n\n")
 
@@ -207,11 +212,11 @@ class Player():
 
     def use_healing_item(self,Item):
         if isinstance (Item, Healing_Item):
-            health_increase = (float(self.HP) * Item.effect)
+            health_increase = (float(self.current_HP) * Item.effect)
             self.current_HP += health_increase
             if self.current_HP > self.max_HP:
                 self.current_HP = self.max_HP
-            animate_typing(f"\nYour health has increased by {health_increase} points.")
+            animate_typing(f"\n...Your health has increased by {health_increase} points...\n Current HP {self.current_HP} Max HP {self.max_HP}")
         elif isinstance (Item, Resource_Item):
             animate_typing(f"\nYou drank {self.name}")
 

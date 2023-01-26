@@ -57,10 +57,10 @@ Menu = """
 2 - Explore
 3 - Inventory
 4 - See credits
-5 - Exit game
+5 - Exit game 
 
 
-Your choice --> """
+Your choice --> """ #Lägg till Tips & Tricks elr tutorial som beskriver vad saker gör såsom "speed"
 
 door_choice = """
     You have to choose between three doors
