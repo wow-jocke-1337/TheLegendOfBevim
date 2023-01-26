@@ -289,7 +289,11 @@ class Monster():
         self.HP -= damage
 
     def is_dead(self):
-        return self.HP <= 0
+        if self.HP < 0:
+            return self.HP <= 0
+    
+    def attack(self):
+        pass
 
 
 class wolf(Monster):
