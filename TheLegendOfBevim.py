@@ -51,8 +51,8 @@ time.sleep(1)
 print(gameTitle)
 
 time.sleep(2)
-animate_typing("What is your to be chosen name")
-user_name = input("? ")    
+animate_typing("What is your name? ")
+user_name = input("")    
 
 time.sleep(1)
 
@@ -97,7 +97,7 @@ while True:
 
 player.inventory.append(Healing_potion())
 
-def attack(enemy):
+def reduce_enemyhealth(enemy):
     #calculate damage dealt to the enemy
     player_damage = player.calculate_damage()
     enemy.take_damage(player_damage)
@@ -142,13 +142,13 @@ def combat_turn(enemy):
         {enemy.name} HP: {enemy.HP} """)
     animate_typing(f"""
         {player.name} HP: {player.HP}""")
-    animate_typing("\nWhat would you like to do?\n1. Attack \n2. Block \n3. Use item \n4. Run ")
+    animate_typing("\nWhat would you like to do?\n1. reduce_enemyhealth \n2. Block \n3. Use item \n4. Run ")
     choice = int(input())
     if choice == 1:
-        attack(enemy)
+        reduce_enemyhealth(enemy)
     elif choice == 2:
         if block():
-            player.block_damage_reduction(enemy.attack())
+            player.block_damage_reduction(enemy.reduce_enemyhealth())
     elif choice == 3:
         use_item()
     elif choice == 4:
@@ -163,7 +163,7 @@ def combat_turn(enemy):
         player.add_xp(enemy.xp)
         return False
     else:
-        enemy_damage = enemy.attack()
+        enemy_damage = enemy.reduce_enemyhealth()
         player.take_damage(enemy_damage)
         animate_typing(f"\n{enemy.name} dealt {enemy_damage} damage to you.")
         if player.is_dead():
