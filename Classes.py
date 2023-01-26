@@ -157,11 +157,11 @@ class Player():
             elif equip_choice == "no".lower():
                 animate_typing("\n\n Ok")
         elif isinstance(used_item,Healing_Item):
-            self.use_healing_item(used_item)
             animate_typing(f"\n\nDo you want to drink {used_item} \n\n Yes or No? ")
             drink_choice = input("")
             if drink_choice =="yes".lower():
                 animate_typing(f"\n\n....You drank the {used_item} ....\n\n")
+                self.use_healing_item(used_item)
                 self.inventory.remove(used_item)
             elif drink_choice =="no".lower():
                 animate_typing(f"\n\n Ok")
@@ -190,9 +190,11 @@ class Player():
        # Här ska lvl öka
 
     def take_damage(self, damage):
-        self.HP -= damage
+        self.HP = (float(self.HP) - float(damage))
         if self.HP < 0:
-            return exit()
+            return self.HP
+        else:
+            return self.HP
         # Här ska antalet liv minska
 
     def use_healing_item(self,Item):
@@ -261,7 +263,7 @@ class Warrior():
         self.DEX = 35
         self.INT = 20
         self.spd = 12
-        self.inventory = ["Bing chiulling"]
+        self.inventory = []
 
 class Monster():
     def __init__(self, name,lvl, xp,klass,HP,STR,spd,equipped_weapon):
@@ -286,14 +288,15 @@ class Monster():
         """)
     
     def take_damage(self, damage):
-        self.HP -= damage
+        self.HP = (float(self.HP) - float(damage))
 
     def is_dead(self):
         if self.HP < 0:
             return self.HP <= 0
     
     def attack(self):
-        pass
+        damage = (random.randint(0.1, 0.3) * float(self.STR))
+        return damage
 
 
 class wolf(Monster):

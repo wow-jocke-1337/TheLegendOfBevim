@@ -112,7 +112,7 @@ def attack(enemy):
 def block():
     #calculate chance to block and reduce incoming damage
     block_chance = random.randint(1,100)
-    if block_chance > 30: #30% chance to block
+    if block_chance < 70: #70% chance to block
         animate_typing("\nSuccessfully blocked!")
         return True
     else:
@@ -147,8 +147,8 @@ def combat_turn(enemy):
     animate_typing(f"""\n
         {enemy.name} HP: {enemy.HP} """)
     animate_typing(f"""
-        {player.name} HP: {player.HP}""")
-    animate_typing("\nWhat would you like to do?\n1. Attack \n2. Block \n3. Use item \n4. Run ")
+        {player.name} HP: {player.HP}\n""")
+    animate_typing("\n  What would you like to do?\n    1. Attack \n    2. Block \n     3. Use item \n      4. Run \n       Your Choice -->\n")
     choice = int(input())
     if choice == 1:
         attack(enemy)
@@ -156,7 +156,7 @@ def combat_turn(enemy):
         if block():
             player.block_damage_reduction(enemy.attack())
     elif choice == 3:
-        use_item()
+        player.use_item()
     elif choice == 4:
         if run():
             return False
