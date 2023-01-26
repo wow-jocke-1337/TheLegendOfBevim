@@ -40,16 +40,95 @@ inventory_menu = """
 
 Your choice --> """
 
+combat_options = """
+What will you do now?
 
+1 - Attack
+2 - Block
+3 - Check inventory
+4 - Run Away
+
+Your choice --> """
+
+Menu = """ 
+
+    MENU
+1 - See stats
+2 - Explore
+3 - Inventory
+4 - See credits
+5 - Exit game
+
+
+Your choice --> """
+
+door_choice = """
+    You have to choose between three doors
+    1 - Right
+    2 - Forward
+    3 - Left
+    
+    Your choice -->> """
 
 credits = """
 
-Developers - Balfred, Billiam, Brille bum
-Coders - Balfred, Billiam, Brille bum
-Story writers - Balfred, Billiam, Brille bum
-Art - Balfred, Billiam, Brille bum
+    Developers - Balfred, Billiam, Brille bum
+    Coders - Balfred, Billiam, Brille bum
+    Story writers - Balfred, Billiam, Brille bum
+    Art - Balfred, Billiam, Brille bum
 
 """
 
-prologue = """
-    You begin your journey through the darkx"""
+prologue_start = """
+    You begin your journey through the dark and mysterious corridors of what seems to be a massive structure. The sound of clanking 
+    weights banging together, gears circling, heavy chains rattling against each other and several small hisses all together echoing 
+    throughout the halls instilling fear into the very moment. However you continue and gradually the noise starts to disappear.   
+    """
+
+prologue_end_start ="""\n
+    .....A couple of seconds later.....\n"""
+
+prologue_end = """\n
+    You are present with.... three choices.\n"""
+
+forest = """
+    FFFForest."""
+
+swamp = """
+    SSS. Smoking Sexy Style!!!"""
+
+lone_village = """
+    Hello Darkness my old friend.""" 
+
+cemetery = """
+    You break into an all out fearsome breakdance, with drip practially running off of you, further increasing the feeling of depression by the undead."""
+
+the_end_of_the_end_end_screen = (r""" 
+                                  {} {}
+                            !  !  II II  !  !
+                         !  I__I__II II__I__I  !
+                         I_/|--|--|| ||--|--|\_I
+        .-'"'-.       ! /|_/|  |  || ||  |  |\_|\ !       .-'"'-.
+       /===    \      I//|  |  |  || ||  |  |  |\\I      /===    \
+       \==     /   ! /|/ |  |  |  || ||  |  |  | \|\ !   \==     /
+        \__  _/    I//|  |  |  |  || ||  |  |  |  |\\I    \__  _/
+         _} {_  ! /|/ |  |  |  |  || ||  |  |  |  | \|\ !  _} {_
+        {_____} I//|  |  |  |  |  || ||  |  |  |  |  |\\I {_____}
+   !  !  |=  |=/|/ |  |  |  |  |  || ||  |  |  |  |  | \|\=|-  |  !  ! 
+  _I__I__|=  ||/|  |  |  |  |  |  || ||  |  |  |  |  |  |\||   |__I__I_
+  -|--|--|-  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||=  |--|--|-
+  _|__|__|   ||_|__|__|__|__|__|__|| ||__|__|__|__|__|__|_||-  |__|__|_
+  -|--|--|   ||-|--|--|--|--|--|--|| ||--|--|--|--|--|--|-||   |--|--|- 
+   |  |  |=  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |  |  | 
+   |  |  |   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||=  |  |  | 
+   |  |  |-  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |  |  | 
+   |  |  |   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||=  |  |  |
+   |  |  |=  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |  |  |
+   |  |  |   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |  |  |
+   |  |  |   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||-  |  |  |
+  _|__|__|   || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||=  |__|__|_
+  -|--|--|=  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||   |--|--|-
+  _|__|__|   ||_|__|__|__|__|__|__|| ||__|__|__|__|__|__|_||-  |__|__|_
+  -|--|--|=  ||-|--|--|--|--|--|--|| ||--|--|--|--|--|--|-||=  |--|--|-
+  -|--|--|-  || |  |  |  |  |  |  || ||  |  |  |  |  |  | ||-  |  |  |
+ ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~~~~~~~""")
