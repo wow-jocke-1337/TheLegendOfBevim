@@ -52,30 +52,53 @@
 #             animate_typing(f"\nChoose one of the alternatives.")
 #             break
 
-# def damage():
-#     while True:
-#         outcome=random.choice(list)
-#         if outcome== 1 or 2 or 3:
-#             dmg =  Player.calculate_damage()
-#             animate_typing(f"\nYou dealt {dmg} hitpoints.")
-#             break
-#         else:
-#             animate_typing(f"\n\nYou dealt no damage.")
-#             break
+1 - Attack
+2 - Block
+3 - Check_inventory
+4 - Run_Away
+
+Your choice --> """)
+    while True:
+        animate_typing(combat_options)
+        x=int(input("")) 
+        if x==1: 
+            attack()
+            break
+        elif x==2:
+            block()
+            break
+
+def damage():
+    while True:
+        outcome=random.choice(list)
+        if outcome== 1 or 2 or 3:
+            animate_typing("\nYou dealt hitpoints.")
+            Player.calculate_damage()
+        else:
+            animate_typing("\n\nYou dealt no damage.")
+        if Barbarian:damage [0.45*Player.STR,0.10*Player.DEX]
+        if Archer:damage[0.25*Player.STR,0.5*Player.DEX]
+        if Mage:damage[0.4*Player.INT,0.2*Player.DEX]
+        if Warrior:damage[0.3*Player.STR,0.3*Player.DEX]
+
+
 
           
-# def Game_over():
-#     if Player.HP > 50:
-#         animate_typing("HP is at a stable level")
-#         if 35 > Player.HP > 20:
-#             animate_typing("You need to heal, HP is at a low level!")
-#     if Player.HP <=0:
-#         animate_typing("You got killed by the monster!")
-#         exit()
+def Game_over():
+    if Player.HP >50:
+        animate_typing("HP is at a stable level")
+        if Player.HP >20:
+            animate_typing("You need to heal HP is at a low level!")
+    if Player.HP <=0:
+        animate_typing("You got killed by the monster!")
+        exit()
 
-  
-# def initiate_combat():
-#     if player.equipped_weapon == None:
-#         animate_typing(f"""\nYou currently do not have a weapon equipped, thereby giving you no chance in a fight.""")
-#         player.print_inventory()
-#     combat_choices()
+
+
+
+
+    
+
+        
+def initiate_combat():
+    choices()

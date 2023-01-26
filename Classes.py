@@ -3,11 +3,12 @@ from Text import*
 from items import*
 
 class Player():
-    def __init__(self, name, klass, HP, lvl, Def, spd, STR, DEX, INT, inventory:list):
+    def __init__(self, name, klass, current_HP, max_HP, lvl, Def, spd, STR, DEX, equipped_weapon,INT, inventory:list):
         self.name = name
         self.lvl = lvl
         self.klass = klass
-        self.HP = HP
+        self.current_HP = current_HP
+        self.max_HP = max_HP
         self.Def = Def
         self.spd = spd
         self.XP = 0
@@ -15,7 +16,7 @@ class Player():
         self.INT = INT
         self.DEX = DEX
         self.inventory = inventory
-        self.equipped_weapon = None
+        self.equipped_weapon = equipped_weapon
         self.inventory_slots = 4
         
     def attack(self):
@@ -25,7 +26,7 @@ class Player():
         pass
     
     def is_dead(self):
-        return self.HP <= 0
+        return self.current_HP <= 0
     
     def can_use_item(self, item): 
         pass
@@ -49,18 +50,14 @@ class Player():
     def remove_item(self, item):
         self.inventory.remove(item)
 
-    def print_items(self):
-        for Item in self.inventory:
-            animate_typing(f"Item name: {Item.name}")
-
     def print_info(self):
-        animate_typing(f"""
+        animate_typing_fast(f"""
         -----------------------------------------
         {self.name} the {self.klass}
-        Def: {self.Def}
-        HP:  {self.HP}
         LVL: {self.lvl}
         XP:  {self.XP}
+        HP:  current: {self.current_HP}  Maximum: {self.max_HP}
+        Def: {self.Def}
         Speed:{self.spd}
         STR: {self.STR}
         DEX: {self.DEX}
@@ -148,14 +145,25 @@ class Player():
     
     def use_item(self, used_item):
         if isinstance(used_item,Weapon):
-            animate_typing(f"\n\nDo you want to equip {used_item} \n\n Yes or No? ")
-            equip_choice = input("")
-            if equip_choice == "yes".lower():
-                animate_typing(f"\n\n ...The {used_item} is now equipped... \n\n")
-                self.equip_weapon(used_item)
-                self.inventory.remove(used_item)
-            elif equip_choice == "no".lower():
-                animate_typing("\n\n Ok")
+            if self.equipped_weapon == None:
+                animate_typing(f"\n\nDo you want to equip {used_item}? \n\n yes or no ")
+                equip_choice = input("")
+                if equip_choice == "yes".lower():
+                    animate_typing(f"\n\n ...The {used_item} is now equipped... \n\n")
+                    self.equip_weapon(used_item)
+                    self.inventory.remove(used_item)
+                elif equip_choice == "no".lower():
+                    animate_typing("\n\n Ok")
+            else:
+                animate_typing(f"\n\nDo you want to equip {used_item} and replace {self.equipped_weapon}? \n\n yes or no ")
+                equip_choice = input("")
+                if equip_choice == "yes".lower():
+                    animate_typing(f"\n\n ...The {used_item} is now equipped... \n\n")
+                    self.inventory.append(self.equipped_weapon)
+                    self.equip_weapon(used_item)
+                    self.inventory.remove(used_item)
+                elif equip_choice == "no".lower():
+                    animate_typing("\n\n Ok")
         elif isinstance(used_item,Healing_Item):
             animate_typing(f"\n\nDo you want to drink {used_item} \n\n Yes or No? ")
             drink_choice = input("")
@@ -190,80 +198,98 @@ class Player():
        # Här ska lvl öka
 
     def take_damage(self, damage):
-        self.HP = (float(self.HP) - float(damage))
-        if self.HP < 0:
-            return self.HP
+        self.current_HP = (float(self.current_HP) - float(damage))
+        if self.current_HP < 0:
+            return self.current_HP
         else:
-            return self.HP
+            return self.current_HP
         # Här ska antalet liv minska
 
     def use_healing_item(self,Item):
         if isinstance (Item, Healing_Item):
             health_increase = (float(self.HP) * Item.effect)
-            self.HP += health_increase
+            self.current_HP += health_increase
+            if self.current_HP > self.max_HP:
+                self.current_HP = self.max_HP
             animate_typing(f"\nYour health has increased by {health_increase} points.")
         elif isinstance (Item, Resource_Item):
             animate_typing(f"\nYou drank {self.name}")
-
-class Archer():
-    def __init__(self) -> None:
-        self.lvl = 1
-        self.klass = "Archer"
-        self.HP = 80
-        self.Def = 20
-        self.STR = 20
-        self.DEX = 40
-        self.INT = 10
-        self.spd = 17
-        self.inventory = []
-
-class Gunslinger():
-    def __init__(self) -> None:
-        self.lvl = 1
-        self.klass = "Gunslinger"
-        self.HP = 90        
-        self.Def = 20
-        self.STR = 15
-        self.DEX = 45
-        self.INT = 10
-        self.spd = 20
-        self.inventory = []
 
 class Barbarian():
     def __init__(self) -> None:
         self.lvl = 1
         self.klass = "Barbarian"
         self.Def = 40       
-        self.HP = 100
+        self.current_HP = 100
+        self.max_HP = 100
         self.STR = 50
         self.DEX = 25
         self.INT = 10
         self.spd = 15
         self.inventory = []
+        self.equipped_weapon = Axe()
+class Archer():
+    def __init__(self) -> None:
+        self.lvl = 1
+        self.klass = "Archer"
+        self.Def = 20
+        self.current_HP = 80
+        self.max_HP = 80
+        self.STR = 20
+        self.DEX = 40
+        self.equipped_weapon = Bow()
+        self.INT = 10
+        self.spd = 17
+        self.inventory = []
+        
 
 class Mage():
     def __init__(self) -> None:
         self.lvl = 1
         self.klass = "Mage"
         self.Def = 15
-        self.HP = 60
+        self.current_HP = 60
+        self.max_HP = 60
         self.STR = 10
         self.DEX = 20
+        self.equipped_weapon = Magical_staff()
         self.INT = 50
         self.spd = 12
-        self.inventory = []
+        self.inventory = [Mana_potion()]
+        
 
 class Warrior():
     def __init__(self) -> None:
         self.lvl = 1
         self.klass = "Warrior"
         self.Def = 35
-        self.HP = 120
+        self.current_HP = 120
+        self.max_HP = 120
         self.STR = 35
         self.DEX = 35
+        self.equipped_weapon = Greatsword()
         self.INT = 20
         self.spd = 12
         self.inventory = []
+        
+
+class Gunslinger():
+    def __init__(self) -> None:
+        self.lvl = 1
+        self.klass = "Gunslinger"
+        self.Def = 20
+        self.current_HP = 90
+        self.max_HP = 90        
+        self.STR = 15
+        self.DEX = 45
+        self.equipped_weapon = Tommy_gun()
+        self.INT = 10
+        self.spd = 20
+        self.inventory = []
+        
+
+
+
 
 class Monster():
     def __init__(self, name,lvl, xp,klass,HP,STR,spd,equipped_weapon):

@@ -51,8 +51,8 @@ time.sleep(1)
 print(gameTitle)
 
 time.sleep(2)
-animate_typing("What is your to be chosen name")
-user_name = input("? ")    
+animate_typing("What is your name? ")
+user_name = input("")    
 
 time.sleep(1)
 
@@ -77,25 +77,19 @@ while True:
     GUNSLINGER = "5"
     
     if klass_choice == BARBARIAN:
-        player = Player(user_name, "Barbarian", barbarian.HP,barbarian.lvl,barbarian.Def,barbarian.spd,barbarian.STR,barbarian.DEX,barbarian.INT,barbarian.inventory)
-        player.inventory.append(Axe())
+        player = Player(user_name, "Barbarian", barbarian.current_HP, barbarian.max_HP, barbarian.lvl,barbarian.Def,barbarian.spd,barbarian.STR,barbarian.DEX,barbarian.equipped_weapon,barbarian.INT,barbarian.inventory)
         break
     elif klass_choice == ARCHER:
-        player = Player(user_name, "Archer", archer.HP, archer.lvl, archer.Def, archer.spd,archer.STR, archer.DEX, archer.INT, archer.inventory)
-        player.inventory.append(Bow())
+        player = Player(user_name, "Archer", archer.current_HP, archer.max_HP, archer.lvl, archer.Def, archer.spd,archer.STR, archer.DEX, archer.equipped_weapon,archer.INT, archer.inventory)
         break
     elif klass_choice == MAGE:
-        player = Player(user_name, "Mage", mage.HP, mage.lvl, mage.Def, mage.spd,mage.STR, mage.DEX, mage.INT, mage.inventory)
-        player.inventory.append(Mana_potion())
-        player.inventory.append(Magical_staff())
+        player = Player(user_name, "Mage", mage.current_HP, mage.max_HP, mage.lvl, mage.Def, mage.spd,mage.STR, mage.DEX, mage.equipped_weapon,mage.INT, mage.inventory)
         break
     elif klass_choice == WARRIOR:
-        player = Player(user_name, "Warrior", warrior.HP, warrior.lvl, warrior.Def, warrior.spd,warrior.STR, warrior.DEX, warrior.INT, warrior.inventory)
-        player.inventory.append(Greatsword())
+        player = Player(user_name, "Warrior", warrior.current_HP, warrior.max_HP, warrior.lvl, warrior.Def, warrior.spd,warrior.STR, warrior.DEX, warrior.equipped_weapon,warrior.INT, warrior.inventory)
         break
     elif klass_choice == GUNSLINGER:
-        player = Player(user_name, "Gunslinger", gunslinger.HP, gunslinger.lvl, gunslinger.Def, gunslinger.spd, gunslinger.STR, gunslinger.DEX, gunslinger.INT, gunslinger.inventory)
-        player.inventory.append(Tommy_gun())
+        player = Player(user_name, "Gunslinger", gunslinger.current_HP, gunslinger.max_HP, gunslinger.lvl, gunslinger.Def, gunslinger.spd, gunslinger.STR, gunslinger.DEX, gunslinger.equipped_weapon,gunslinger.INT, gunslinger.inventory)
         break
     else:
         animate_typing("\n You can only choose between 1-5\n")
@@ -103,7 +97,7 @@ while True:
 
 player.inventory.append(Healing_potion())
 
-def attack(enemy):
+def Attack(enemy):
     #calculate damage dealt to the enemy
     player_damage = player.calculate_damage()
     enemy.take_damage(player_damage)
@@ -151,10 +145,10 @@ def combat_turn(enemy):
     animate_typing("\n  What would you like to do?\n    1. Attack \n    2. Block \n     3. Use item \n      4. Run \n       Your Choice -->\n")
     choice = int(input())
     if choice == 1:
-        attack(enemy)
+        Attack(enemy)
     elif choice == 2:
         if block():
-            player.block_damage_reduction(enemy.attack())
+            player.block_damage_reduction(enemy.Attack())
     elif choice == 3:
         player.use_item()
     elif choice == 4:
@@ -169,7 +163,7 @@ def combat_turn(enemy):
         player.add_xp(enemy.xp)
         return False
     else:
-        enemy_damage = enemy.attack()
+        enemy_damage = enemy.Attack()
         player.take_damage(enemy_damage)
         animate_typing(f"\n{enemy.name} dealt {enemy_damage} damage to you.")
         if player.is_dead():
