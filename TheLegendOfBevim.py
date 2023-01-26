@@ -89,13 +89,14 @@ while True:
         player = Player(user_name, "Warrior", warrior.current_HP, warrior.max_HP, warrior.lvl, warrior.Def, warrior.spd,warrior.STR, warrior.DEX, warrior.equipped_weapon,warrior.INT, warrior.inventory)
         break
     elif klass_choice == GUNSLINGER:
-        player = Player(user_name, "Gunslinger", gunslinger.current_HP, gunslinger.max_HP, gunslinger.lvl, gunslinger.Def, gunslinger.spd, gunslinger.STR, gunslinger.DEX, gunslinger.equipped_weapon,gunslinger.INT, gunslinger.inventory)
+        player = Player(user_name, "Gunslinger",gunslinger.current_HP, gunslinger.max_HP, gunslinger.lvl, gunslinger.Def, gunslinger.spd, gunslinger.STR, gunslinger.DEX, gunslinger.equipped_weapon,gunslinger.INT, gunslinger.inventory)
         break
     else:
         animate_typing("\n You can only choose between 1-5\n")
         break
 
 player.inventory.append(Healing_potion())
+enemy = goblin()
 
 def Attack(enemy):
     #calculate damage dealt to the enemy
@@ -148,7 +149,7 @@ def combat_turn(enemy):
         Attack(enemy)
     elif choice == 2:
         if block():
-            player.block_damage_reduction(enemy.Attack())
+            player.block_damage_reduction(enemy.attack())
     elif choice == 3:
         player.use_item()
     elif choice == 4:
@@ -184,7 +185,8 @@ def initiate_combat(enemy):
                 else:
                     break
 
-  
+initiate_combat(enemy)  
+
 # def initiate_combat():
 #     if player.equipped_weapon == None:
 #         animate_typing(f"""\nYou currently do not have a weapon equipped, thereby giving you no chance in a fight.""")

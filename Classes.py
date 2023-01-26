@@ -45,7 +45,7 @@ class Player():
         if self.equipped_weapon is None:
             return 0
         else:
-            return self.STR * self.equipped_weapon.str_mod + self.DEX * self.equipped_weapon.dex_mod + self.INT * self.equipped_weapon.int_mod
+            return int(self.STR * self.equipped_weapon.str_mod + self.DEX * self.equipped_weapon.dex_mod + self.INT * self.equipped_weapon.int_mod)
     
     def remove_item(self, item):
         self.inventory.remove(item)
@@ -198,12 +198,26 @@ class Player():
        # Här ska lvl öka
 
     def take_damage(self, damage):
-        self.current_HP = (float(self.current_HP) - float(damage))
+        self.current_HP = int(self.current_HP - damage)
         if self.current_HP < 0:
-            return self.current_HP
+            animate_typing("\nYou died....... Git Gud.")
+            exit()
         else:
-            return self.current_HP
+            animate_typing(f"\nCurrent HP: {self.current_HP}")
         # Här ska antalet liv minska
+    
+
+    def block_damage_reduction(self,enemy_damage):
+        block_damage_list = [0.1, 0.2, 0.3]
+        block_damage = random.choice(block_damage_list) * self.STR
+        damage_blocked = block_damage - enemy_damage
+        if damage_blocked > 0:
+            animate_typing(f"\nYou successfully blocked.")
+        else:
+            animate_typing(f"\nYou took {enemy_damage} damage.")
+            self.current_HP = self.current_HP - enemy_damage
+            animate_typing(f"\n{self.current_HP}")
+
 
     def use_healing_item(self,Item):
         if isinstance (Item, Healing_Item):
@@ -286,9 +300,6 @@ class Gunslinger():
         self.INT = 10
         self.spd = 20
         self.inventory = []
-        
-
-
 
 
 class Monster():
@@ -314,14 +325,16 @@ class Monster():
         """)
     
     def take_damage(self, damage):
-        self.HP = (float(self.HP) - float(damage))
+        self.HP = int(self.HP - damage)
+        return self.HP
 
     def is_dead(self):
         if self.HP < 0:
             return self.HP <= 0
     
     def attack(self):
-        damage = (random.randint(0.1, 0.3) * float(self.STR))
+        attack_player_list = [0.1,0.2,0.3]
+        damage = int(random.choice(attack_player_list) * self.STR)
         return damage
 
 
