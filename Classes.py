@@ -230,10 +230,11 @@ class Archer():
         self.HP = 80
         self.STR = 20
         self.DEX = 40
+        self.equipped_weapon = Bow()
         self.INT = 10
         self.spd = 17
         self.inventory = []
-        self.equipped_weapon = Bow()
+        
 
 class Mage():
     def __init__(self) -> None:
@@ -243,10 +244,11 @@ class Mage():
         self.HP = 60
         self.STR = 10
         self.DEX = 20
+        self.equipped_weapon = Magical_staff()
         self.INT = 50
         self.spd = 12
         self.inventory = [Mana_potion()]
-        self.equipped_weapon = Magical_staff()
+        
 
 class Warrior():
     def __init__(self) -> None:
@@ -256,10 +258,11 @@ class Warrior():
         self.HP = 120
         self.STR = 35
         self.DEX = 35
+        self.equipped_weapon = Greatsword()
         self.INT = 20
         self.spd = 12
         self.inventory = []
-        self.equipped_weapon = Greatsword
+        
 
 class Gunslinger():
     def __init__(self) -> None:
@@ -269,10 +272,11 @@ class Gunslinger():
         self.HP = 90        
         self.STR = 15
         self.DEX = 45
+        self.equipped_weapon = Tommy_gun()
         self.INT = 10
         self.spd = 20
         self.inventory = []
-        self.equipped_weapon = Tommy_gun
+        
 
 
 
