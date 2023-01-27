@@ -3,14 +3,14 @@ from Text import*
 from items import*
 
 class Player():
-    def __init__(self, name, klass, current_HP, max_HP, lvl, Def, spd, STR, DEX, equipped_weapon,INT, inventory:list):
+    def __init__(self, name, klass, current_HP, max_HP, lvl, Def, agility, STR, DEX, equipped_weapon,INT, inventory:list):
         self.name = name
         self.lvl = lvl
         self.klass = klass
         self.current_HP = current_HP
         self.max_HP = max_HP
         self.Def = Def
-        self.spd = spd
+        self.agility = agility
         self.XP = 0
         self.XP_to_level_up = 100
         self.STR = STR
@@ -19,12 +19,7 @@ class Player():
         self.inventory = inventory
         self.equipped_weapon = equipped_weapon
         self.inventory_slots = 4
-        
-    def attack(self):
-        pass
-    
-    def defend(self):
-        pass
+
     
     def is_dead(self):
         if self.current_HP < 0:
@@ -69,7 +64,7 @@ class Player():
         STR    {self.STR}
         DEX    {self.DEX}
         INT    {self.INT}
-        Speed  {self.spd}
+        Agile  {self.agility}
 
         equipped Weapon: {self.equipped_weapon}
         INVENTORY {self.inventory}
@@ -188,13 +183,46 @@ class Player():
         else:
             animate_typing(f"\n\nYou cannot use this \n\n")
 
-    def attack():
-        pass
-       # Här sker "eldväxlingen"
+    def player_Attack(self,enemy):
+        #calculate damage dealt to the enemy and check if you missed or landed a hit.
+        hit_chance = random.randint(1,100)
+        if self.agility > enemy.agility:
+            if hit_chance > 30:
+                player_damage = self.calculate_damage()
+                enemy.take_damage(player_damage)
+                animate_typing(f"\nYou hit the {enemy.name} for {player_damage} damage.\n")
+            else:
+                animate_typing("\nYou missed!")
+        else:
+            if hit_chance < 30:
+                player_damage = self.calculate_damage()
+                enemy.take_damage(player_damage)
+                animate_typing(f"\nYou hit the {enemy.name} for {player_damage} damage.\n")
+            else:
+                animate_typing(f"\nYou missed!\n")
+    
+    def dodge(self,enemy):
+        dodge_chance = random.randint(1,100)
+        if self.agility > enemy.agility:
+            if dodge_chance > 30:
+                animate_typing("\nYou successfully dodged.\n")
+            else:
+                animate_typing("\nYou failed to dodge.\n")
+        else:
+            if dodge_chance < 30:
+                animate_typing("\nYou successfully dodged.\n")
+            else:
+                animate_typing("\nYou failed to dodge.\n")
 
-    def Block():
-        pass
-       # Spelaren väljer att blocka nästa tur och försöka få monstret att bli stunned
+    def player_run(self):
+        #calculate chance to run away from combat
+        run_chance = random.randint(1,100)
+        if run_chance > 50: #50% chance to run
+            animate_typing("\nYou successfully ran away!")
+            return True
+        else:
+            animate_typing("\nYou failed to run away.")
+            return False
 
     def add_xp(self, enemy_xp):
         self.XP += enemy_xp
@@ -254,7 +282,7 @@ class Player():
         # Här ska antalet liv minska
     
 
-    def block_damage_reduction(self,enemy_damage):
+    def block(self,enemy_damage):
         block_damage_multiplier = random.randint(1,3)
         block_damage = (block_damage_multiplier/10) * self.STR
         damage_blocked = int(block_damage - enemy_damage)
@@ -269,7 +297,7 @@ class Player():
 
     def use_healing_item(self,Item):
         if isinstance (Item, Healing_Item):
-            health_increase = int(self.current_HP * Item.effect)
+            health_increase = int(self.current_HP * Item.healing_effect)
             self.current_HP += health_increase
             if self.current_HP > self.max_HP:
                 self.current_HP = self.max_HP
@@ -288,7 +316,7 @@ class Barbarian():
         self.STR = 50
         self.DEX = 25
         self.INT = 10
-        self.spd = 15
+        self.agility = 15
         self.inventory = []
         self.equipped_weapon = Axe()
 class Archer():
@@ -302,7 +330,7 @@ class Archer():
         self.DEX = 40
         self.equipped_weapon = Bow()
         self.INT = 10
-        self.spd = 17
+        self.agility = 17
         self.inventory = []
         
 
@@ -317,7 +345,7 @@ class Mage():
         self.DEX = 20
         self.equipped_weapon = Magical_staff()
         self.INT = 50
-        self.spd = 12
+        self.agility = 12
         self.inventory = [Mana_potion()]
         
 
@@ -332,7 +360,7 @@ class Warrior():
         self.DEX = 35
         self.equipped_weapon = Greatsword()
         self.INT = 20
-        self.spd = 12
+        self.agility = 12
         self.inventory = []
         
 
@@ -347,19 +375,19 @@ class Gunslinger():
         self.DEX = 45
         self.equipped_weapon = Tommy_gun()
         self.INT = 10
-        self.spd = 20
+        self.agility = 20
         self.inventory = []
 
 
 class Monster():
-    def __init__(self, name,lvl, xp,klass,max_HP,current_HP,STR,spd,equipped_weapon):
+    def __init__(self, name,lvl, xp,klass,max_HP,current_HP,STR,agility,equipped_weapon):
         self.name = name
         self.lvl = lvl
         self.xp = xp
         self.max_HP = max_HP
         self.current_HP = current_HP
         self.STR = STR
-        self.spd = spd
+        self.agility = agility
         self.inventory = []
         self.klass = klass
         self.equipped_weapon = equipped_weapon
@@ -371,7 +399,7 @@ class Monster():
         Health:{self.current_HP}/{self.max_HP}
         Level: {self.lvl}
         Strength: {self.STR}
-        Speed: {self.spd}
+        Speed: {self.agility}
         """)
     
     def take_damage(self, damage):

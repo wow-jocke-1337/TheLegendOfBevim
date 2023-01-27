@@ -5,6 +5,7 @@ from Classes import *
 from exploring import *
 from Rum import *
 import random
+import os
 
 #Spelar klasser
 archer = Archer()
@@ -31,7 +32,7 @@ bevins_bror_instance = bevins_bror()
 bevins_mamma_instance = bevins_mamma()
 bruxa_instance = bruxa()
 
-
+#Rum typerna
 room_type = ["M","NA","C","T"]
 final_boss_room = ["Morsans_lair"]
 M_rooms = ["Bats","Wolf","Golem","Mountain lion","Slime"]
@@ -40,11 +41,11 @@ C_rooms = ["Treasure room"]
 B_rooms = ["Archdemon","Bevins bror","What da hell!"]
 T_rooms = ["Pitfall","Wall of spikes","Falling guillotine"]
 
+#De listor monster slumpas från
 low_mob_list = [wolf(),golem(),slime(),bats(),mountain_Lion(),Orc(),goblin()]
 mid_mob_list = [dragon(),lower_class_demon(),upper_class_demon(), kikimora(),bruxa()]
 high_mob_list = [archdemon()]
 final_final_boss = [bevins_mamma()]
-
 
 animate_typing_asciispeed(startText)
 time.sleep(1)
@@ -52,9 +53,9 @@ print(gameTitle)
 
 time.sleep(2)
 animate_typing("What is your name? ")
-user_name = input("")    
-
+user_name = input("") 
 time.sleep(1)
+os.system('cls')
 
 while True:
     animate_typing("""
@@ -77,19 +78,24 @@ while True:
     GUNSLINGER = "5"
     
     if klass_choice == BARBARIAN:
-        player = Player(user_name, "Barbarian", barbarian.current_HP, barbarian.max_HP, barbarian.lvl,barbarian.Def,barbarian.spd,barbarian.STR,barbarian.DEX,barbarian.equipped_weapon,barbarian.INT,barbarian.inventory)
+        player = Player(user_name, "Barbarian", barbarian.current_HP, barbarian.max_HP, barbarian.lvl,barbarian.Def,barbarian.agility,barbarian.STR,barbarian.DEX,barbarian.equipped_weapon,barbarian.INT,barbarian.inventory)
+        os.system('cls')
         break
     elif klass_choice == ARCHER:
-        player = Player(user_name, "Archer", archer.current_HP, archer.max_HP, archer.lvl, archer.Def, archer.spd,archer.STR, archer.DEX, archer.equipped_weapon,archer.INT, archer.inventory)
+        player = Player(user_name, "Archer", archer.current_HP, archer.max_HP, archer.lvl, archer.Def, archer.agility,archer.STR, archer.DEX, archer.equipped_weapon,archer.INT, archer.inventory)
+        os.system('cls')
         break
     elif klass_choice == MAGE:
-        player = Player(user_name, "Mage", mage.current_HP, mage.max_HP, mage.lvl, mage.Def, mage.spd,mage.STR, mage.DEX, mage.equipped_weapon,mage.INT, mage.inventory)
+        player = Player(user_name, "Mage", mage.current_HP, mage.max_HP, mage.lvl, mage.Def, mage.agility,mage.STR, mage.DEX, mage.equipped_weapon,mage.INT, mage.inventory)
+        os.system('cls')
         break
     elif klass_choice == WARRIOR:
-        player = Player(user_name, "Warrior", warrior.current_HP, warrior.max_HP, warrior.lvl, warrior.Def, warrior.spd,warrior.STR, warrior.DEX, warrior.equipped_weapon,warrior.INT, warrior.inventory)
+        player = Player(user_name, "Warrior", warrior.current_HP, warrior.max_HP, warrior.lvl, warrior.Def, warrior.agility,warrior.STR, warrior.DEX, warrior.equipped_weapon,warrior.INT, warrior.inventory)
+        os.system('cls')
         break
     elif klass_choice == GUNSLINGER:
-        player = Player(user_name, "Gunslinger",gunslinger.current_HP, gunslinger.max_HP, gunslinger.lvl, gunslinger.Def, gunslinger.spd, gunslinger.STR, gunslinger.DEX, gunslinger.equipped_weapon,gunslinger.INT, gunslinger.inventory)
+        player = Player(user_name, "Gunslinger",gunslinger.current_HP, gunslinger.max_HP, gunslinger.lvl, gunslinger.Def, gunslinger.agility, gunslinger.STR, gunslinger.DEX, gunslinger.equipped_weapon,gunslinger.INT, gunslinger.inventory)
+        os.system('cls')
         break
     else:
         animate_typing("\n You can only choose between 1-5\n")
@@ -98,60 +104,23 @@ while True:
 player.inventory.append(Healing_potion())
 enemy = goblin()
 
-def player_Attack(enemy):
-    #calculate damage dealt to the enemy
-    player_damage = player.calculate_damage()
-    enemy.take_damage(player_damage)
-    animate_typing(f"\nYou dealt {player_damage} hitpoints to the {enemy.name}.")
-
-def block():
-    #calculate chance to block and reduce incoming damage
-    block_chance = random.randint(1,100)
-    if block_chance < 70: #70% chance to block
-        animate_typing("\nSuccessfully blocked!")
-        return True
-    else:
-        animate_typing("\nYou failed to block.")
-        return False
-
-def run():
-    #calculate chance to run away from combat
-    run_chance = random.randint(1,100)
-    if run_chance > 50: #50% chance to run
-        animate_typing("\nYou successfully ran away!")
-        return True
-    else:
-        animate_typing("\nYou failed to run away.")
-        return False
-
-def use_item():
-    player.print_inventory()
-    animate_typing("Enter the number of the item you wish to use:")
-    item_choice = int(input())
-    if item_choice > 0 and item_choice <= len(player.inventory):
-        item = player.inventory[item_choice-1]
-        if isinstance(item, Healing_Item):
-            player.use_healing_item(item)
-        else:
-            animate_typing("\nCannot use this item in combat.")
-    else:
-        animate_typing("\nInvalid item choice.")
-
 def combat_turn(enemy):
     while True:
     #present combat options to player
         animate_typing(f"""\n{enemy.name} HP: {enemy.current_HP}/{enemy.max_HP}""")
         animate_typing(f"""\n{player.name} HP: {player.current_HP}/{player.max_HP}\n""")
-        animate_typing("\nWhat would you like to do?\n1. Attack \n2. Block \n3. Use item \n4. Run \n\nYour Choice --> ")
+        animate_typing("\nWhat would you like to do?\n1. Attack \n2. Block \n3. Dodge \n4. Use item \n5. Run Away \n\nYour Choice --> ")
         choice = int(input())
         if choice == 1:
-            player_Attack(enemy)
+            player.player_Attack(enemy)
         elif choice == 2:
-            player.block_damage_reduction(enemy.attack())
-        elif choice == 3: 
+            player.block(enemy.attack())
+        elif choice == 3:
+            player.dodge(enemy)
+        elif choice == 4: 
             player.use_item()
-        elif choice == 4:
-            if run():
+        elif choice == 5:
+            if player.player_run():
                 break
             else:
                 continue
@@ -185,14 +154,7 @@ def initiate_combat(enemy):
                 break
     return
 
-initiate_combat(enemy)  
-
-# def initiate_combat():
-#     if player.equipped_weapon == None:
-#         animate_typing(f"""\nYou currently do not have a weapon equipped, thereby giving you no chance in a fight.""")
-#         player.print_inventory()
-#     combat_choices()
-
+initiate_combat(enemy)
 
 def gen_room():
     room_count = 0
@@ -352,38 +314,38 @@ animate_typing_slow(f"""
 Welcome {player.name} the {player.klass}
 
 """)
-
-
 time.sleep(1)
+def main_menu():
+    while True:
+        animate_typing(Menu)
+        x = int(input(""))
+        if x == 1:
+            player.print_info()
+            time.sleep(2)
+        elif x == 2:
+            intiate_explore()
+            time.sleep(1)
+            gen_room()
+            time.sleep(1) 
+        elif x == 3:
+            player.print_inventory()
+            time.sleep(2)
+        elif x == 4:
+            animate_typing(credits)
+            time.sleep(2)
+        elif x == 5:
+            animate_typing("""
+        Thank you for playing :) 
 
-while True:
-    animate_typing(Menu)
-    x = int(input(""))
-    if x == 1:
-        player.print_info()
-        time.sleep(2)
-    elif x == 2:
-        intiate_explore()
-        time.sleep(1)
-        gen_room()
-        time.sleep(1) 
-    elif x == 3:
-        player.print_inventory()
-        time.sleep(2)
-    elif x == 4:
-        animate_typing(credits)
-        time.sleep(2)
-    elif x == 5:
-        animate_typing("""
-    Thank you for playing :) 
+        """)
+            exit()
+        else:
+            animate_typing("""
+        You stopid! Choose an actual alternative, you not dreaming. Because if that were true I would be looking at the summary of your career. 
+        You should get a mirror, so you can see how dumb you are. 
+        
+        /SOme wiSe ASian MAn
+        
+        """)
 
-    """)
-        exit()
-    else:
-        animate_typing("""
-    You stopid! Choose an actual alternative, you not dreaming. Because if that were true I would be looking at the summary of your career. 
-    You should get a mirror, so you can see how dumb you are. 
-    
-    /SOme wiSe ASian MAn
-    
-    """)
+main_menu()

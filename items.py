@@ -53,10 +53,10 @@ class Resource_Item():
        return f"{self.name} ({self.klass})"
 
 class Healing_Item():
-    def __init__(self,name,klass,effect) -> None:
+    def __init__(self,name,klass,healing_effect) -> None:
         self.name = name
         self.klass = klass
-        self.effect = effect
+        self.healing_effect = healing_effect
     
     def __repr__(self):
        return f"{self.name} ({self.klass})"
