@@ -46,6 +46,9 @@ class Shovel(Weapon):
     def __init__(self):
         super().__init__("Shovel","Melee Weapon", 0.5, 0.3, 0.1,["Dig","Smash"])
 
+class Hand_of_god(Weapon):
+    def __init__(self):
+        super().__init__("Hand of God","Divine Weapon", 10, 30, 10,["Smite","Adamas"])
 
 
 class Potion():

@@ -13,6 +13,7 @@ barbarian = Barbarian()
 mage = Mage()
 warrior = Warrior()
 gunslinger = Gunslinger()
+bevin_himself = Bevin_himself()
 
 #Monster klasserna
 wolf_instance = wolf()
@@ -90,6 +91,7 @@ while True:
     MAGE = "3"
     WARRIOR = "4"
     GUNSLINGER = "5"
+    BEVINHIMSELF = "666"
     
     if klass_choice == BARBARIAN:
         player = Player(user_name, "Barbarian", barbarian.current_HP, barbarian.max_HP, barbarian.lvl,barbarian.Def,barbarian.agility,barbarian.STR,barbarian.DEX,barbarian.equipped_weapon,barbarian.INT,barbarian.inventory)
@@ -111,8 +113,12 @@ while True:
         player = Player(user_name, "Gunslinger",gunslinger.current_HP, gunslinger.max_HP, gunslinger.lvl, gunslinger.Def, gunslinger.agility, gunslinger.STR, gunslinger.DEX, gunslinger.equipped_weapon,gunslinger.INT, gunslinger.inventory)
         os.system('cls')
         break
+    elif klass_choice == BEVINHIMSELF:
+        player = Player(user_name, "Bevin Himself",bevin_himself.current_HP, bevin_himself.max_HP, bevin_himself.lvl, bevin_himself.Def, bevin_himself.agility, bevin_himself.STR, bevin_himself.DEX, bevin_himself.equipped_weapon,bevin_himself.INT, bevin_himself.inventory)
+        os.system('cls')
+        break
     else:
-        animate_typing("\n You can only choose between 1-5\n")
+        animate_typing("\n You can only choose between 1-6\n")
         os.system('cls')
 player.inventory.append(Healing_potion())
 time.sleep(2)
@@ -401,5 +407,6 @@ def gen_room():
     else:
         animate_typing(f"""\n\nBruh you go home, you've done enough shitting in this world :|""")
         animate_typing_asciispeed(the_end_of_the_end_end_screen)
+        exit()
 
 main_menu()

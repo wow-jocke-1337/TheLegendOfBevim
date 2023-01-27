@@ -19,7 +19,7 @@ class Player():
         self.DEX = DEX
         self.inventory = inventory
         self.equipped_weapon = equipped_weapon
-        self.inventory_slots = 420
+        self.inventory_slots = 4
 
     
     def is_dead(self):
@@ -216,6 +216,11 @@ INVENTORY {self.inventory}
                     animate_typing(f"\n{ability}!")
                     animate_typing(f"\n{self.name} landed a hit the on the {enemy.name} for {player_damage} damage.\n")
                     animate_typing("\nSSS rank. Smoking, Sexy, Style!!!\n")
+                elif self.klass == "Bevin Himself":
+                    ability = random.choice(self.equipped_weapon.abilities)
+                    animate_typing(f"\n{ability}!")
+                    animate_typing(f"\n{self.name} swiftly drew, and damaged the {enemy.name} for {player_damage} damage.\n")
+                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!\n")
             else:
                 animate_typing("\nYou missed!")
         else:
@@ -294,6 +299,12 @@ INVENTORY {self.inventory}
             self.INT += 2
             self.max_HP += 12
             self.current_HP = self.max_HP
+        elif self.klass == "Bevin Himself":
+            self.DEX += 3
+            self.STR += 1
+            self.INT += 2
+            self.max_HP += 12
+            self.current_HP = self.max_HP
        # Här ska lvl öka
 
     def take_damage(self, damage):
@@ -345,6 +356,7 @@ class Barbarian():
         self.agility = 15
         self.inventory = []
         self.equipped_weapon = Axe()
+
 class Archer():
     def __init__(self) -> None:
         self.lvl = 1
@@ -380,8 +392,8 @@ class Warrior():
         self.lvl = 1
         self.klass = "Warrior"
         self.Def = 35
-        self.current_HP = 1200
-        self.max_HP = 1200
+        self.current_HP = 120
+        self.max_HP = 120
         self.STR = 35
         self.DEX = 35
         self.equipped_weapon = Greatsword()
@@ -402,6 +414,20 @@ class Gunslinger():
         self.equipped_weapon = Tommy_gun()
         self.INT = 10
         self.agility = 20
+        self.inventory = []
+
+class Bevin_himself():
+    def __init__(self) -> None:
+        self.lvl = 9
+        self.klass = "Bevin Himself"
+        self.Def = 9999
+        self.current_HP = 99999
+        self.max_HP = 99999      
+        self.STR = 666666
+        self.DEX = 10000
+        self.equipped_weapon = Hand_of_god()
+        self.INT = 800
+        self.agility = 2060
         self.inventory = []
 
 
