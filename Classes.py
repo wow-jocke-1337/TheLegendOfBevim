@@ -190,7 +190,21 @@ class Player():
             if hit_chance > 30:
                 player_damage = self.calculate_damage()
                 enemy.take_damage(player_damage)
-                animate_typing(f"\nYou hit the {enemy.name} for {player_damage} damage.\n")
+                if isinstance(self,Gunslinger()):
+                    animate_typing(f"\n{self.name} landed a hit on the {enemy.name} for {player_damage} damage.\n")
+                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!")
+                elif isinstance(self,Mage()):
+                    animate_typing(f"\n{self.name} fired a magic missile, damaging the {enemy.name} for {player_damage} damage.\n")
+                    animate_typing("\nStylish!")
+                elif isinstance(self,Warrior()):
+                    animate_typing(f"\n{self.name} landed a heavy blow on the {enemy.name} for {player_damage} damage.\n")
+                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!")
+                elif isinstance(self,Barbarian()):
+                    animate_typing(f"\n{self.name} landed a hit the on the {enemy.name} for {player_damage} damage.\n")
+                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!")
+                elif isinstance(self,Archer()):
+                    animate_typing(f"\n{self.name} landed a hit the on the {enemy.name} for {player_damage} damage.\n")
+                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!")
             else:
                 animate_typing("\nYou missed!")
         else:
@@ -205,14 +219,14 @@ class Player():
         dodge_chance = random.randint(1,100)
         if self.agility > enemy.agility:
             if dodge_chance > 30:
-                animate_typing("\nYou successfully dodged.\n")
+                return True
             else:
-                animate_typing("\nYou failed to dodge.\n")
+                return False
         else:
             if dodge_chance < 30:
-                animate_typing("\nYou successfully dodged.\n")
+                return True
             else:
-                animate_typing("\nYou failed to dodge.\n")
+                return False
 
     def player_run(self):
         #calculate chance to run away from combat
@@ -287,10 +301,11 @@ class Player():
         block_damage = (block_damage_multiplier/10) * self.STR
         damage_blocked = int(block_damage - enemy_damage)
         if damage_blocked > 0:
-            animate_typing(f"\nYou successfully blocked.\n")
+            animate_typing(f"\n{self.name} successfully blocked.\n")
             return True
         else:
             animate_typing(f"\nYour block did not go through\n")
+            animate_typing(f"\n{self.name} lost {enemy_damage} hp.\n")
             self.current_HP = self.current_HP - enemy_damage
             return False
 
@@ -417,6 +432,20 @@ class Monster():
         low_mob_attack_multiplier = random.randint(2,3)
         damage = int((low_mob_attack_multiplier/10) * self.STR)
         return damage
+
+    def enemy_combat_turn(self,player):
+        if self.is_dead():
+            animate_typing(f"\n{self.name} has been defeated!")
+            player.add_xp(self.xp)
+            return False
+        else:
+            enemy_damage = self.attack()
+            player.take_damage(enemy_damage)
+            animate_typing(f"\n{self.name} dealt {enemy_damage} damage to you.\n")
+            if player.is_dead():
+                animate_typing(f"\n{player.name} has been defeated!")
+                return False
+            return True
 
 
 class wolf(Monster):

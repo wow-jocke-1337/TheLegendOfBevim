@@ -47,11 +47,11 @@ mid_mob_list = [dragon(),lower_class_demon(),upper_class_demon(), kikimora(),bru
 high_mob_list = [archdemon()]
 final_final_boss = [bevins_mamma()]
 
-animate_typing_asciispeed(startText)
+animate_typing_fast(startText)
 time.sleep(1)
-print(gameTitle)
-
+animate_typing_asciispeed(gameTitle)
 time.sleep(2)
+os.system('cls')
 animate_typing("What is your name? ")
 user_name = input("") 
 time.sleep(1)
@@ -113,11 +113,16 @@ def combat_turn(enemy):
         choice = int(input())
         if choice == 1:
             player.player_Attack(enemy)
+            enemy.enemy_combat_turn(player)
         elif choice == 2:
             player.block(enemy.attack())
         elif choice == 3:
-            player.dodge(enemy)
-        elif choice == 4: 
+            if player.dodge(enemy):
+                animate_typing(f"\n{player.name} successfully dodged their attack.\n")
+            else:
+                animate_typing(f"\n{player.name} was to slow to dodge the attack.")
+                enemy.enemy_combat_turn(player)
+        elif choice == 4:
             player.use_item()
         elif choice == 5:
             if player.player_run():
@@ -127,19 +132,20 @@ def combat_turn(enemy):
         else:
             animate_typing("\nInvalid choice.")
             return True
-
-        if enemy.is_dead():
-            animate_typing(f"\n{enemy.name} has been defeated!")
-            player.add_xp(enemy.xp)
-            return False
-        else:
-            enemy_damage = enemy.attack()
-            player.take_damage(enemy_damage)
-            animate_typing(f"\n{enemy.name} dealt {enemy_damage} damage to you.")
-            if player.is_dead():
-                animate_typing(f"\n{player.name} has been defeated!")
-                return False
-            return True
+        
+# def enemy_combat_turn():
+#         if enemy.is_dead():
+#             animate_typing(f"\n{enemy.name} has been defeated!")
+#             player.add_xp(enemy.xp)
+#             return False
+#         else:
+#             enemy_damage = enemy.attack()
+#             player.take_damage(enemy_damage)
+#             animate_typing(f"\n{enemy.name} dealt {enemy_damage} damage to you.")
+#             if player.is_dead():
+#                 animate_typing(f"\n{player.name} has been defeated!")
+#                 return False
+#             return True
 
 def initiate_combat(enemy):
     while True:
