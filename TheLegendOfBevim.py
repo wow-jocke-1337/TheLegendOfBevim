@@ -47,20 +47,26 @@ mid_mob_list = [dragon(),lower_class_demon(),upper_class_demon(), kikimora(),bru
 high_mob_list = [archdemon()]
 final_final_boss = [bevins_mamma()]
 
-animate_typing_fast(startText)
-time.sleep(1)
+
+
 animate_typing_asciispeed(gameTitle)
+time.sleep(1)
+animate_typing(startText)
 time.sleep(2)
 os.system('cls')
-animate_typing("What is your name? ")
-user_name = input("") 
+animate_typing("What is thou called? ")
+user_name = input("")
+os.system('cls')
+if user_name == "Bevin" or "Alfred" or "Krille" or "William" or "Bing":
+    animate_typing_slow("\n\nA real fine name indeed. ")
+    animate_typing_slow("Although great names often signify the art of a great passing, let us hope thou shalt not falter as they did.")
 time.sleep(1)
 os.system('cls')
 
 while True:
     animate_typing("""
 
-    Kindly choose one of the presented classes. 
+    Kindly choose thy class. 
         
         1. Barbarian
         2. Archer

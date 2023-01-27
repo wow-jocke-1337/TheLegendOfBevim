@@ -24,9 +24,9 @@ def animate_typing_slow(text):
         sys.stdout.flush()
         time.sleep(0.03)
 
-startText = ("""
+startText = ("""\n
     Welcome to The Tales of an Adventurer. You found yourself lost inside a dungeon in the mountains 
-    and must fight to survive, if you seek to escape and regain your freedom.""")
+    and must fight to survive, if you seek to escape and regain your freedom.\n""")
 
 background_info = """
     Developed by three creators, as a school project, the game circles around an action and dungeon-crawler
