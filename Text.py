@@ -25,7 +25,7 @@ def animate_typing_slow(text):
         time.sleep(0.03)
 
 startText = ("""\n
-    Welcome to The Tales of an Adventurer. You found yourself lost inside a dungeon in the mountains 
+    Welcome to Enter Frozen halls. You found yourself lost inside a dungeon in the mountains 
     and must fight to survive, if you seek to escape and regain your freedom.\n""")
 
 background_info = """
@@ -101,5 +101,9 @@ lone_village = """
     Hello Darkness my old friend.""" 
 
 cemetery = """
-    You break into an all out fearsome breakdance, with drip practially running off of you, further increasing the feeling of depression by the undead."""
+    You break into an all out fearsome breakdance, with drip practially running off of you, further increasing the feeling of depression by the undead
+    and cementing your swagger as unlimited!!!"""
+
+wall_of_spikes_trap = """\nYou recover yourself... However after blowing past you the wall is revealed as able to switch between spikes and having a plain wall 
+and its heading back towards you. You feel the largest burst of energy filling you with MOTIVATION and you slash through space and time, destroying the wall in the process.\n\n"""
 

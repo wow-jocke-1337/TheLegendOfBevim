@@ -14,7 +14,6 @@ mage = Mage()
 warrior = Warrior()
 gunslinger = Gunslinger()
 
-
 #Monster klasserna
 wolf_instance = wolf()
 goblin_instance = goblin()
@@ -32,6 +31,16 @@ bevins_bror_instance = bevins_bror()
 bevins_mamma_instance = bevins_mamma()
 bruxa_instance = bruxa()
 
+#Olika Vapen
+greatsword_instance = Greatsword()
+magical_staff_instance = Magical_staff()
+axe_instance = Axe()
+bow_instance = Bow()
+tommy_gun_instance = Tommy_gun()
+moonlight_greatsword_instance = Moonlight_greatsword()
+
+item_list = [greatsword_instance, magical_staff_instance, axe_instance, bow_instance, tommy_gun_instance,moonlight_greatsword_instance]
+
 #Rum typerna
 room_type = ["M","NA","C","T"]
 final_boss_room = ["Morsans_lair"]
@@ -44,13 +53,12 @@ T_rooms = ["Pitfall","Wall of spikes","Falling guillotine"]
 #De listor monster slumpas från
 low_mob_list = [wolf(),golem(),slime(),bats(),mountain_Lion(),Orc(),goblin()]
 mid_mob_list = [dragon(),lower_class_demon(),upper_class_demon(), kikimora(),bruxa()]
-high_mob_list = [archdemon()]
+endgame_mob_list = [archdemon()]
 final_final_boss = [bevins_mamma()]
 
 
-
 animate_typing_asciispeed(gameTitle)
-time.sleep(1)
+time.sleep(4)
 animate_typing(startText)
 time.sleep(2)
 os.system('cls')
@@ -59,8 +67,8 @@ user_name = input("")
 os.system('cls')
 if user_name == "Bevin" or "Alfred" or "Krille" or "William" or "Bing":
     animate_typing_slow("\n\nA real fine name indeed. ")
-    animate_typing_slow("Although great names often signify the art of a great passing, let us hope thou shalt not falter as they did.")
-time.sleep(1)
+    animate_typing_slow("Although great names often signify the art of a great passing, let us hope thou shalt not falter as the others did.....")
+time.sleep(2)
 os.system('cls')
 
 while True:
@@ -105,58 +113,108 @@ while True:
         break
     else:
         animate_typing("\n You can only choose between 1-5\n")
-        break
-
+        os.system('cls')
 player.inventory.append(Healing_potion())
-enemy = goblin()
+time.sleep(2)
+animate_typing_slow(f"""
+
+Welcome {player.name} the {player.klass}
+
+""")
+time.sleep(1.5)
+os.system('cls')
+def main_menu():
+    while True:
+        animate_typing(Menu)
+        x = int(input(""))
+        if x == 1:
+            os.system('cls')
+            player.print_info()
+            time.sleep(3)
+            os.system('cls')
+        elif x == 2:
+            if player.XP > 0:
+                os.system('cls')
+                time.sleep(1)
+                gen_room()
+                time.sleep(1)
+            else:
+                os.system('cls')
+                intiate_first_explore()
+                time.sleep(1)
+                os.system('cls')
+                gen_room()
+                time.sleep(1)
+        elif x == 3:
+            os.system('cls')
+            player.print_inventory()
+            time.sleep(2)
+            os.system('cls')
+        elif x == 4:
+            os.system('cls')
+            animate_typing(credits)
+            time.sleep(2)
+        elif x == 5:
+            os.system('cls')
+            animate_typing("""
+        Thank you for playing :) 
+
+        """)
+            exit()
+        else:
+            os.system('cls')
+            animate_typing("""
+        You stopid! Choose an actual alternative, you not dreaming. Because if that were true I would be looking at the summary of your career. 
+        You should get a mirror, so you can see how dumb you are. 
+        
+        /SOme wiSe ASian MAn
+        
+        """)
 
 def combat_turn(enemy):
     while True:
     #present combat options to player
-        animate_typing(f"""\n{enemy.name} HP: {enemy.current_HP}/{enemy.max_HP}""")
-        animate_typing(f"""\n{player.name} HP: {player.current_HP}/{player.max_HP}\n""")
-        animate_typing("\nWhat would you like to do?\n1. Attack \n2. Block \n3. Dodge \n4. Use item \n5. Run Away \n\nYour Choice --> ")
-        choice = int(input())
-        if choice == 1:
-            player.player_Attack(enemy)
-            enemy.enemy_combat_turn(player)
-        elif choice == 2:
-            player.block(enemy.attack())
-        elif choice == 3:
-            if player.dodge(enemy):
-                animate_typing(f"\n{player.name} successfully dodged their attack.\n")
-            else:
-                animate_typing(f"\n{player.name} was to slow to dodge the attack.")
-                enemy.enemy_combat_turn(player)
-        elif choice == 4:
-            player.use_item()
-        elif choice == 5:
-            if player.player_run():
-                break
-            else:
-                continue
+        if enemy.is_dead(player):
+            os.system('cls')
+            break
         else:
-            animate_typing("\nInvalid choice.")
-            return True
-        
-# def enemy_combat_turn():
-#         if enemy.is_dead():
-#             animate_typing(f"\n{enemy.name} has been defeated!")
-#             player.add_xp(enemy.xp)
-#             return False
-#         else:
-#             enemy_damage = enemy.attack()
-#             player.take_damage(enemy_damage)
-#             animate_typing(f"\n{enemy.name} dealt {enemy_damage} damage to you.")
-#             if player.is_dead():
-#                 animate_typing(f"\n{player.name} has been defeated!")
-#                 return False
-#             return True
+            animate_typing(f"""\n{enemy.name} HP: {enemy.current_HP}/{enemy.max_HP}""")
+            animate_typing(f"""\n{player.name} HP: {player.current_HP}/{player.max_HP}\n""")
+            animate_typing("\nWhat would you like to do?\n1. Attack \n2. Block \n3. Dodge \n4. Use item \n5. Run Away \n\nYour Choice --> ")
+            choice = int(input())
+            if choice == 1:
+                os.system('cls')
+                player.player_Attack(enemy)
+                enemy.enemy_combat_turn(player)
+            elif choice == 2:
+                os.system('cls')
+                player.block(enemy.attack())
+            elif choice == 3:
+                os.system('cls')
+                if player.dodge(enemy):
+                    animate_typing(f"\n{player.name} successfully dodged their attack.\n")
+                else:
+                    animate_typing(f"\n{player.name} was to slow to dodge the attack.\n")
+                    enemy.enemy_combat_turn(player)
+            elif choice == 4:
+                os.system('cls')
+                player.print_inventory()
+            elif choice == 5:
+                os.system('cls')
+                if player.player_run():
+                    break
+                else:
+                    continue
+            else:
+                os.system('cls')
+                animate_typing("\nInvalid choice.")
+                return True
 
 def initiate_combat(enemy):
     while True:
         if player.equipped_weapon == None:
             animate_typing(f"\nYou currently do not have a weapon equipped, please equip a weapon from your inventory.")
+            os.system('cls')
             player.print_inventory()
             continue
         else:
@@ -165,8 +223,6 @@ def initiate_combat(enemy):
             else:
                 break
     return
-
-initiate_combat(enemy)
 
 def gen_room():
     room_count = 0
@@ -177,6 +233,7 @@ def gen_room():
                     choice_of_door = int(input(""))
                     if choice_of_door == 1 or choice_of_door==2 or choice_of_door==3:
                         room = random.choice(room_type)
+                        os.system('cls')
                         if room == "M":
                             animate_typing('\nMonster room.\n')
                             monster = random.choice(low_mob_list)
@@ -184,46 +241,60 @@ def gen_room():
                             #     if isinstance(monster,monster_type):
                             #         animate_typing(f"\n You encountered a {monster_type.name}")
                             if isinstance(monster,wolf):
-                                animate_typing(f'\nYou encountered a {wolf_instance.name}')
+                                animate_typing(f'\nYou encountered a {wolf_instance.name}\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)
                                 initiate_combat(monster)
                                 break
                             elif isinstance(monster,bats):
-                                animate_typing(f'\nYou encountered a {bats_instance.name}!')
+                                animate_typing(f'\nYou encountered {bats_instance.name}!\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)
                                 initiate_combat(monster)
                                 break
                             elif isinstance(monster,golem):
-                                animate_typing(f'\nYou encountered a {golem_instance.name}!')    
+                                animate_typing(f'\nYou encountered a {golem_instance.name}!\n') 
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)   
                                 initiate_combat(monster) 
                                 break               
                             elif isinstance(monster,mountain_Lion):
-                                animate_typing(f'\nYou encountered a {mountain_Lion_instance.name}!')    
+                                animate_typing(f'\nYou encountered a {mountain_Lion_instance.name}!\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)    
                                 initiate_combat(monster) 
                                 break              
                             elif isinstance(monster,slime):
-                                animate_typing(f'\nYou encountered a {slime_instance.name}!')
+                                animate_typing(f'\nYou encountered a {slime_instance.name}!\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)
                                 initiate_combat(monster)
                                 break
                             elif isinstance(monster,goblin):
-                                animate_typing(f'\nYou encountered a {goblin_instance.name}!')
+                                animate_typing(f'\nYou encountered a {goblin_instance.name}!\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)
                                 initiate_combat(monster)
                                 break
                             elif isinstance(monster,Orc):
-                                animate_typing(f'\nYou encountered a {orc_instance.name}!')
+                                animate_typing(f'\nYou encountered an {orc_instance.name}!\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)
                                 initiate_combat(monster)
                         elif room == "NA":
                             new_area = random.choice(NA_rooms)
                             animate_typing(new_area)
                         elif room == "C":
-                            animate_typing(f'\nYou found a Treasure!')
+                            found_item = random.choice(item_list)
+                            player.add_item(found_item)
+                            animate_typing(f'\nYou found a {found_item.name}!\n')
                         elif room == "T":
                             animate_typing(f'\nTrap room.\n')
                             trap = random.choice(T_rooms)
                             if trap == "Pitfall":
-                                animate_typing(f'\nYou fell!')
+                                animate_typing(f'\nYou fell!\n')
                             elif trap == "Moving Wall of spikes":
-                                animate_typing(f'\nYou got spiked and lost hp!\n')
-                                animate_typing(f"""\nYou recover yourself... However after blowing past you the wall is revealed as able to switch between spikes and having a plain wall 
-                                and its heading back towards you. You feel the largest burst of energy filling you with MOTIVATION and you slash through space and time, destroying the wall in the process.\n\n""")
+                                animate_typing(wall_of_spikes_trap)
                             else:
                                 animate_typing('\nSevered you are!')
                         room_count += 1
@@ -242,35 +313,43 @@ def gen_room():
                             animate_typing('\nMonster room.\n')
                             monster = random.choice(mid_mob_list)
                             if isinstance(monster,dragon):
-                                animate_typing(f'\nYou encountered a {dragon_instance.name}')
+                                animate_typing(f'\nYou encountered a {dragon_instance.name}\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)
                                 initiate_combat(monster)
                                 break
                             elif isinstance(monster,lower_class_demon):
-                                animate_typing(f'\nYou encountered a {lower_class_demon_instance.name}!')
+                                animate_typing(f'\nYou encountered a {lower_class_demon_instance.name}!\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)
                                 initiate_combat(monster)
                                 break
                             elif isinstance(monster,upper_class_demon):
-                                animate_typing(f'\nYou encountered a {upper_class_demon_instance.name}!')    
+                                animate_typing(f'\nYou encountered an {upper_class_demon_instance.name}!\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)    
                                 initiate_combat(monster) 
                                 break               
-                            elif isinstance(monster,kikimora()):
-                                animate_typing(f'\nYou encountered a {kikimora_instance.name}!')    
+                            elif isinstance(monster,kikimora):
+                                animate_typing(f'\nYou encountered a {kikimora_instance.name}!\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)    
                                 initiate_combat(monster)
                                 break               
                         elif room == "NA":
                             new_area = random.choice(NA_rooms)
                             animate_typing(new_area)
                         elif room == "C":
-                            animate_typing('\nYou found a Treasure!')
+                            found_item = random.choice(item_list)
+                            player.add_item(found_item)
+                            animate_typing(f'\nYou found a {found_item.name}!\n')
                         elif room == "T":
                             animate_typing('\nTrap room.\n')
                             trap = random.choice(T_rooms)
                             if trap == "Pitfall":
-                                animate_typing('\nYou fell!')
+                                animate_typing('\nYou fell!\n')
                             elif trap == "Moving Wall of spikes":
-                                animate_typing(f'\nYou got spiked and lost hp!\n')
-                                animate_typing(f"""\nYou recover yourself... However after blowing past you the wall is revealed as able to switch between spikes and having a plain wall 
-                                and its heading back towards you. You feel the largest burst of energy filling you with MOTIVATION and you slash through space and time, destroying the wall in the process.\n\n""")
+                                animate_typing(wall_of_spikes_trap)
                             else:
                                 animate_typing('\nSevered you are!')
                     else:
@@ -284,16 +363,20 @@ def gen_room():
                         room = random.choice(room_type)
                         if room == "M":
                             animate_typing('\nMonster room.\n')
-                            monster = random.choice(high_mob_list)
-                            if isinstance(monster,archdemon()):
-                                animate_typing(f'\nYou encountered a {archdemon_instance.name}')
+                            monster = random.choice(endgame_mob_list)
+                            if isinstance(monster,archdemon):
+                                animate_typing(f'\nYou encountered an {archdemon_instance.name}\n')
+                                monster_item = random.choice(item_list)
+                                monster.inventory.append(monster_item)
                                 initiate_combat(monster)
                                 break
                         elif room == "NA":
                             new_area = random.choice(NA_rooms)
                             animate_typing(new_area)
                         elif room == "C":
-                            animate_typing('\nYou found a Treasure!')
+                            found_item = random.choice(item_list)
+                            player.add_item(found_item)
+                            animate_typing(f'\nYou found a {found_item.name}!\n')
                         elif room == "T":
                             animate_typing('\nTrap room.\n')
                             trap = random.choice(T_rooms)
@@ -301,8 +384,7 @@ def gen_room():
                                 animate_typing('\nYou fell!')
                             elif trap == "Moving Wall of spikes":
                                 animate_typing(f'\nYou got spiked and lost hp!\n')
-                                animate_typing(f"""\nYou recover yourself... However after blowing past you the wall is revealed as able to switch between spikes and having a plain wall 
-                                and its heading back towards you. You feel the largest burst of energy filling you with MOTIVATION and you slash through space and time, destroying the wall in the process.\n\n""")
+                                animate_typing(wall_of_spikes_trap)
                             else:
                                 animate_typing('\nSevered you are!')
                     else:
@@ -319,45 +401,5 @@ def gen_room():
     else:
         animate_typing(f"""\n\nBruh you go home, you've done enough shitting in this world :|""")
         animate_typing_asciispeed(the_end_of_the_end_end_screen)
-
-time.sleep(1)
-animate_typing_slow(f"""
-
-Welcome {player.name} the {player.klass}
-
-""")
-time.sleep(1)
-def main_menu():
-    while True:
-        animate_typing(Menu)
-        x = int(input(""))
-        if x == 1:
-            player.print_info()
-            time.sleep(2)
-        elif x == 2:
-            intiate_explore()
-            time.sleep(1)
-            gen_room()
-            time.sleep(1) 
-        elif x == 3:
-            player.print_inventory()
-            time.sleep(2)
-        elif x == 4:
-            animate_typing(credits)
-            time.sleep(2)
-        elif x == 5:
-            animate_typing("""
-        Thank you for playing :) 
-
-        """)
-            exit()
-        else:
-            animate_typing("""
-        You stopid! Choose an actual alternative, you not dreaming. Because if that were true I would be looking at the summary of your career. 
-        You should get a mirror, so you can see how dumb you are. 
-        
-        /SOme wiSe ASian MAn
-        
-        """)
 
 main_menu()

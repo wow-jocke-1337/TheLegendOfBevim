@@ -13,12 +13,13 @@ class Player():
         self.agility = agility
         self.XP = 0
         self.XP_to_level_up = 100
+        self.money_at_hand = 20
         self.STR = STR
         self.INT = INT
         self.DEX = DEX
         self.inventory = inventory
         self.equipped_weapon = equipped_weapon
-        self.inventory_slots = 4
+        self.inventory_slots = 420
 
     
     def is_dead(self):
@@ -27,14 +28,14 @@ class Player():
         else:
             return False
     
-    def can_use_item(self, item): 
+    def can_buy_item(self, item):
         pass
     
     def add_item(self, item):
         if len(self.inventory) < self.inventory_slots:
             self.inventory.append(item)
         else:
-            print("Inventory full!")
+            animate_typing("Inventory full!")
 
     def equip_weapon(self, weapon):
         if self.equipped_weapon == None:
@@ -53,22 +54,22 @@ class Player():
         self.inventory.remove(item)
 
     def print_info(self):
-        animate_typing_fast(f"""
-        -----------------------------------------
-        {self.name} the {self.klass} 
-        LVL: {self.lvl}  XP: {self.XP}
-        HP  Current: {self.current_HP}  
-            maximum: {self.max_HP}
+        animate_typing(f"""
+-----------------------------------------
+{self.name} the {self.klass} 
+LVL: {self.lvl}  XP: {self.XP}
+HP: Current: {self.current_HP}  
+    Maximum: {self.max_HP}
 
-        Def    {self.Def}
-        STR    {self.STR}
-        DEX    {self.DEX}
-        INT    {self.INT}
-        Agile  {self.agility}
+Def    {self.Def}
+STR    {self.STR}
+DEX    {self.DEX}
+INT    {self.INT}
+Agil   {self.agility}
 
-        equipped Weapon: {self.equipped_weapon}
-        INVENTORY {self.inventory}
-        ------------------------------------------""")            
+Equipped Weapon: {self.equipped_weapon}
+INVENTORY {self.inventory}
+------------------------------------------""")            
 
     def print_inventory(self):
         while True:
@@ -190,25 +191,35 @@ class Player():
             if hit_chance > 30:
                 player_damage = self.calculate_damage()
                 enemy.take_damage(player_damage)
-                if isinstance(self,Gunslinger()):
-                    animate_typing(f"\n{self.name} landed a hit on the {enemy.name} for {player_damage} damage.\n")
-                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!")
-                elif isinstance(self,Mage()):
-                    animate_typing(f"\n{self.name} fired a magic missile, damaging the {enemy.name} for {player_damage} damage.\n")
-                    animate_typing("\nStylish!")
-                elif isinstance(self,Warrior()):
+                if self.klass == "Gunslinger":
+                    ability = random.choice(self.equipped_weapon.abilities)
+                    animate_typing(f"\n{ability}!")
+                    animate_typing(f"\n{self.name} swiftly drew, and damaged the {enemy.name} for {player_damage} damage.\n")
+                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!\n")
+                elif self.klass == "Mage":
+                    ability = random.choice(self.equipped_weapon.abilities)
+                    animate_typing(f"\n{ability}!")
+                    animate_typing(f"\n{self.name} cast a spell, damaging the {enemy.name} for {player_damage} damage.\n")
+                    animate_typing("\nStylish!\n")
+                elif self.klass == "Warrior":
+                    ability = random.choice(self.equipped_weapon.abilities)
+                    animate_typing(f"\n{ability}!")
                     animate_typing(f"\n{self.name} landed a heavy blow on the {enemy.name} for {player_damage} damage.\n")
-                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!")
-                elif isinstance(self,Barbarian()):
+                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!\n")
+                elif self.klass == "Barbarian":
+                    ability = random.choice(self.equipped_weapon.abilities)
+                    animate_typing(f"\n{ability}!")
                     animate_typing(f"\n{self.name} landed a hit the on the {enemy.name} for {player_damage} damage.\n")
-                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!")
-                elif isinstance(self,Archer()):
+                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!\n")
+                elif self.klass == "Archer":
+                    ability = random.choice(self.equipped_weapon.abilities)
+                    animate_typing(f"\n{ability}!")
                     animate_typing(f"\n{self.name} landed a hit the on the {enemy.name} for {player_damage} damage.\n")
-                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!")
+                    animate_typing("\nSSS rank. Smoking, Sexy, Style!!!\n")
             else:
                 animate_typing("\nYou missed!")
         else:
-            if hit_chance < 30:
+            if hit_chance < 80:
                 player_damage = self.calculate_damage()
                 enemy.take_damage(player_damage)
                 animate_typing(f"\nYou hit the {enemy.name} for {player_damage} damage.\n")
@@ -251,39 +262,38 @@ class Player():
     def lvl_up(self):
         self.lvl += 1
         self.XP_to_level_up = self.lvl * 50
-        if isinstance(self,Archer()):
+        if self.klass == "Archer":
             self.DEX += 3
             self.STR += 1
             self.INT += 1
             self.max_HP += 12
             self.current_HP = self.max_HP
-        elif isinstance(self,Warrior()):
-            self.DEX += 1.5
-            self.STR += 2.5
+        elif self.klass == "Warrior":
+            self.DEX += 2
+            self.STR += 3
             self.INT += 1
             self.max_HP += 12
             self.current_HP = self.max_HP
             self.DEX = int
             self.STR = int
-        elif isinstance(self,Mage()):
+        elif self.klass == "Mage":
             self.DEX += 1
             self.STR += 1
             self.INT += 3
             self.max_HP += 12
             self.current_HP = self.max_HP
-        elif isinstance(self,Barbarian()):
+        elif self.klass == "Barbarian":
             self.DEX += 1
             self.STR += 3
             self.INT += 1
             self.max_HP += 12
             self.current_HP = self.max_HP
-        elif isinstance(self,Gunslinger()):
+        elif self.klass == "Gunslinger":
             self.DEX += 3
             self.STR += 1
-            self.INT += 1.5
+            self.INT += 2
             self.max_HP += 12
             self.current_HP = self.max_HP
-            self.INT = int
        # Här ska lvl öka
 
     def take_damage(self, damage):
@@ -308,6 +318,7 @@ class Player():
             animate_typing(f"\n{self.name} lost {enemy_damage} hp.\n")
             self.current_HP = self.current_HP - enemy_damage
             return False
+        #Här ska chansen att blockera beräknas och returnera som Falsk eller Sant samt HP.
 
 
     def use_healing_item(self,Item):
@@ -316,10 +327,10 @@ class Player():
             self.current_HP += health_increase
             if self.current_HP > self.max_HP:
                 self.current_HP = self.max_HP
-                animate_typing(f"\nYou drank a {Item.name}.\n")
-                animate_typing(f"\n...Your health has increased by {health_increase} points...\n Current HP {self.current_HP} Max HP {self.max_HP}")
+                animate_typing(f"\n{Item.name} used.")
+                animate_typing(f"...Your health has increased by {health_increase} points...\n{self.name}s HP: {self.current_HP}/{self.max_HP}")
         elif isinstance (Item, Resource_Item):
-            animate_typing(f"\nYou drank a {Item.name}\n")
+            animate_typing(f"\n{Item.name} used.\n")
 
 class Barbarian():
     def __init__(self) -> None:
@@ -369,8 +380,8 @@ class Warrior():
         self.lvl = 1
         self.klass = "Warrior"
         self.Def = 35
-        self.current_HP = 120
-        self.max_HP = 120
+        self.current_HP = 1200
+        self.max_HP = 1200
         self.STR = 35
         self.DEX = 35
         self.equipped_weapon = Greatsword()
@@ -421,9 +432,11 @@ class Monster():
         self.current_HP = int(self.current_HP - damage)
         return self.current_HP
 
-    def is_dead(self):
-        if self.current_HP < 0:
-            self.current_HP = 0
+    def is_dead(self,player):
+        if self.current_HP <= 0:
+            player.add_xp(self.xp)
+            player.add_item(self.inventory)
+            animate_typing_slow(f"\n{player.name} landed the final blow and thus the {self.name} has fallen...\n")
             return True
         else:
             return False
@@ -434,18 +447,11 @@ class Monster():
         return damage
 
     def enemy_combat_turn(self,player):
-        if self.is_dead():
-            animate_typing(f"\n{self.name} has been defeated!")
-            player.add_xp(self.xp)
-            return False
-        else:
-            enemy_damage = self.attack()
-            player.take_damage(enemy_damage)
-            animate_typing(f"\n{self.name} dealt {enemy_damage} damage to you.\n")
-            if player.is_dead():
-                animate_typing(f"\n{player.name} has been defeated!")
-                return False
-            return True
+        enemy_damage = self.attack()
+        player.take_damage(enemy_damage)
+        animate_typing(f"\n{self.name} dealt {enemy_damage} damage to you.\n")
+        if player.is_dead():
+            animate_typing(f"\n{player.name} has been defeated!")
 
 
 class wolf(Monster):
